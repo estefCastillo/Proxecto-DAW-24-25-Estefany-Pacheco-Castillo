@@ -19,50 +19,53 @@
   - [3- Requirimentos técnicos](#3--requirimentos-técnicos)
   - [4- Planificación](#4--planificación)
 
-> _EXPLICACIÓN_: Este documento será a páxina de explicación de en que consiste o teu proxecto. Coida a súa redacción con todo ou teu mimo. Elimina posteriormente todas as lineas "EXPLICACIÓN" cando creas finalizada a súa redacción.
-> Podes acompañar á redacción deste ficheiro con imaxes, pero non abuses deles.
-> Explica da mellor forma posible de en que consiste o proxecto é que ferramentas e linguaxes de programación empregarás.
 
 ## 1- Descrición do proxecto
 
-> _EXPLICACIÓN_: Realiza unha breve descrición do anteproxecto.Resalta o fundamental *coas túas propias palabras\*\*. Utiliza unha linguaxe correcta, *pero natural\*\*, que o entenda todo o mundo, mesmo e en especial, as persoas que non teñan un coñecemento técnico avanzado. Pode ser un estracto ou resumo de apartados que xa contemples noutros ficheiros.
->
-> Neste apartado trátase de describir a análise realizada e a toma de decisións adoptada sobre aspectos básicos ou iniciais do proxecto como:
->
-> - ¿En que consiste o noso proxecto? ¿Cal é o propósito principal da aplicación a desenvolver? ¿Cales son os obxectivos?
-> - ¿O desenvolvemento da aplicación abre unha oportunidade de negocio? ¿É posible comercializala? Como?
-> - ¿Que tecnoloxías son as máis axeitadas para a realización do proxecto?
+Sambo es una aplicación web donde los usuarios podrán buscar servicios para la realización de eventos en Galicia. El objetivo principal es que los usuarios, principalmente organizadores de eventos o particulares, puedan encontrar los servicios necesarios sin necesidad de buscar manualmente todo lo que necesita, sino que lo pueda encontrar todo en un mismo lugar.
+Además, se quiere dar visibilidad a comercios o recursos poco conocidos.
+
+Aunque ya existen páginas web de este estilo, la mayoría son empresas que muestran sus propios servicios, con bastantes restricciones al elegir una única opción y con precios excesivos. Por ello, es una buena oportunidad de negocio ya que, se podrá comercializar mediante comisiones por cada reserva.
+
+Para la creación de Sambo, utilizaré HTML5 junto con CSS3 y JavaScript para la parte front-end. Para back-end, usaré PHP y SQL, junto con una api para comunicar cliente con servidor.
 
 ## 2- Empresa
 
-> _EXPLICACIÓN_: Neste apartado desenvolveredes todo o referente os módulos de Empresa e iniciativa emprendedora e de FOL.
-
 ### 2.1- Idea de negocio
 
-> _EXPLICACIÓN_: Define o producto central, o valor engadido e a utilidade. Se se ogrecen productos aumentados, indicalo tamén.
+Sambo es una plataforma web para la búsqueda y contrtación de servicios para eventos o fiestas en Galicia. Su objetivo es disminuír el tiempo de búsqueda servicios para organizar eventos. Aquí, podrán encontrar una variedad de servicios y precios de éstos en Galicia, dando así visibilidad a comercios pequeños con poca exposición, o que simplemente no publicitan sus servicios. Por ello, Sambo quiere unir esto en una página web, dirigida no solo a organizadores de eventos, sino a particulares que quieran realizar sus eventos por su propia cuenta, sin necesidad de contratar a alguien.
+
+Los dueños de los comercios podrán publicar ejemplos de lo que ofrecen, así como editar sus precios y disponibilidad.
+
+Se monetizará mediante al cobró de un procentaje del 10% por cada reserva a los proveedores de servicios.
 
 ### 2.2- Xustificación da idea
 
-> _EXPLICACIÓN_: Neste apartado incluirase a información necesaria para xustificar a realización do proxecto. Debe indicarse como xurdiu a idea do proxecto, que obxectivo se persegue coa súa posta en marcha e/ou que problema vai resolver.
->
-> En este apartado indicade a nivel de idea de negocio:
->
-> - ¿Cal é a necesidade ou necesidades que se pretenden cubrir ou satisfacer?
-> - ¿Existen na actualidade aplicacións ou productos que tenten dar resposta a esa(s) necesidade(s)? ¿En que medida o conseguen?
-> - ¿Trátase de un segmento de mercado desabastecido ou insuficientemente atendido?
-> - ¿Un produto ineficiente? Un mercado novo?
->
-> Para sustentar as xustificación deberás proporcionar datos. Fontes máis utilizadas: INE, IGE, Informes sectoriais de
-> Industria, Statista... Deberás facer unha DAFO.
+
+La idea nace de una experiencia personal, ya que hace casi dos años organicé una boda por mi cuenta. Encontrar servicios para una boda, como floristería, dj, vajilla, local, entre otros es un trabajo muy cansino. No solo cansino, sino también los precios en ocasiones son desorbitados, por lo que el tiempo de búsqueda. Por ello pensé lo fácil que sería encontrar todo en un mismo lugar, sea para eventos grandes como pequeños.
+
+Sambo pretende centralizar todos los elementos necesarios para organizar un evento en una única página. Facilitando la búsqueda y disminuyendo el tiempo que conlleva. De esta misma manera, le damos la oportunidad a distintos negocios de hacerse visibles y aumentar su exposición e ingresos.
+
+Existen páginas web similares a Sambo, sin embargo están muy limitadas, ya que sólo se centran en grandes empresas, lo que quita visibilidad a comercios o empresas locales. La mayoría de estas páginas sólo se centran en bodas o comuniones, añadiendo un problema al querer realizar otro tipo de evento. Además, algunos negocios ponen limitaciones como no poder reservar una único servicio, sino que ofrecen un paquete de servicios lo que es un problema, porque en ocasiones solo se necesita un recurso. 
+
+DAFO:
+  Fortalezas:
+  Centralización de servicios, además de ofrecer visibilidad a negocios locales. Ofrecemos una amplia variedad de servicios individualmente.
+
+  Oportunidades:
+  Sambo es últil para eventos grandes y pequeños. La organización de eventos es muy demandada, lo que es una buena idea de negocio. Los pequeños negocios pueden verse beneficiados, ya que tendrán mas exposición.
+
+  Amenazas:
+  Existen páginas más conocidas y con mayor experiencia que Sambo, por ellos los usuarios podrían sentirse más seguros con éstas.
+
+  Debilidades:
+  Falta de exposición en el mercado incialmente. Se deberá invertir en publicidad para que la plataforma sea más conocida.
 
 ### 2.3- Segmento de clientes
 
-> _EXPLICACIÓN_: Neste apartado debes indicar a quen irá dirixido o negocio, os potenciales clientes, respostando as seguinte pregunta: ¿A quen está dirixido?
->
-> Debes:
->
-> - Indicar o segmento ou segmentos cos rasgos principais e cuantificar o mercado.
-> - E se é o caso, diferenciar entre usuario e cliente.
+Los clientes son los propietarios de los negocios que ofrecen los servicios que vamos a mostrar (establecimientos, floristerías, etc). Éstos podrán hacer modificaciones en sus perfiles, como añadir sus servicios o precios. 
+
+Los usuarios, serán aquellos que busquen contrar recursos o servicios para fiestas o eventos en Galicia. Principalmente serán organizadores de eventos, aunque también es útil para particulares. Los usuarios encontrarán en un sólo lugar todo lo que puedan necesitar para su evento.
 
 ### 2.4- Competencia
 
@@ -118,23 +121,18 @@
 
 ## 3- Requirimentos técnicos
 
-> _EXPLICACIÓN_: Descrición dos medios materiais e das tecnoloxías necesarias que se usarán para desenvolver o proxecto incluíndo as linguaxes de programación frontend e backend, técnicas, librerías, bases de datos, servizos usados, servidores, API’s, etc.
->
-> - **Infraestructura:** dominio web, servidor web dedicado, servidor de base de datos, almacenamento, memoria, ...
-> - **Backend:** tecnoloxías usadas.
-> - **Frontend:** tecnoloxías usadas
+- **Infraestructura:** Inicialmente, estará alojado en un servidor web como Hostinger, con un dominio propio.
+De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar según el número de clientes que tengamos.
+- **Backend:** MySQL,PHP. Además de la creación de una api para conectar backend con frontend.
+- **Frontend:** HTML5, CSS3 y JavaScript.
 
 ## 4- Planificación
 
-> _EXPLICACIÓN_: Inclúe un calendario co tempo estimado a adicar a cada fase do proxecto.
->
-> O proxecto estará formado polas seguintes fases:
->
-> - Estudo preliminar
-> - Análise
-> - Deseño
-> - Codificación e probas (debe ser a fase máis longa).
->
-> Debe facerse un calendario ou un diagrama de Gantt indicando, para cada fase, a data de inicio, a súa duración e breve descrición das tarefas a realizar.
+| Fases             |    Duración     | Descripción | Fecha de inicio|
+|---------------|---------|-----------|-------------|----------------| 
+|Estudo preliminar      | 2 semanas  | Idea del proyecto e investigación para éste.| 24/03|
+|Análisis	|1 semana     | Definir funcionalidades.| 8/04
+|Diseño	        | 1 semana | Diseño de interfaz de usuario| 16/04
+|Codificación y pruebas	        | 3 semanas | Desarrollo del backend y frontend| 23/04
 
 [**<-Anterior**](../../README.md)
