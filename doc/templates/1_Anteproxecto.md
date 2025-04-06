@@ -128,11 +128,12 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 
 ## 4- Planificación
 
-| Fases             |    Duración     | Descripción | Fecha de inicio|
-|---------------|---------|-----------|-------------|----------------| 
-|Estudo preliminar      | 2 semanas  | Idea del proyecto e investigación para éste.| 24/03|
-|Análisis	|1 semana     | Definir funcionalidades.| 8/04
-|Diseño	        | 1 semana | Diseño de interfaz de usuario| 16/04
-|Codificación y pruebas	        | 3 semanas | Desarrollo del backend y frontend| 23/04
+| Fases                  | Duración   | Descripción                                  | Fecha de inicio |
+|------------------------|------------|----------------------------------------------|-----------------|
+| Estudo preliminar      | 2 semanas  | Idea del proyecto e investigación para éste. | 24/03           |
+| Análisis               | 1 semana   | Definir funcionalidades.                     | 8/04            |
+| Diseño                 | 1 semana   | Diseño de interfaz de usuario                | 16/04           |
+| Codificación y pruebas | 3 semanas  | Desarrollo del backend y frontend            | 23/04           |
+
 
 [**<-Anterior**](../../README.md)
