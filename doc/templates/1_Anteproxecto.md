@@ -49,6 +49,7 @@ Sambo pretende centralizar todos los elementos necesarios para organizar un even
 Existen páginas web similares a Sambo, sin embargo están muy limitadas, ya que sólo se centran en grandes empresas, lo que quita visibilidad a comercios o empresas locales. La mayoría de estas páginas sólo se centran en bodas o comuniones, añadiendo un problema al querer realizar otro tipo de evento. Además, algunos negocios ponen limitaciones como no poder reservar una único servicio, sino que ofrecen un paquete de servicios lo que es un problema, porque en ocasiones solo se necesita un recurso. 
 
 DAFO:
+
   Fortalezas:
   Centralización de servicios, además de ofrecer visibilidad a negocios locales. Ofrecemos una amplia variedad de servicios individualmente.
 
@@ -69,16 +70,18 @@ Los usuarios, serán aquellos que busquen contrar recursos o servicios para fies
 
 ### 2.4- Competencia
 
-> _EXPLICACIÓN_: Neste apartado deberase indicar que outras empresas operan no mercado. Que cota de mercado teñen e como están posicionadas. Existencia de productos/servizos substitutivos. Como están posicionados.
+Un gran competidor es  **Bodas.net**, centrado en bodas. Es una plataforma bastante conocida en éste ámbito, ya que su alcance es a nivel nacional, por lo que muestra negocios grandes y conocidos de cada zona. 
+En Galicia, tenemos otro competidor grande, como **Galiciaenboda.com**, ya que ofrece la mayoría de servicios (propios) en una misma página web. Sin embargo, no tiene una variedad de precios, que podrían resultar más asequibles para otro tipo público. Además, solo se centra en bodas.
+Como sustitutos, podrían ser los conocidos Wedding Planners, ya que ellos se encargan de encontrar todos las piezas del evento, pero aún así, Sambo seguiría siendo útil.
+También hay muchos negocios que se publicitan en las redes sociales, como Facebook e Instagram, donde la información estaría dispersa.
 
 ### 2.5- Proposta de valor
 
-> _EXPLICACIÓN_: **Apartado fundamental.**
->
-> - En que se diferencia fronte os competidores.
-> - Que melloras terá fronte os competidores.
-> - Que valor aporta ao mercado.
-> - ¿Porqué mercarán/contratarán este producto/servizo/idea fronte o resto?
+Sambo quiere simplificar la tarea de organizar eventos o fiestas en Galicia. Ofrecemos comodidad y eficiencia, ya que al tener todo lo necesario de manera centralizada, permitirá optimizar el tiempo de realización del evento.
+
+A diferencia de nuestros competidores, queremos ofrecer al usuario una variedad de productos/servicios y precios, sin necesidad que vayan en un paquete conjunto. De esta forma, los comercios locales se podrán ver beneficiados, al tener una mayor exposición.
+
+Sambo, no solo se centra en bodas, sino que apuesta por la diversificación de eventos (cumpleaños,graduaciones,fiestas de revelación de género o babyshower, entre otros), lo que nos diferencia de nuestros competidores.
 
 ### 2.6- Forma xurídica
 
