@@ -85,11 +85,30 @@ Sambo, no solo se centra en bodas, sino que apuesta por la diversificación de e
 
 ### 2.6- Forma xurídica
 
-> _EXPLICACIÓN_: Neste apartado deberedes indicar a forma xurídica: autónomo, soc. Cooperativa, SL,.. Explicando (nun par de frases) por que escolledes esta forma
+La forma jurídica que he elegido para **Sambo** es la de autónoma. Principalmente porque es una opción más secilla y rápida de gestionar si la comparamos con otro tipo formas jurídicas. Además, de esta forma reduzco los costes iniciales y el tiempo que pueda llevar la puesta en marcha de **Sambo**.
+Por otra parte, siendo autónoma podría acceder a ayudas y subvenciones dadas a los autónomos, lo que sería un beneficio para cubrir los costes del proyecto.
 
 ### 2.7- Investimentos
 
 > _EXPLICACIÓN_: Neste apartado idicaremos o investimentos, aínda que sexa, só unha enumeración de todo o que necesitan (locais, infraestruturas, equipos, suministros, mobiliario...) cuantificando cada elemento.
+
+**Inversiones**
+
+| Equipo y mobiliario  | Precio |
+|----------------------|--------|
+| Ordenador            | 700 €  |
+| Escritorio           | 80 €   |
+| Silla ergonómica     | 110 €  |
+| **Total**            | **890 €** |
+
+| Suministro | Precio |
+|------------|----------------|
+| Agua       | 25 €           |
+| Luz        | 80 €           |
+| Internet   | 40 €           |
+| **Total**  | **145 €**      |
+
+Tendríamos una inversión inicial de 1035€.
 
 #### 2.7.1- Custos
 
@@ -97,6 +116,26 @@ Sambo, no solo se centra en bodas, sino que apuesta por la diversificación de e
 >
 > - Diferenzando custos fixos de variables.
 > - Computando impostos e custos sociais.
+
+**Costes fijos:**
+
+|Costes fijos                               | Precio |
+|------------------------------------------|-----------|
+| Salario                                 | 16576    |
+| Servidor web, Certificado SSL, Dominio  | 51.48     |
+| Gestoría para autónomos                | 500       |
+| Servicios                               | 1740     |
+| **Total:**                     | **18867.48**|
+
+**Costes Variables:**
+
+| Costes Variables  | Precio |
+|-----------|-----------|
+| Marketing | 3.000     |
+| **Total:**                 | **3.000**  |
+
+**Costes Totales : 21867.48€**
+
 
 #### 2.7.2- Ingresos
 
@@ -133,8 +172,8 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 
 | Fases                  | Duración   | Descripción                                  | Fecha de inicio |
 |------------------------|------------|----------------------------------------------|-----------------|
-| Estudo preliminar      | 2 semanas  | Idea del proyecto e investigación para éste. | 24/03           |
-| Análisis               | 1 semana   | Definir funcionalidades.                     | 8/04            |
+| Estudo preliminar      | 9 días  | Idea del proyecto e investigación para éste. | 1/4           |
+| Análisis               | 6 semana   | Definir funcionalidades.                     | 10/04            |
 | Diseño                 | 1 semana   | Diseño de interfaz de usuario                | 16/04           |
 | Codificación y pruebas | 3 semanas  | Desarrollo del backend y frontend            | 23/04           |
 
