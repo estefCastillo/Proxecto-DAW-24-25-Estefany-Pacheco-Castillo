@@ -90,8 +90,6 @@ Por otra parte, siendo autónoma podría acceder a ayudas y subvenciones dadas a
 
 ### 2.7- Investimentos
 
-> _EXPLICACIÓN_: Neste apartado idicaremos o investimentos, aínda que sexa, só unha enumeración de todo o que necesitan (locais, infraestruturas, equipos, suministros, mobiliario...) cuantificando cada elemento.
-
 **Inversiones**
 
 | Equipo y mobiliario  | Precio |
@@ -108,31 +106,26 @@ Por otra parte, siendo autónoma podría acceder a ayudas y subvenciones dadas a
 | Internet   | 40 €           |
 | **Total**  | **145 €**      |
 
-Tendríamos una inversión inicial de 1035€.
+Tendríamos una inversión inicial de **1035€**.
 
 #### 2.7.1- Custos
-
-> > _EXPLICACIÓN_: Neste apartado idicaremos o invertimento
->
-> - Diferenzando custos fixos de variables.
-> - Computando impostos e custos sociais.
 
 **Costes fijos:**
 
 |Costes fijos                               | Precio |
 |------------------------------------------|-----------|
-| Salario                                 | 16576    |
-| Servidor web, Certificado SSL, Dominio  | 51.48     |
-| Gestoría para autónomos                | 500       |
-| Servicios                               | 1740     |
-| **Total:**                     | **18867.48**|
+| Salario                                 | 16576€    |
+| Servidor web, Certificado SSL, Dominio  | 51.48€     |
+| Gestoría para autónomos                | 500€     |
+| Servicios                               | 1740€     |
+| **Total:**                     | **18867.48€**|
 
 **Costes Variables:**
 
 | Costes Variables  | Precio |
 |-----------|-----------|
-| Marketing | 3.000     |
-| **Total:**                 | **3.000**  |
+| Marketing | 3000€     |
+| **Total:**                 | **3000€**  |
 
 **Costes Totales : 21867.48€**
 
@@ -169,10 +162,6 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 - **Frontend:** HTML5, CSS3 y JavaScript.
 
 ## 4- Planificación
-
-**SE PIDE DIAGRAMA GANTT. NO ES CALCAR LO QUE YO OS PONGO DE LAS FASES DE ENTREGA, ES LO QUE CREEIS TU Y LAS FASES QUE REALMENTE APLICARÍAS**
-
-
 
 | Fases                  | Duración   | Descripción                                  | Fecha de inicio |
 |------------------------|------------|----------------------------------------------|-----------------|
