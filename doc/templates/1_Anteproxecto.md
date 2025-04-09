@@ -170,6 +170,10 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 
 ## 4- Planificación
 
+**SE PIDE DIAGRAMA GANTT. NO ES CALCAR LO QUE YO OS PONGO DE LAS FASES DE ENTREGA, ES LO QUE CREEIS TU Y LAS FASES QUE REALMENTE APLICARÍAS**
+
+
+
 | Fases                  | Duración   | Descripción                                  | Fecha de inicio |
 |------------------------|------------|----------------------------------------------|-----------------|
 | Estudo preliminar      | 9 días  | Idea del proyecto e investigación para éste. | 1/4           |
