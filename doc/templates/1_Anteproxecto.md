@@ -134,25 +134,59 @@ Tendríamos una inversión inicial de **1035€**.
 
 > _EXPLICACIÓN_: Neste apartado indicarase unha previsión de ventas e unha política de prezos. Isto implicar apuntar unha previsión de ventas e unha política de prezos.
 
+Para hacer una estimación de los ingresos, he realizado una investigación de precios y cantidad de eventos realizados en Galicia por año.
+
+Basándonos en nuestra competencia más directa, Bodas.net, centrada únicamente en bodas, para hacer esta aproximación nos enfocaremos exclusivamente en bodas, por ser más común.
+
+En Galicia, se celebran cada año aproximadamente 11635 bodas. Se estima que el 30% de ellas están organizadas por Wedding Planners, y el 70% restante por las parejas.
+
+Sambo, está diseñado para atender ambos públicos, aunque nos centraremos especialmente en particulares. Si asumimos que logramos captar un 5% del 70% restante, estaríamos hablando de unas 407 bodas al año.
+
+Para cada boda se necesitan estos elementos básicos: local, decoración floral,ramos y fotógrafos.
+No estamos contando con otros detalles importantes, como la vestimenta de los novios o recuerdos de boda, nos centraremos para hacer esta estimación solo en la realización del evento.
+
+Precios medio-bajo de cada servicio:
+
+| Servicio                | Precio Medio         |
+|-------------------------|----------------------|
+| Local                   | 500€ - 5.000€        |
+| Catering                | 70€ por persona      |
+| Ramo de flores          | 100€                 |
+| Decoración floral       | 700€                 |
+| Fotografía              | 1.000€               |
+
+Cálculo **aproximado** de ingresos:
+
+| Servicio                | Ingreso por Boda     |
+|-------------------------|----------------------|
+| Local (2.500€)          | 250€                 |
+| Catering (100 personas) | 700€                 |
+| Ramo de flores          | 10€                  |
+| Decoración floral       | 70€                  |
+| Fotografía              | 100€                 |
+
+**Total por boda**: 1.130€ por boda
+
+**Total de ingresos al año** (10% comisión): 460.510€
+
 ### 2.8- Viabilidade
 
 #### 2.8.1- Viabilidade técnica
 
-> _EXPLICACIÓN_: Neste subapartado deberás defender tendo en conta os datos xa aportados, a viabilidade da realización do proyecto.
-> Evidentemente, para poder xustificar a viabilidade económica do proyecto deberás ter en conta os ingresos. **Ainda que está na parte de empresa, este apartado é interesante dende o punto de vista técnico**
->
-> - Será posible dispoñer dos recursos humanos e medios de produción necesarios (materias primas, maquinaria, instalacións, etc.)?
-> - Existe algún impedimento técnico que dificulte o proceso produtivo?
+Considero que la viabilidad técnica de **Sambo** es sólida, ya que de manera inicial se mantiene estable.
+
+Al principio, no será necesario mucho personal. Como la plataforma es pequeña, puedo manejar la mayoría de las tareas yo misma. A medida que la plataforma crezca, se podría contar con personas especializadas en áreas como atención al cliente o marketing para asegurar que todo siga funcionando sin problemas.
+
+En cuanto a los impedimentos técnicos, no veo ningún problema significativo por ahora. Sin embargo, si la plataforma crece, será necesario mejorar ciertos aspectos para mejorar la experiencia del cliente. 
+
 
 #### 2.8.2 - Viabilidade económica
 
-> _EXPLICACIÓN_: Neste subapartado deberás defender con datos a viabilidade da realización do proyecto, para elo debes indicar os custos e investimentos:
-
+Basándonos en nuestra estimación de ingresos, podríamos decir que **Sambo** es viable económicamente. Según el cálculo realizado, tendríamos un ingreso aproximado de 460.500€ por año, lo que cubriría los costes totales (fijos y variables) y el salario a pagar. Además, contamos con un margen de beneficio bastante grande, por lo que se podrá sostener a corto y largo plazo.
+ 
 #### 2.8.3- Conclusión
 
-> - É viable?
-> - Os beneficios do proxecto son superiores aos costes?
-> - As perdas poden cubrirse vía financiamento (por parte da administración pública, con subvencións, etc)?
+Tras este pequeño análisis, se demuestra que Sambo es un proyecto viable. Los ingresos obtenidos cubren todos los costes necesarios y dejan un margen de beneficio considerable. En caso de pérdidas, se podrá sostener gracias a subvenciones otorgadas por el gobierno, ya sea por ser autónomos o por ser menor de 30 años, lo que permitirá que el proyecto siga operando.
 
 ## 3- Requirimentos técnicos
 
@@ -165,8 +199,8 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 
 | Fases                  | Duración   | Descripción                                  | Fecha de inicio |
 |------------------------|------------|----------------------------------------------|-----------------|
-| Estudo preliminar      | 9 días  | Idea del proyecto e investigación para éste. | 1/4           |
-| Análisis               | 6 semana   | Definir funcionalidades.                     | 10/04            |
+| Estudo preliminar      | 10 días  | Idea del proyecto e investigación para éste. | 1/4           |
+| Análisis               | 4 días   | Definir funcionalidades.                     | 12/04            |
 | Diseño                 | 1 semana   | Diseño de interfaz de usuario                | 16/04           |
 | Codificación y pruebas | 3 semanas  | Desarrollo del backend y frontend            | 23/04           |
 
