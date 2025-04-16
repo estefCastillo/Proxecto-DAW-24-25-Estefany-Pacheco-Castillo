@@ -132,15 +132,13 @@ Tendríamos una inversión inicial de **1035€**.
 
 #### 2.7.2- Ingresos
 
-> _EXPLICACIÓN_: Neste apartado indicarase unha previsión de ventas e unha política de prezos. Isto implicar apuntar unha previsión de ventas e unha política de prezos.
-
 Para hacer una estimación de los ingresos, he realizado una investigación de precios y cantidad de eventos realizados en Galicia por año.
 
 Basándonos en nuestra competencia más directa, Bodas.net, centrada únicamente en bodas, para hacer esta aproximación nos enfocaremos exclusivamente en bodas, por ser más común.
 
 En Galicia, se celebran cada año aproximadamente 11635 bodas. Se estima que el 30% de ellas están organizadas por Wedding Planners, y el 70% restante por las parejas.
 
-Sambo, está diseñado para atender ambos públicos, aunque nos centraremos especialmente en particulares. Si asumimos que logramos captar un 5% del 70% restante, estaríamos hablando de unas 407 bodas al año.
+Sambo, está diseñado para atender ambos públicos, aunque nos centraremos especialmente en particulares. Si asumimos que logramos captar un 2% del 70% restante, estaríamos hablando de unas 163 bodas al año. Estimamos un 2% ya que estaríamos empezando.
 
 Para cada boda se necesitan estos elementos básicos: local, decoración floral,ramos y fotógrafos.
 No estamos contando con otros detalles importantes, como la vestimenta de los novios o recuerdos de boda, nos centraremos para hacer esta estimación solo en la realización del evento.
@@ -167,7 +165,7 @@ Cálculo **aproximado** de ingresos:
 
 **Total por boda**: 1.130€ por boda
 
-**Total de ingresos al año** (10% comisión): 460.510€
+**Total de ingresos al año** (10% comisión): 184.190€
 
 ### 2.8- Viabilidade
 
@@ -182,7 +180,7 @@ En cuanto a los impedimentos técnicos, no veo ningún problema significativo po
 
 #### 2.8.2 - Viabilidade económica
 
-Basándonos en nuestra estimación de ingresos, podríamos decir que **Sambo** es viable económicamente. Según el cálculo realizado, tendríamos un ingreso aproximado de 460.500€ por año, lo que cubriría los costes totales (fijos y variables) y el salario a pagar. Además, contamos con un margen de beneficio bastante grande, por lo que se podrá sostener a corto y largo plazo.
+Basándonos en nuestra estimación de ingresos, podríamos decir que **Sambo** es viable económicamente. Según el cálculo realizado, tendríamos un ingreso aproximado de 184.190 por año, lo que cubriría los costes totales (fijos y variables) y el salario a pagar. Además, contamos con un margen de beneficio bastante grande, por lo que se podrá sostener a corto y largo plazo.
  
 #### 2.8.3- Conclusión
 
