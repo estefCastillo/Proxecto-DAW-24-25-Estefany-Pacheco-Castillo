@@ -200,9 +200,11 @@ De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar seg
 | Fases                  | Duración   | Descripción                                  | Fecha de inicio |
 |------------------------|------------|----------------------------------------------|-----------------|
 | Estudo preliminar      | 10 días  | Idea del proyecto e investigación para éste. | 1/4           |
-| Análisis               | 4 días   | Definir funcionalidades.                     | 12/04            |
-| Diseño                 | 1 semana   | Diseño de interfaz de usuario                | 16/04           |
-| Codificación y pruebas | 3 semanas  | Desarrollo del backend y frontend            | 23/04           |
+| Análisis               | 5 días   | Definir funcionalidades.                     | 12/04            |
+| Diseño                 | 1 semana   | Diseño de interfaz de usuario                | 17/04           |
+| Codificación y pruebas | 3 semanas  | Desarrollo del backend y frontend            | 24/04           |
+
+![Diagrama de Gantt](../img/diagramaGantt.png)
 
 
 [**<-Anterior**](../../README.md)
