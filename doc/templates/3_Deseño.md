@@ -22,7 +22,8 @@
 
 ## 4- Deseño de interface de usuarios
 
-Aquí el figma
+[Figma](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
+
 [**<-Anterior**](../../README.md)
 
 
