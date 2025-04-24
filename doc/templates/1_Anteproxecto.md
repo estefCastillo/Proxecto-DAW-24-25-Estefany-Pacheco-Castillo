@@ -180,7 +180,7 @@ En cuanto a los impedimentos técnicos, no veo ningún problema significativo po
 
 #### 2.8.2 - Viabilidade económica
 
-Basándonos en nuestra estimación de ingresos, podríamos decir que **Sambo** es viable económicamente. Según el cálculo realizado, tendríamos un ingreso aproximado de 184.190 por año, lo que cubriría los costes totales (fijos y variables) y el salario a pagar. Además, contamos con un margen de beneficio bastante grande, por lo que se podrá sostener a corto y largo plazo.
+Basándonos en nuestra estimación de ingresos, podríamos decir que **Sambo** es viable económicamente. Según el cálculo realizado, tendríamos un ingreso aproximado de 184.190€ por año, lo que cubriría los costes totales (fijos y variables) y el salario a pagar. Además, contamos con un margen de beneficio bastante grande, por lo que se podrá sostener a corto y largo plazo.
  
 #### 2.8.3- Conclusión
 
