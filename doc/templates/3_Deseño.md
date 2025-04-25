@@ -18,7 +18,8 @@
 ## 3- Diagrama de Base de Datos
 
 ![Modelo ER](../img/ERDiagram.png)
-> - Modelo relacional
+![Modelo ER](../img/Relacional.png)
+
 
 ## 4- Deseño de interface de usuarios
 
