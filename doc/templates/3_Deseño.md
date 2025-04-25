@@ -17,7 +17,7 @@
 
 ## 3- Diagrama de Base de Datos
 
-> - Modelo Entidade/relación
+![Modelo ER](../img/ERDiagram.png)
 > - Modelo relacional
 
 ## 4- Deseño de interface de usuarios
@@ -25,5 +25,4 @@
 [Figma](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
 
 [**<-Anterior**](../../README.md)
-
 
