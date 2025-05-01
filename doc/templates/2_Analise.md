@@ -67,6 +67,10 @@ Sambo está centrado únicamente en Galicia, por lo que debe regirse según las 
 
 Para cumplir con ambas normativas, Sambo contará con un aviso legal, así como las políticas de privacidad y de cookies. Aquí, se informará al usuario quien es la persona responsable del tratamiento de los datos, así como los fines específicos para los que se recopilan.
 
+El responsable del tratamiento de los datos es Estefany Pacheco Castillo. Éstos datos serán almacenadas en bases de datos, gestionadas por Sambo. Se recogerán información relevante como: nombre, correo electrónico y teléfono.
+
+Por supuesto, los usuarios podrán hacer cualquier solicitud de modificación como de cancelación poniéndose en contacto con nosotros.
+
 ## 6- Melloras futuras
  Se podría mejorar la plataforma añadiendo un sistema de valoración de los usuarios, así como filtros más detallados para facilitar la búsqueda de productos o servicios según la localización y precios.
 

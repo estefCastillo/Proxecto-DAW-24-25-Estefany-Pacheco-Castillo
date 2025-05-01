@@ -188,7 +188,7 @@ Tras este pequeño análisis, se demuestra que Sambo es un proyecto viable. Los 
 
 ## 3- Requirimentos técnicos
 
-- **Infraestructura:** Inicialmente, estará alojado en un servidor web como Hostinger, con un dominio propio.
+- **Infraestructura:** Inicialmente, estará alojado en un servidor web como Hostinger, con un dominio propio y certificado SSL incluído.
 De memoria se necesitará como máximo 2GB y de almacenamiento podrá variar según el número de clientes que tengamos.
 - **Backend:** MySQL,PHP. Además de la creación de una api para conectar backend con frontend.
 - **Frontend:** HTML5, CSS3 y JavaScript.
