@@ -64,9 +64,13 @@ DAFO:
 
 ### 2.3- Segmento de clientes
 
-Los clientes son los propietarios de los negocios que ofrecen los servicios que vamos a mostrar (establecimientos, floristerías, etc). Éstos podrán hacer modificaciones en sus perfiles, como añadir sus servicios o precios. 
+Los clientes son los propietarios de los negocios que ofrecen los servicios que vamos a mostrar (establecimientos, floristerías, etc). Éstos podrán hacer modificaciones en sus perfiles, como añadir sus servicios o precios.
 
 Los usuarios, serán aquellos que busquen contrar recursos o servicios para fiestas o eventos en Galicia. Principalmente serán organizadores de eventos, aunque también es útil para particulares. Los usuarios encontrarán en un sólo lugar todo lo que puedan necesitar para su evento.
+
+Para llegar a ambos, Sambo fortalecerá su presencia en redes sociales, con perfiles llamativos en Instagram y Facebook principalmente. De esta forma,, se logrará un mayor alcance y se captará público de distintas edades.
+Además, Sambo se pondrá en contacto con proveedores de servicios que puedan beneficiarse de la plataforma, fomentando así su uso. Por último, se utilizarán técnicas de optimización para buscadores (SEO) con el fin de mejorar la visibilidad de nuestro contenido.
+
 
 ### 2.4- Competencia
 
@@ -112,13 +116,15 @@ Tendríamos una inversión inicial de **1035€**.
 
 **Costes fijos:**
 
-|Costes fijos                               | Precio |
-|------------------------------------------|-----------|
-| Salario                                 | 16576€    |
-| Servidor web, Certificado SSL, Dominio  | 51.48€     |
-| Gestoría para autónomos                | 500€     |
-| Servicios                               | 1740€     |
-| **Total:**                     | **18867.48€**|
+| Costes fijos                              | Precio |
+|-----------------------------------------|-------------|
+| Salario                                 | 16576€ |
+| Gastos sociales    | 4973€  |
+| Cotización de autónomos                 | 3840€  |
+| Servidor web, Certificado SSL, Dominio  | 51.48 €     |
+| Gestoría para autónomos                 | 500 €    |
+| Servicios   | 1740 €  |
+| **Total**                               | **27680.48 €** |
 
 **Costes Variables:**
 
@@ -127,7 +133,7 @@ Tendríamos una inversión inicial de **1035€**.
 | Marketing | 3000€     |
 | **Total:**                 | **3000€**  |
 
-**Costes Totales : 21867.48€**
+**Costes Totales : 30680.48 €**
 
 
 #### 2.7.2- Ingresos
