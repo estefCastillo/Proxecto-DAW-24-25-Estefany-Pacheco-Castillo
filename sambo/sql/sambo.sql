@@ -51,7 +51,7 @@ CREATE TABLE reserva (
     FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
---Insertar usuarios
+
 
 INSERT INTO usuario (nombre, correo, contrasena) VALUES
 ('Sambo', 'administrador@sambo.com', 'admin123'),
