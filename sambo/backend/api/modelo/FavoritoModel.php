@@ -95,8 +95,9 @@ class FavoritoModel extends Model{
 
         try {
             $stmt->execute();
-            if ($s=$stmt->fetch()) {
-                $favorito=new Favorito($s["id_usuario"],$s["id_servicio"],$s["id_favorito"]);
+            $resultados = $stmt->fetchAll();
+            foreach ($resultados as $s) {
+                $favorito = new Favorito($s["id_usuario"], $s["id_servicio"], $s["id_favorito"]);
                 $favoritos[] = $favorito;
             }
         } catch (PDOException $e) {

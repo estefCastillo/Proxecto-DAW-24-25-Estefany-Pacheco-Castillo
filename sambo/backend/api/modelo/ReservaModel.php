@@ -135,6 +135,7 @@ class ReservaModel extends Model{
         $sql = "SELECT * FROM reserva WHERE id_usuario = :id_usuario";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
+        $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $reservas = [];
 
         try {
@@ -152,7 +153,32 @@ class ReservaModel extends Model{
         }
         return $reservas;
     }
-   
+    public function getAllByClient($id_cliente){
+        $sql = "SELECT r.id_reserva,r.id_usuario,r.id_servicio,r.fecha,r.estado
+                FROM reserva r
+                JOIN servicio s ON r.id_servicio = s.id_servicio
+                WHERE s.id_cliente = :id_cliente";
+        
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id_cliente', $id_cliente, PDO::PARAM_INT);
+        $reservas = [];
+        try {
+            $stmt->execute();
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($resultado as $r) {
+                $reserva = new Reserva($r["id_usuario"], $r["id_servicio"], $r["fecha"], $r["estado"], $r["id_reserva"]);
+                $reservas[] = $reserva;
+            }
+        } catch (PDOException $e) {
+            error_log("Error en ReservaModel->getAllByClient($id_cliente): " . $e->getMessage());
+        } finally {
+            $stmt = null;
+            $pdo = null;
+        }
+        return $reservas;
+    }
     public function insert($reserva){
         $sql="INSERT INTO reserva (id_usuario,id_servicio,fecha,estado) VALUES (:id_usuario,:id_servicio,:fecha,:estado)";
         $pdo=self::getConnection();

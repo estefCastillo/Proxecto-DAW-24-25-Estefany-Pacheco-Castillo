@@ -52,23 +52,57 @@ if (count($uri)>=6) {
 switch ($method) {
     case 'GET':
         if(isset($id)){
-            $controlador->get($id);
+            if ($endpoint=="reserva" || $endpoint=="favorito") {
+                if (in_array("usuario", $uri)) {
+                    $controlador->getAllByUser($id);
+                } else {
+                    $controlador->getAllByClient($id);
+
+                }
+            }else{
+                $controlador->get($id);
+            }
         }else{
-            $controlador->getAll();
+            if ($endpoint=="reserva" || $endpoint=="favorito") {
+                Controller::notFoundMessage("Se debe indicar el id del usuario");
+            }else{
+                $controlador->getAll();
+            }
         }
         break;
     case 'DELETE':
         if (isset($id)) {
-            $controlador->delete($id);
+            if ($endpoint=="reserva" || $endpoint=="favorito") {
+                if (strlen($id)==2) {
+                    $controlador->deleteByUser($id[0],$id[1]);
+                }else{
+                    Controller::notFoundMessage("Se ha de indicar dos ids correctos");
+                    die();
+                }
+            }else{
+                $controlador->delete($id[0]);
+            }
         }else{
             Controller::notFoundMessage("Se ha de indicar un id correcto");
         }
         break;
     case 'PUT':
         if (isset($id)) {
-            $json=file_get_contents("php://input");
-            $controlador->update($id,$json);
-        }else{
+            $json = file_get_contents("php://input");
+            if ($endpoint == "reserva") {
+                if (strlen($id) == 2) {
+                    $controlador->update($id[0], $id[1], $json);
+                } else {
+                    Controller::notFoundMessage("Se ha de indicar dos ids correctos");
+                    die();
+                }
+            }elseif ($endpoint == "favorito") {
+                Controller::notFoundMessage("No se puede hacer cambios en los favoritos");
+                die();
+            }else {
+                $controlador->update($id, $json);
+            }
+        } else {
             Controller::notFoundMessage("Se ha de indicar un id correcto");
         }
         break;

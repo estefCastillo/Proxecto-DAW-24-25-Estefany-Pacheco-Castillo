@@ -18,6 +18,22 @@ public function getAllByUser($id)
     echo json_encode($reserva,JSON_PRETTY_PRINT);
 }
 
+public function getAllByClient($id_cliente)
+{
+    $model = new ReservaModel();
+    if (!is_numeric($id_cliente)) {
+        Controller::notFoundMessage("Los clientes se identifican con un solo número o id");
+        die();
+    }
+
+    $reservas = $model->getAllByClient($id_cliente);
+    if (empty($reservas)) {
+        Controller::notFoundMessage("No se encontraron reservas para el cliente");
+        die();
+    }
+
+    echo json_encode($reservas, JSON_PRETTY_PRINT);
+}
 public function delete($id_usuario,$id_reserva)
 {
     $model=new ReservaModel();
