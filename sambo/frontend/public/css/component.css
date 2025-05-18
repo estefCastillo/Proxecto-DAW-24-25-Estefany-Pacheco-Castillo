@@ -1,0 +1,114 @@
+/*=============================================
+=            Estilos del header            =
+=============================================*/
+header-component>header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 4px var(--clr-principal);
+    background-color: var(--background-clr);
+}
+
+
+.logo_header {
+    max-width: 150px;
+}
+
+.btn-login {
+    border: none;
+    background: none;
+    width: 50px;
+}
+
+.btn-login svg {
+    fill: var(--clr-principal);
+}
+
+.btn-login:hover svg {
+    fill: #70a086;
+}
+
+/*=====  End of Estilos del header  ======*/
+
+
+/*=============================================
+=            Estilos de la vetana           =
+=============================================*/
+#login {
+    background-color: var(--background-clr);
+    box-shadow: 1px 1px 4px var(--clr-principal);
+    border: none;
+    padding: 10px 12px;
+    width: 140px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 83px;
+    z-index: 1;
+}
+
+#login ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/*=====  End of Estilos de la vetana ======*/
+
+
+/*=============================================
+=            Estilos del footer            =
+=============================================*/
+
+footer {
+    background-color: var(--clr-principal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: var(--background-clr);
+}
+
+#social_media {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+#social_media a svg {
+    width: 35px;
+    fill: var(--background-clr);
+}
+
+footer img {
+    width: 300px;
+    height: 100px;
+}
+
+#privacy {
+    border-collapse: collapse;
+    font-size: small;
+}
+
+#privacy a {
+    color: var(--background-clr);
+}
+
+#privacy th:not(:last-of-type) {
+    border-right: 1px solid;
+}
+
+#privacy th {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+/*=====  End of Estilos del footer  ======*/

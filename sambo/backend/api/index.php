@@ -23,7 +23,7 @@ $method=$_SERVER["REQUEST_METHOD"];
 $uri=$_SERVER["REQUEST_URI"];
 $uri=explode("/",$uri);
 $id=null;
-$endpoint=$uri[4];
+$endpoint=$uri[3];
 
 /**
  * Obtenemos el controlador
@@ -37,7 +37,7 @@ try {
  /**
   * Obtención del id o de los ids
   */
-if (count($uri)>=6) {
+if (count($uri)>=5) {
     try {
         $id = getIds($uri);
         if (count($id) == 1) {

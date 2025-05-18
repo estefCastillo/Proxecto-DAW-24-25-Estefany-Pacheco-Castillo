@@ -22,8 +22,7 @@ class Header extends HTMLElement {
     </header>
     <div id="login" class="hidden">
       <ul>
-        <li><a href="">Zona clientes</a></li>
-        <li><a href="">Iniciar sesión</a></li>
+        <li><a href="login.html">Iniciar sesión</a></li>
       </ul>
     </div>`;
   }

@@ -1,0 +1,74 @@
+@import "./general.css";
+
+header{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    height: 200px;
+}
+
+header a img{
+width: 350px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+h2{
+    font-size: 2rem;
+    color: var(--clr-principal);
+    text-align: center;
+    padding: 1.5rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 20px; 
+}
+
+input[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--clr-principal);
+  color: var(--background-clr);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin: 1.2rem;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--background-clr);
+  color: var(--clr-principal);
+  outline: 1px solid var(--clr-principal);
+}
+main a:hover{
+    color:var(--clr-principal);
+}
+main a::after {
+    content: "";
+    width: 0;
+    display: block;
+    height: 2px;
+    border-radius: 10px;
+    background-color: var(--background-clr);
+    transition: all 0.4s ease-in-out;
+}
+
+main a:hover::after {
+    width: 100%;
+    background-color: var(--clr-principal);
+}
