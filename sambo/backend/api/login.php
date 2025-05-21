@@ -29,11 +29,12 @@ $empresa=$empresaModel->findbyEmail($correo);
 
 if ($usuario!=null) {
     if (password_verify($contrasena,$usuario->getContrasena())) {
-        $_SESSION["tipo"]="usuario";
+        $rol=$usuario->getRol();
+        $_SESSION["tipo"]=$rol;
         $_SESSION["id_usuario"]=$usuario->getId_usuario();
         $_SESSION["nombre"]=$usuario->getNombre();
         echo json_encode([
-            "tipo" => "usuario",
+            "tipo" => $rol,
             "id" => $usuario->getId_usuario(),
             "nombre" => $usuario->getNombre(),
             "correo" => $usuario->getCorreo()

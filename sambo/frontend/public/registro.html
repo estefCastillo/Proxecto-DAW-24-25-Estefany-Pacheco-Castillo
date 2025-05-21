@@ -12,8 +12,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/login.css" />
-    <script type="module" src="js/login.js" defer></script>
-    <title>Sambo-Iniciar sesión</title>
+    <script  type="module" src="./js/registrer.js"></script>
+    <title>Sambo-Registrarse</title>
   </head>
   <body>
     <header>
@@ -21,14 +21,23 @@
       <a href="index.html"><img src="./img/v1.png" alt="Logo de sambo" /></a>
     </header>
     <main>
-      <h2>Iniciar sesión</h2>
-      <form id="loginForm">
+      <h2>Registro</h2>
+      <form id="registrerForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre">
+
         <label for="correo">Correo electrónico:</label>
         <input type="email" id="correo" name="correo" required/>
+        <span class="error" id="e_correo"></span>
+
         <label for="contrasena">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena" required/>
-        <input type="submit" value="Iniciar sesión"/>
-        <a href="./registro.html">Registrarse</a>
+        <span class="error" id="e_contrasena"></span>
+
+        <label for="contrasena2">Repita la contraseña:</label>
+        <input type="password" id="contrasena2" name="contrasena2" required/>
+        <span class="error" id="e_contrasena2"></span>
+        <input type="submit" value="Registrarse"/>
       </form>
     </main>
     <footer>

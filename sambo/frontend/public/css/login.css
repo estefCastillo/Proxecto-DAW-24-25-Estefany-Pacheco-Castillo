@@ -32,7 +32,7 @@ form{
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],input[type="text"] {
   padding: 0.5rem 1rem;
   border: 2px solid #ccc;
   border-radius: 20px; 
@@ -71,4 +71,13 @@ main a::after {
 main a:hover::after {
     width: 100%;
     background-color: var(--clr-principal);
+}
+
+.error{
+    color: red;
+    font-size: 0.75rem;
+}
+.valido{
+    color: green;
+    font-size: 0.75rem;
 }

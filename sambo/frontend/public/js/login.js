@@ -1,26 +1,12 @@
+import ajax from "./ajaxTemplate.js";
+
 const $d=document,
 $loginForm=$d.querySelector("#loginForm"),
-$correo=$d.querySelector("#correo"),
-$contrasena=$d.querySelector("#contrasena")
-
-function ajax(options) {
-    const {url,method,fExito,fError,data}=options
-
-    fetch(url,{
-        method:method||"GET",
-        headers:{
-            "Content-type":"application/json; charset=utf-8"
-        },
-        body:JSON.stringify(data)
-    })
-    .then(resp=>resp.ok?resp.json():Promise.reject(resp))
-    .then(json=>fExito(json))
-    .catch(error=>fError(error))
-}
+$correo=$d.querySelector("#correo").value.trim(),
+$contrasena=$d.querySelector("#contrasena").value.trim()
 
 $loginForm.addEventListener("submit",ev=>{
     ev.preventDefault();
-    console.log("submititi");
     
     let correo=$correo.value
     let contrasena=$contrasena.value
@@ -48,6 +34,7 @@ $loginForm.addEventListener("submit",ev=>{
         fError:error=>{
             console.log(error);
             alert("Correo o contraseña incorrectos")
+            $loginForm.reset();
         },
         data:{
             correo:correo,

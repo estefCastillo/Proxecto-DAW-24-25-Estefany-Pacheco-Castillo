@@ -6,18 +6,20 @@ class Usuario extends ModelObject{
     public string $nombre;
     public string $correo;
     public string $contrasena;
-
-    public function __construct($nombre,$correo,$contrasena,$id_usuario=null) {
+    public string $rol;
+    
+    public function __construct($nombre,$correo,$contrasena,$rol="usuario",$id_usuario=null) {
         $this->id_usuario = $id_usuario;
         $this->nombre=$nombre;
         $this->correo=$correo;
         $this->contrasena=$contrasena;
+        $this->rol = $rol;
     }
 
     public static function fromjson($json)
     {
         $data=json_decode($json);
-        return new Usuario($data->nombre,$data->correo,$data->contrasena,$data->id_usuario??null);
+        return new Usuario($data->nombre,$data->correo,$data->contrasena,$data->rol??"usuario",$data->id_usuario??null);
     }
 
     public function toJson()
@@ -104,6 +106,25 @@ class Usuario extends ModelObject{
 
         return $this;
     }
+        /**
+     * Get the value of rol
+     */ 
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set the value of rol
+     *
+     * @return  self
+     */ 
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
 }
 
 class UsuarioModel extends Model{
@@ -117,7 +138,7 @@ class UsuarioModel extends Model{
             $stmt->execute();
             $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultado as $r) {
-                $usuario=new Usuario($r["nombre"],$r["correo"],$r["contrasena"],$r["id_usuario"]);
+                $usuario=new Usuario($r["nombre"],$r["correo"],$r["contrasena"],$r["rol"],$r["id_usuario"]);
                 $usuarios[]=$usuario;
             }
         } catch (PDOException $e) {
@@ -139,7 +160,7 @@ class UsuarioModel extends Model{
         try {
             $stmt->execute();
             if ($s=$stmt->fetch()) {
-                $usuario=new Usuario($s["nombre"],$s["correo"],$s["contrasena"],$s["id_usuario"]);
+                $usuario=new Usuario($s["nombre"],$s["correo"],$s["contrasena"],$s["rol"],$s["id_usuario"]);
             }
         } catch (PDOException $e) {
             error_log("Error en UsuarioModel->get($id_usuario): " . $e->getMessage());
@@ -151,12 +172,13 @@ class UsuarioModel extends Model{
     }
 
     public function insert($usuario){
-        $sql="INSERT INTO usuarios (nombre,correo,contrasena) VALUES (:nombre,:correo,:contrasena)";
+        $sql="INSERT INTO usuarios (nombre,correo,contrasena,rol) VALUES (:nombre,:correo,:contrasena,:rol)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(":nombre",$usuario->getNombre(),PDO::PARAM_STR);
         $stmt->bindValue(":correo",$usuario->getCorreo(),PDO::PARAM_STR);
         $stmt->bindValue(":contrasena",$usuario->getContrasena(),PDO::PARAM_STR);
+        $stmt->bindValue(":rol", $usuario->getRol(), PDO::PARAM_STR);
         $resultado=false;
 
         try {
@@ -224,7 +246,7 @@ class UsuarioModel extends Model{
         try {
             $stmt->execute();
             if ($s=$stmt->fetch()) {
-                $usuario=new Usuario($s["nombre"],$s["correo"],$s["contrasena"],$s["id_usuario"]);
+                $usuario=new Usuario($s["nombre"],$s["correo"],$s["contrasena"],$s["rol"],$s["id_usuario"]);
             }
         } catch (PDOException $e) {
             error_log("Error en UsuarioModel->($correo): " . $e->getMessage());
@@ -235,3 +257,5 @@ class UsuarioModel extends Model{
         return $usuario;
     }
 }
+
+

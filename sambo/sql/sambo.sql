@@ -6,7 +6,8 @@ CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
-    contrasena VARCHAR(100) NOT NULL
+    contrasena VARCHAR(100) NOT NULL,
+    rol VARCHAR(10) DEFAULT "usuario"
 );
 
 -- Tabla empresas
@@ -53,12 +54,13 @@ CREATE TABLE reservas (
 
 
 
-INSERT INTO usuarios (nombre, correo, contrasena) VALUES
-('Sambo', 'administrador@sambo.com', 'admin123'),
-('Pedro Pérez', 'pedroperez@ejemplo.com', 'abc123.pedroperez'),
-('María Márquez', 'mariamarquez@ejemplo.com', 'abc123.mariamarquez'),
-('Manuel Miranda', 'manuelmiranda@ejemplo.com', 'abc123.manuelmiranda'),
-('Lorena Lorenzo', 'lorenalorenzo@ejemplo.com', 'abc123.lorenalorenzo');
+INSERT INTO usuarios (nombre, correo, contrasena,rol) VALUES
+('Sambo', 'administrador@sambo.com', 'admin123', 'admin'),
+('Pedro Pérez', 'pedroperez@ejemplo.com', 'abc123.pedroperez', 'usuario'),
+('María Márquez', 'mariamarquez@ejemplo.com', 'abc123.mariamarquez', 'usuario'),
+('Manuel Miranda', 'manuelmiranda@ejemplo.com', 'abc123.manuelmiranda', 'usuario'),
+('Lorena Lorenzo', 'lorenalorenzo@ejemplo.com', 'abc123.lorenalorenzo', 'usuario');
+
 
 -- Insertar empresass
 INSERT INTO empresas (nombre_empresa, correo, contrasena, telefono, direccion) VALUES
