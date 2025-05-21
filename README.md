@@ -54,7 +54,7 @@ Si se quiere contactar conmigo durante el proceso de desarrollo, dejo un correo 
 
 ## Licenza
 
-LICENSE: Todos los derechos reservados © 2025 Estefany Pacheco Castillo.
+[LICENSE](./LICENSE): Todos los derechos reservados © 2025 Estefany Pacheco Castillo.
 
 ## Índice
 

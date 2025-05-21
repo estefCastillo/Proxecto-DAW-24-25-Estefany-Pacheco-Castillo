@@ -6,7 +6,7 @@
   - [3- Innovación](#3--innovación)
   - [4- Probas](#4--probas)
 
-> Este documento explica como se debe realizar a fase de codificación e probas.
+
 
 ## 1- Codificación
 
@@ -15,6 +15,7 @@
 ## 2- Prototipos
 
 [Prototipo](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
+
 ## 3- Innovación
 
 No se han utilizado nuevas tecnologías.
