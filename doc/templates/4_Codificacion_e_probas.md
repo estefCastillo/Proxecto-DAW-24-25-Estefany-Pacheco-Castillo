@@ -10,7 +10,7 @@
 
 ## 1- Codificación
 
-![Sambo](../../sambo/)
+[Sambo](../../sambo/)
 
 ## 2- Prototipos
 
