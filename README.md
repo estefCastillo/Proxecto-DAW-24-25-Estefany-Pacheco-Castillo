@@ -43,7 +43,7 @@ En **Sambo** podrás:
 
 ## Sobre o autor
 
-Soy **Estefany Pacheco**, una joven de 20 años en proceso de convertirme en desarrolladora web. Tengo conocimientos  en **PHP** y **JavaScript**, lenguajes con los que me siento familiarizada, por lo que fueron los escogidos para el desarrollo de la plataforma.
+Soy Estefany Pacheco, una joven de 20 años en proceso de convertirme en desarrolladora web. Tengo conocimientos  en **PHP** y **JavaScript**, lenguajes con los que me siento familiarizada, por lo que fueron los escogidos para el desarrollo de la plataforma.
 
 **Sambo** nace de una experiencia personal: no encontrar servicios para eventos en una sóla página y centrada en Galicia. Al no haber páginas cuyo objetivo sea Galicia y mostrar servicios variados, decidí crear esta plataforma.
 
