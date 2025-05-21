@@ -8,23 +8,23 @@ class Servicio extends ModelObject{
     public float $precio;
     public string $categoria;
     public string $ubicacion;
-    public int $id_cliente;
+    public int $id_empresa;
 
 
-    public function __construct($nombre,$descripcion,$precio,$categoria,$ubicacion,$id_cliente,$id_servicio=null) {
+    public function __construct($nombre,$descripcion,$precio,$categoria,$ubicacion,$id_empresa,$id_servicio=null) {
         $this->id_servicio = $id_servicio;
         $this->nombre=$nombre;
         $this->descripcion=$descripcion;
         $this->precio=$precio;
         $this->categoria=$categoria;
         $this->ubicacion=$ubicacion;
-        $this->id_cliente=$id_cliente;
+        $this->id_empresa=$id_empresa;
     }
 
     public static function fromjson($json)
     {
         $data=json_decode($json);
-        return new Servicio($data->nombre,$data->descripcion,$data->precio,$data->categoria,$data->ubicacion,$data->id_cliente,$data->id_servicio??null);
+        return new Servicio($data->nombre,$data->descripcion,$data->precio,$data->categoria,$data->ubicacion,$data->id_empresa,$data->id_servicio??null);
     }
 
     public function toJson()
@@ -154,21 +154,21 @@ class Servicio extends ModelObject{
     }
 
     /**
-     * Get the value of id_cliente
+     * Get the value of id_empresa
      */ 
-    public function getId_cliente()
+    public function getId_empresa()
     {
-        return $this->id_cliente;
+        return $this->id_empresa;
     }
 
     /**
-     * Set the value of id_cliente
+     * Set the value of id_empresa
      *
      * @return  self
      */ 
-    public function setId_cliente($id_cliente)
+    public function setId_empresa($id_empresa)
     {
-        $this->id_cliente = $id_cliente;
+        $this->id_empresa = $id_empresa;
 
         return $this;
     }
@@ -176,7 +176,7 @@ class Servicio extends ModelObject{
 
 class ServicioModel extends Model{
     public function getAll(){
-        $sql="SELECT * FROM servicio";
+        $sql="SELECT * FROM servicios";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $servicios = [];
@@ -185,7 +185,7 @@ class ServicioModel extends Model{
             $stmt->execute();
             $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultado as $r) {
-                $servicio=new Servicio($r["nombre"],$r["descripcion"],$r["precio"],$r["categoria"],$r["ubicacion"],$r["id_cliente"],$r["id_servicio"]);
+                $servicio=new Servicio($r["nombre"],$r["descripcion"],$r["precio"],$r["categoria"],$r["ubicacion"],$r["id_empresa"],$r["id_servicio"]);
                 $servicios[]=$servicio;
             }
         } catch (PDOException $e) {
@@ -197,7 +197,7 @@ class ServicioModel extends Model{
         return $servicios;
     }
     public function get($id_servicio){
-        $sql="SELECT * FROM  servicio WHERE id_servicio=:id_servicio";
+        $sql="SELECT * FROM  servicios WHERE id_servicio=:id_servicio";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_servicio',$id_servicio,PDO::PARAM_INT);
@@ -206,7 +206,7 @@ class ServicioModel extends Model{
         try {
             $stmt->execute();
             if ($s=$stmt->fetch()) {
-                $servicio=new Servicio($s["nombre"],$s["descripcion"],$s["precio"],$s["categoria"],$s["ubicacion"],$s["id_cliente"],$s["id_servicio"]);
+                $servicio=new Servicio($s["nombre"],$s["descripcion"],$s["precio"],$s["categoria"],$s["ubicacion"],$s["id_empresa"],$s["id_servicio"]);
             }
         } catch (PDOException $e) {
             error_log("Error en ServicioModel->get($id_servicio): " . $e->getMessage());
@@ -217,7 +217,7 @@ class ServicioModel extends Model{
         return $servicio;
     }
     public function insert($servicio){
-        $sql="INSERT INTO servicio (nombre,descripcion,precio,categoria,ubicacion,id_cliente) VALUES (:nombre,:descripcion,:precio,:categoria,:ubicacion,:id_cliente)";
+        $sql="INSERT INTO servicios (nombre,descripcion,precio,categoria,ubicacion,id_empresa) VALUES (:nombre,:descripcion,:precio,:categoria,:ubicacion,:id_empresa)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(":nombre",$servicio->getNombre(),PDO::PARAM_STR);
@@ -225,7 +225,7 @@ class ServicioModel extends Model{
         $stmt->bindValue(":precio",$servicio->getPrecio(),PDO::PARAM_STR);
         $stmt->bindValue(':categoria',$servicio->getCategoria(),PDO::PARAM_STR);
         $stmt->bindValue(':ubicacion',$servicio->getUbicacion(),PDO::PARAM_STR);
-        $stmt->bindValue(':id_cliente',$servicio->getId_cliente(),PDO::PARAM_INT);
+        $stmt->bindValue(':id_empresa',$servicio->getId_empresa(),PDO::PARAM_INT);
         $resultado=false;
 
         try {
@@ -239,13 +239,13 @@ class ServicioModel extends Model{
         return $resultado;
     }
     public function update($servicio,$id_servicio){
-        $sql="UPDATE servicio SET 
+        $sql="UPDATE servicios SET 
         nombre=:nombre,
         descripcion=:descripcion,
         precio=:precio,
         categoria=:categoria,
         ubicacion=:ubicacion,
-        id_cliente=:id_cliente
+        id_empresa=:id_empresa
         WHERE id_servicio=:id_servicio";
 
         $pdo=self::getConnection();
@@ -255,7 +255,7 @@ class ServicioModel extends Model{
         $stmt->bindValue(":precio",$servicio->getPrecio(),PDO::PARAM_STR);
         $stmt->bindValue(':categoria',$servicio->getCategoria(),PDO::PARAM_STR);
         $stmt->bindValue(':ubicacion',$servicio->getUbicacion(),PDO::PARAM_STR);
-        $stmt->bindValue(':id_cliente',$servicio->getId_cliente(),PDO::PARAM_INT);
+        $stmt->bindValue(':id_empresa',$servicio->getId_empresa(),PDO::PARAM_INT);
         $stmt->bindValue(':id_servicio',$id_servicio,PDO::PARAM_INT);
         $resultado=false;
 
@@ -271,7 +271,7 @@ class ServicioModel extends Model{
         return $resultado;
     }
     public function delete($id_servicio){
-        $sql="DELETE FROM  servicio WHERE id_servicio=:id_servicio";
+        $sql="DELETE FROM  servicios WHERE id_servicio=:id_servicio";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_servicio',$id_servicio,PDO::PARAM_INT);

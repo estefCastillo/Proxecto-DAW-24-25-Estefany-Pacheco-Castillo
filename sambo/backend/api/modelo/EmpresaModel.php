@@ -1,16 +1,16 @@
 <?php
 include_once("Model.php");
 
-class Cliente extends ModelObject{
-    public ?int $id_cliente;
+class Empresa extends ModelObject{
+    public ?int $id_empresa;
     public string $nombre_empresa;
     public string $correo;
     public string $contrasena;
     public string $telefono;
     public string $direccion;
 
-    public function __construct($nombre_empresa,$correo,$contrasena,$telefono,$direccion,$id_cliente=null) {
-        $this->id_cliente = $id_cliente;
+    public function __construct($nombre_empresa,$correo,$contrasena,$telefono,$direccion,$id_empresa=null) {
+        $this->id_empresa = $id_empresa;
         $this->nombre_empresa=$nombre_empresa;
         $this->correo=$correo;
         $this->contrasena=$contrasena;
@@ -21,7 +21,7 @@ class Cliente extends ModelObject{
     public static function fromjson($json)
     {
         $data=json_decode($json);
-        return new Cliente($data->nombre_empresa,$data->correo,$data->contrasena,$data->telefono,$data->direccion,$data->id_cliente??null);
+        return new Empresa($data->nombre_empresa,$data->correo,$data->contrasena,$data->telefono,$data->direccion,$data->id_empresa??null);
     }
 
     public function toJson()
@@ -30,21 +30,21 @@ class Cliente extends ModelObject{
     }
 
     /**
-     * Get the value of id_cliente
+     * Get the value of id_empresa
      */ 
-    public function getId_cliente()
+    public function getId_empresa()
     {
-        return $this->id_cliente;
+        return $this->id_empresa;
     }
 
     /**
-     * Set the value of id_cliente
+     * Set the value of id_empresa
      *
      * @return  self
      */ 
-    public function setId_cliente($id_cliente)
+    public function setId_empresa($id_empresa)
     {
-        $this->id_cliente = $id_cliente;
+        $this->id_empresa = $id_empresa;
 
         return $this;
     }
@@ -149,65 +149,65 @@ class Cliente extends ModelObject{
     }
 }
 
-class ClienteModel extends Model{
+class EmpresaModel extends Model{
     public function getAll(){
-        $sql="SELECT * FROM cliente";
+        $sql="SELECT * FROM empresas";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
-        $clientes = [];
+        $empresas = [];
 
         try {
             $stmt->execute();
             $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultado as $r) {
-                $cliente=new Cliente($r["nombre_empresa"],$r["correo"],$r["contrasena"],$r["telefono"],$r["direccion"],$r["id_cliente"]);
-                $clientes[]=$cliente;
+                $empresa=new Empresa($r["nombre_empresa"],$r["correo"],$r["contrasena"],$r["telefono"],$r["direccion"],$r["id_empresa"]);
+                $empresas[]=$empresa;
             }
         } catch (PDOException $e) {
-            error_log("Error en ClienteModel->getAll(): " . $e->getMessage());
+            error_log("Error en EmpresaModel->getAll(): " . $e->getMessage());
         } finally {
             $stmt=null;
             $pdo=null;
         }
-        return $clientes;
+        return $empresas;
     }
    
-    public function get($id_cliente){
-        $sql="SELECT * FROM  cliente WHERE id_cliente=:id_cliente";
+    public function get($id_empresa){
+        $sql="SELECT * FROM  empresas WHERE id_empresa=:id_empresa";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':id_cliente',$id_cliente,PDO::PARAM_INT);
-        $cliente=null;
+        $stmt->bindValue(':id_empresa',$id_empresa,PDO::PARAM_INT);
+        $empresa=null;
 
         try {
             $stmt->execute();
             if ($s=$stmt->fetch()) {
-                $cliente=new Cliente($s["nombre_empresa"],$s["correo"],$s["contrasena"],$s["telefono"],$s["direccion"],$s["id_cliente"]);
+                $empresa=new Empresa($s["nombre_empresa"],$s["correo"],$s["contrasena"],$s["telefono"],$s["direccion"],$s["id_empresa"]);
             }
         } catch (PDOException $e) {
-            error_log("Error en ClienteModel->get($id_cliente): " . $e->getMessage());
+            error_log("Error en EmpresaModel->get($id_empresa): " . $e->getMessage());
         } finally{
             $stmt=null;
             $pdo=null;
         }
-        return $cliente;
+        return $empresa;
     }
 
-    public function insert($cliente){
-        $sql="INSERT INTO cliente (nombre_empresa,correo,contrasena,telefono,direccion) VALUES (:nombre_empresa,:correo,:contrasena,:telefono,:direccion)";
+    public function insert($empresa){
+        $sql="INSERT INTO empresas (nombre_empresa,correo,contrasena,telefono,direccion) VALUES (:nombre_empresa,:correo,:contrasena,:telefono,:direccion)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(":nombre_empresa",$cliente->getNombre_empresa(),PDO::PARAM_STR);
-        $stmt->bindValue(":correo",$cliente->getCorreo(),PDO::PARAM_STR);
-        $stmt->bindValue(":contrasena",$cliente->getContrasena(),PDO::PARAM_STR);
-        $stmt->bindValue(':telefono',$cliente->getTelefono(),PDO::PARAM_STR);
-        $stmt->bindValue(':direccion',$cliente->getDireccion(),PDO::PARAM_STR);
+        $stmt->bindValue(":nombre_empresa",$empresa->getNombre_empresa(),PDO::PARAM_STR);
+        $stmt->bindValue(":correo",$empresa->getCorreo(),PDO::PARAM_STR);
+        $stmt->bindValue(":contrasena",$empresa->getContrasena(),PDO::PARAM_STR);
+        $stmt->bindValue(':telefono',$empresa->getTelefono(),PDO::PARAM_STR);
+        $stmt->bindValue(':direccion',$empresa->getDireccion(),PDO::PARAM_STR);
         $resultado=false;
 
         try {
             $resultado=$stmt->execute();
         } catch (PDOException $e) {
-            error_log("Error en ClienteModel->insert($cliente): " . $e->getMessage());
+            error_log("Error en EmpresaModel->insert($empresa): " . $e->getMessage());
         } finally{
             $stmt=null;
             $pdo=null;
@@ -215,30 +215,30 @@ class ClienteModel extends Model{
         return $resultado;
     }
 
-    public function update($cliente,$id_cliente){
-        $sql="UPDATE cliente SET 
+    public function update($empresa,$id_empresa){
+        $sql="UPDATE empresas SET 
         nombre_empresa=:nombre_empresa,
         correo=:correo,
         contrasena=:contrasena,
         telefono=:telefono,
         direccion=:direccion
-        WHERE id_cliente=:id_cliente";
+        WHERE id_empresa=:id_empresa";
 
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':nombre_empresa',$cliente->getNombre_empresa(),PDO::PARAM_STR);
-        $stmt->bindValue(':correo',$cliente->getCorreo(),PDO::PARAM_STR);
-        $stmt->bindValue(':contrasena',$cliente->getContrasena(),PDO::PARAM_STR);
-        $stmt->bindValue(':telefono',$cliente->getTelefono(),PDO::PARAM_STR);
-        $stmt->bindValue(':direccion',$cliente->getDireccion(),PDO::PARAM_STR);
-        $stmt->bindValue(':id_cliente',$id_cliente,PDO::PARAM_INT);
+        $stmt->bindValue(':nombre_empresa',$empresa->getNombre_empresa(),PDO::PARAM_STR);
+        $stmt->bindValue(':correo',$empresa->getCorreo(),PDO::PARAM_STR);
+        $stmt->bindValue(':contrasena',$empresa->getContrasena(),PDO::PARAM_STR);
+        $stmt->bindValue(':telefono',$empresa->getTelefono(),PDO::PARAM_STR);
+        $stmt->bindValue(':direccion',$empresa->getDireccion(),PDO::PARAM_STR);
+        $stmt->bindValue(':id_empresa',$id_empresa,PDO::PARAM_INT);
         $resultado=false;
 
         try {
             $stmt->execute();
             $resultado=$stmt->rowCount() == 1;
         } catch (PDOException $e) {
-            error_log("Error en ClienteModel->update($cliente,$id_cliente): " . $e->getMessage());
+            error_log("Error en EmpresaModel->update($empresa,$id_empresa): " . $e->getMessage());
         } finally{
             $stmt=null;
             $pdo=null;
@@ -246,17 +246,17 @@ class ClienteModel extends Model{
         return $resultado;
     }
 
-    public function delete($id_cliente){
-        $sql="DELETE FROM  cliente WHERE id_cliente=:id_cliente";
+    public function delete($id_empresa){
+        $sql="DELETE FROM  empresas WHERE id_empresa=:id_empresa";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':id_cliente',$id_cliente,PDO::PARAM_INT);
+        $stmt->bindValue(':id_empresa',$id_empresa,PDO::PARAM_INT);
         $resultado=false;
 
         try {
             $resultado=$stmt->execute();
         } catch (PDOException $e) {
-            error_log("Error en ClienteModel->delete($id_cliente): " . $e->getMessage());
+            error_log("Error en EmpresaModel->delete($id_empresa): " . $e->getMessage());
         } finally{
             $stmt=null;
             $pdo=null;
@@ -264,4 +264,25 @@ class ClienteModel extends Model{
         return $resultado;
     }
 
+    public function findbyEmail($correo){
+        $sql="SELECT * FROM empresas WHERE correo=:correo";
+        $pdo=self::getConnection();
+        $stmt=$pdo->prepare($sql);
+        $stmt->bindValue(":correo",$correo,PDO::PARAM_STR);
+        $empresa=null;
+
+        try {
+            $stmt->execute();
+            if ($s=$stmt->fetch()) {
+                $empresa=new Empresa($s["nombre_empresa"],$s["correo"],$s["contrasena"],$s["telefono"],$s["direccion"],$s["id_empresa"]);
+            }
+        } catch (PDOException $e) {
+            error_log("Error en EmpresaModel->($correo): " . $e->getMessage());
+        }finally{
+            $stmt=null;
+            $pdo=null;
+        }
+        return $empresa;
+    }
 }
+

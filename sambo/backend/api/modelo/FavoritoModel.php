@@ -87,7 +87,7 @@ class Favorito extends ModelObject{
 class FavoritoModel extends Model{
 
     public function getAllbyUser($id_usuario){
-        $sql="SELECT * FROM  favorito WHERE id_usuario=:id_usuario";
+        $sql="SELECT * FROM  favoritos WHERE id_usuario=:id_usuario";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);
@@ -109,7 +109,7 @@ class FavoritoModel extends Model{
         return $favoritos;
     }
     public function insert($favorito){
-        $sql="INSERT INTO favorito (id_usuario,id_servicio) VALUES (:id_usuario,:id_servicio)";
+        $sql="INSERT INTO favoritos (id_usuario,id_servicio) VALUES (:id_usuario,:id_servicio)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$favorito->getId_usuario(),PDO::PARAM_INT);
@@ -127,7 +127,7 @@ class FavoritoModel extends Model{
         return $resultado;
     }
     public function deletebyUser($id_usuario,$id_favorito){
-        $sql="DELETE FROM  favorito WHERE id_usuario=:id_usuario AND id_favorito=:id_favorito";
+        $sql="DELETE FROM  favoritos WHERE id_usuario=:id_usuario AND id_favorito=:id_favorito";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);

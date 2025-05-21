@@ -132,7 +132,7 @@ class Reserva extends ModelObject{
 }
 class ReservaModel extends Model{
     public function getAllbyUser($id_usuario){
-        $sql = "SELECT * FROM reserva WHERE id_usuario = :id_usuario";
+        $sql = "SELECT * FROM reservas WHERE id_usuario = :id_usuario";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
@@ -155,8 +155,8 @@ class ReservaModel extends Model{
     }
     public function getAllByClient($id_cliente){
         $sql = "SELECT r.id_reserva,r.id_usuario,r.id_servicio,r.fecha,r.estado
-                FROM reserva r
-                JOIN servicio s ON r.id_servicio = s.id_servicio
+                FROM reservas r
+                JOIN servicios s ON r.id_servicio = s.id_servicio
                 WHERE s.id_cliente = :id_cliente";
         
         $pdo = self::getConnection();
@@ -180,7 +180,7 @@ class ReservaModel extends Model{
         return $reservas;
     }
     public function insert($reserva){
-        $sql="INSERT INTO reserva (id_usuario,id_servicio,fecha,estado) VALUES (:id_usuario,:id_servicio,:fecha,:estado)";
+        $sql="INSERT INTO reservas (id_usuario,id_servicio,fecha,estado) VALUES (:id_usuario,:id_servicio,:fecha,:estado)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$reserva->getId_usuario(),PDO::PARAM_INT);
@@ -200,7 +200,7 @@ class ReservaModel extends Model{
         return $resultado;
     }
     public function update($reserva,$id_usuario,$id_reserva){
-        $sql="UPDATE reserva SET 
+        $sql="UPDATE reservas SET 
         id_servicio=:id_servicio,
         fecha=:fecha,
         estado=:estado

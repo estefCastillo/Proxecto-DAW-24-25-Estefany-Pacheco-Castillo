@@ -108,7 +108,7 @@ class Usuario extends ModelObject{
 
 class UsuarioModel extends Model{
     public function getAll(){
-        $sql="SELECT * FROM usuario";
+        $sql="SELECT * FROM usuarios";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $usuarios = [];
@@ -130,7 +130,7 @@ class UsuarioModel extends Model{
     }
    
     public function get($id_usuario){
-        $sql="SELECT * FROM  usuario WHERE id_usuario=:id_usuario";
+        $sql="SELECT * FROM  usuarios WHERE id_usuario=:id_usuario";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);
@@ -151,7 +151,7 @@ class UsuarioModel extends Model{
     }
 
     public function insert($usuario){
-        $sql="INSERT INTO usuario (nombre,correo,contrasena) VALUES (:nombre,:correo,:contrasena)";
+        $sql="INSERT INTO usuarios (nombre,correo,contrasena) VALUES (:nombre,:correo,:contrasena)";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(":nombre",$usuario->getNombre(),PDO::PARAM_STR);
@@ -171,7 +171,7 @@ class UsuarioModel extends Model{
     }
 
     public function update($usuario,$id_usuario){
-        $sql="UPDATE usuario SET 
+        $sql="UPDATE usuarios SET 
         nombre=:nombre,
         correo=:correo,
         contrasena=:contrasena
@@ -198,7 +198,7 @@ class UsuarioModel extends Model{
     }
 
     public function delete($id_usuario){
-        $sql="DELETE FROM  usuario WHERE id_usuario=:id_usuario";
+        $sql="DELETE FROM  usuarios WHERE id_usuario=:id_usuario";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);
@@ -213,5 +213,25 @@ class UsuarioModel extends Model{
             $pdo=null;
         }
         return $resultado;
+    }
+    public function findbyEmail($correo){
+        $sql="SELECT * FROM usuarios WHERE correo=:correo";
+        $pdo=self::getConnection();
+        $stmt=$pdo->prepare($sql);
+        $stmt->bindValue(":correo",$correo,PDO::PARAM_STR);
+        $usuario=null;
+
+        try {
+            $stmt->execute();
+            if ($s=$stmt->fetch()) {
+                $usuario=new Usuario($s["nombre"],$s["correo"],$s["contrasena"],$s["id_usuario"]);
+            }
+        } catch (PDOException $e) {
+            error_log("Error en UsuarioModel->($correo): " . $e->getMessage());
+        }finally{
+            $stmt=null;
+            $pdo=null;
+        }
+        return $usuario;
     }
 }

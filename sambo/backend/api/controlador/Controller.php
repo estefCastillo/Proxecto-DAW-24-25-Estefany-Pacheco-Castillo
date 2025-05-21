@@ -1,6 +1,6 @@
 <?php
 include("UsuarioController.php");
-include("ClienteController.php");
+include("EmpresaController.php");
 include("ServicioController.php");
 include("FavoritoController.php");
 include("ReservaController.php");
@@ -28,8 +28,8 @@ abstract class Controller
             case 'usuario':
                 $controller = new UsuarioController();
                 break;
-            case 'cliente':
-                $controller = new ClienteController();
+            case 'empresa':
+                $controller = new EmpresaController();
                 break;
             case 'servicio':
                 $controller = new ServicioController();
