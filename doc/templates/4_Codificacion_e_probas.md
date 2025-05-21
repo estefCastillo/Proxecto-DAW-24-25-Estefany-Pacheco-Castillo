@@ -17,7 +17,7 @@
 [Prototipo](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
 ## 3- Innovación
 
-No caso de utilizar tecnoloxías diferentes ás estudadas no ciclo formativo, fai unha descrición dos retos asumidos e como se resolveron.
+No se han utilizado nuevas tecnologías.
 
 ## 4- Probas
 
