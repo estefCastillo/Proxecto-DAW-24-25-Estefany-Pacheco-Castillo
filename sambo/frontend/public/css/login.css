@@ -8,19 +8,22 @@ header{
 }
 
 header a img{
-width: 350px;
+width: 250px;
 }
 
 main{
     display: flex;
     flex-direction: column;
     align-content: center;
+    font-family: var(--princiapl-font);
+    text-align: center;
 }
 h2{
     font-size: 2rem;
+    font-weight: 100;
     color: var(--clr-principal);
     text-align: center;
-    padding: 1.5rem;
+    padding: 1rem;
 }
 form{
     display: flex;
@@ -28,7 +31,7 @@ form{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin: 1.5rem;
+    margin: 1rem;
 }
 
 input[type="email"],
@@ -43,11 +46,12 @@ input[type="submit"] {
   font-size: 1rem;
   background-color: var(--clr-principal);
   color: var(--background-clr);
+  font-family: var(--princiapl-font);
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-  transition: all 0.4s ease-in-out;
   margin: 1.2rem;
+  transition: all 0.4s ease-in-out;
 }
 
 input[type="submit"]:hover {
@@ -55,22 +59,9 @@ input[type="submit"]:hover {
   color: var(--clr-principal);
   outline: 1px solid var(--clr-principal);
 }
-main a:hover{
-    color:var(--clr-principal);
-}
-main a::after {
-    content: "";
-    width: 0;
-    display: block;
-    height: 2px;
-    border-radius: 10px;
-    background-color: var(--background-clr);
-    transition: all 0.4s ease-in-out;
-}
 
-main a:hover::after {
-    width: 100%;
-    background-color: var(--clr-principal);
+main p>a:hover{
+    color:var(--clr-principal);
 }
 
 .error{

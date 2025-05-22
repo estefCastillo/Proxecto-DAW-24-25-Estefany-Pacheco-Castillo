@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../font/instrument-serif-v4-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../font/work-sans-v19-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

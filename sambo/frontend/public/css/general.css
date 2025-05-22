@@ -1,4 +1,5 @@
 @import "./component.css";
+@import "./font.css";
 
 /*=============================================
 =            Estilos generales            =
@@ -12,7 +13,9 @@
 }
 
 :root {
-    --background-clr: #fffdf6;
+    /* --background-clr: #fffdf6; */
+    --background-clr: #ffff;
+
     --clr-principal: #3E7255;
     --gold: #787408;
     --princiapl-font: 'Work Sans', sans-serif;
@@ -111,6 +114,7 @@ header h1 {
     color: var(--clr-principal);
     font-family: var(--sec-font);
     font-size: 3rem;
+    font-weight: 100;
 
 }
 
@@ -158,6 +162,7 @@ header h1 {
     list-style: none;
     font-family: var(--sec-font);
     font-size: 2rem;
+    font-weight: 100;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -185,21 +190,27 @@ header h1 {
 #comenzar h4 {
     color: var(--gold);
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 100;
+
 }
 
 #comenzar a {
     background-color: var(--clr-principal);
     border-radius: 20px;
     padding: .75rem 2rem;
-    font-family: var(--sec-font);
-    letter-spacing: 2px;
+    font-family: var(--princiapl-font);
+    letter-spacing: 1.2pxs;
     font-size: 1.5rem;
     color: var(--background-clr);
     box-shadow: 1px 1px 4px var(--clr-principal);
     align-self: center;
-
+    transition: all 0.4s ease-in-out;
 }
+#comenzar a:hover{
+    color: var(--clr-principal);
+    background-color: var(--background-clr);
+}
+
 .scroll_services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
@@ -224,7 +235,7 @@ header h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.3s ease-in-out;
 }
 .card_service_img:hover img {
     transform: scale(1.25);
@@ -235,7 +246,8 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     text-align: center;
-    font-weight: bold;
+    font-family: var(--sec-font);
+    /* font-weight: bold; */
     font-size: 1.5rem;
 }
 

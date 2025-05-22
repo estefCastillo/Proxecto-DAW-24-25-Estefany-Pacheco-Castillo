@@ -43,9 +43,11 @@ $contrasena2.addEventListener("input",ev=>{
         $e_contrasena2.classList.add("error")
         $e_contrasena2.textContent = "Las contraseñas no coinciden";
       } else {
-        $e_contrasena2.classList.remove("error")
-        $e_contrasena2.classList.add("valido")
-        $e_contrasena2.textContent = "Las contraseñas coinciden";
+        if ($e_contrasena.classList.contains("valido")) {
+            $e_contrasena2.classList.remove("error")
+            $e_contrasena2.classList.add("valido")
+            $e_contrasena2.textContent = "Las contraseñas coinciden";
+        }
       }
 })
 

@@ -7,10 +7,7 @@
       name="description"
       content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos."
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Work+Sans&display=swap"
-      rel="stylesheet"
-    />
+
     <link rel="stylesheet" href="./css/login.css" />
     <script type="module" src="js/login.js" defer></script>
     <title>Sambo-Iniciar sesión</title>
@@ -21,14 +18,15 @@
       <a href="index.html"><img src="./img/v1.png" alt="Logo de sambo" /></a>
     </header>
     <main>
+      <p> ¿No tienes cuenta? <a href="./registro.html">Regístrate</a></p>
       <h2>Iniciar sesión</h2>
+      
       <form id="loginForm">
         <label for="correo">Correo electrónico:</label>
         <input type="email" id="correo" name="correo" required/>
         <label for="contrasena">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena" required/>
         <input type="submit" value="Iniciar sesión"/>
-        <a href="./registro.html">Registrarse</a>
       </form>
     </main>
     <footer>
