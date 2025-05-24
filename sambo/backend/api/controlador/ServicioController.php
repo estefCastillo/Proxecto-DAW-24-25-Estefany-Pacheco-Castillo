@@ -7,12 +7,12 @@ public function get($id)
 {
  $model=new ServicioModel();
  if(!is_numeric($id)){
-    Controller::notFoundMessage("Los servicios se identifican con un solo número o id");
+    Controller::errorMessage("Los servicios se identifican con un solo número o id",400);
     die();
  } 
- $servicio=$model->get($id[0]);
+ $servicio=$model->get($id);
  if ($servicio==null) {
-    Controller::notFoundMessage("No existe ningún servicio con ese id");
+    Controller::errorMessage("No existe ningún servicio con ese id",404);
     die();
 }  
     echo json_encode($servicio,JSON_PRETTY_PRINT);
@@ -25,11 +25,17 @@ public function getAll()
  echo json_encode($servicios,JSON_PRETTY_PRINT);   
 }
 
+public function getCategories(){
+    $model=new ServicioModel();
+    $categorias=$model->getCategories();
+    echo json_encode($categorias,JSON_PRETTY_PRINT);
+}
+
 public function delete($id)
 {
     $model=new ServicioModel();
     if(!is_numeric($id)){
-        Controller::notFoundMessage("Los servicios se identifican con un solo id");
+        Controller::errorMessage("Los servicios se identifican con un solo id",400);
         die();
     }
 
@@ -37,7 +43,7 @@ public function delete($id)
         echo json_encode(["message" => "Servicio eliminado con éxito!"], JSON_PRETTY_PRINT);
 
     }else{
-        Controller::notFoundMessage("No se ha podido eliminar al servicio");
+        Controller::errorMessage("No se ha podido eliminar al servicio",500);
     }
 }
 
@@ -45,7 +51,7 @@ public function update($id, $object)
 {
     $model=new ServicioModel();
     if(!is_numeric($id)){
-        Controller::notFoundMessage("Los servicios se identifican con un solo id");
+        Controller::errorMessage("Los servicios se identifican con un solo id",400);
         die();
     }
 
@@ -53,7 +59,7 @@ public function update($id, $object)
     if ($model->update($servicio,$id)) {
         echo json_encode(["message" => "Servicio modificado con éxito!"], JSON_PRETTY_PRINT);
     }else{
-        Controller::notFoundMessage("No se ha podido modificar al servicio");
+        Controller::errorMessage("No se ha podido modificar al servicio",500);
     }
 
 }
@@ -65,7 +71,7 @@ public function insert($object)
     if ($model->insert($servicio)) {
         echo json_encode(["message" => "Servicio añadido con éxito!"], JSON_PRETTY_PRINT);
     }else{
-        Controller::notFoundMessage("No se ha podido añadir al servicio");
+        Controller::errorMessage("No se ha podido añadir al servicio");
     }
 }
 }

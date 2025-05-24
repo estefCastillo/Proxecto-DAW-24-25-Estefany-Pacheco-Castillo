@@ -2,12 +2,11 @@ import ajax from "./ajaxTemplate.js";
 
 const $d=document,
 $loginForm=$d.querySelector("#loginForm"),
-$correo=$d.querySelector("#correo").value.trim(),
-$contrasena=$d.querySelector("#contrasena").value.trim()
+$correo=$d.querySelector("#correo"),
+$contrasena=$d.querySelector("#contrasena")
 
 $loginForm.addEventListener("submit",ev=>{
     ev.preventDefault();
-    
     let correo=$correo.value
     let contrasena=$contrasena.value
 
@@ -20,15 +19,14 @@ $loginForm.addEventListener("submit",ev=>{
         url:"http://localhost/api/login.php",
         method:"POST",
         fExito:json=>{
-            localStorage.setItem("tipo", json.tipo);
-            localStorage.setItem("nombre", json.nombre);
-            localStorage.setItem("correo", json.correo);
-            localStorage.setItem("id", json.id);
-
+            localStorage.setItem("usuario", JSON.stringify(json));
               if (json.tipo=="usuario") {
                 window.location.href = "principal.html";
               } else if(json.tipo=="empresa") {
                 window.location.href = "empresa.html";
+              } else if(json.tipo == "admin"){
+                window.location.href = "administration.html";
+
               }
         },
         fError:error=>{

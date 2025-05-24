@@ -7,12 +7,12 @@ class FavoritoController
     {
         $model = new FavoritoModel();
         if (!is_numeric($id)) {
-            Controller::notFoundMessage("Los usuarios se identifican con un solo número o id");
+            Controller::errorMessage("Los usuarios se identifican con un solo número o id",400);
             die();
         }
         $favorito = $model->getAllByUser($id[0]);
         if ($favorito == null) {
-            Controller::notFoundMessage("No existe ningún usuario con favoritos con ese id");
+            Controller::errorMessage("No existe ningún usuario con favoritos con ese id",404);
             die();
         }
         echo json_encode($favorito, JSON_PRETTY_PRINT);
@@ -21,14 +21,14 @@ class FavoritoController
     {
         $model = new FavoritoModel();
         if (!is_numeric($id_usuario) || !is_numeric($id_favorito)) {
-            Controller::notFoundMessage("IDs incorrectos");
+            Controller::errorMessage("IDs incorrectos",400);
             die();
         }
 
         if ($model->deletebyUser($id_usuario, $id_favorito)) {
             echo json_encode(["message" => "Favorito eliminado con éxito!"], JSON_PRETTY_PRINT);
         } else {
-            Controller::notFoundMessage("No se ha podido eliminar el favorito");
+            Controller::errorMessage("No se ha podido eliminar el favorito",500);
         }
     }
     public function insert($object)
@@ -38,7 +38,7 @@ class FavoritoController
         if ($model->insert($favorito)) {
             echo json_encode(["message" => "Favorito añadido con éxito!"], JSON_PRETTY_PRINT);
         } else {
-            Controller::notFoundMessage("No se ha podido añadir el favorito");
+            Controller::errorMessage("No se ha podido añadir el favorito",500);
         }
     }
 }

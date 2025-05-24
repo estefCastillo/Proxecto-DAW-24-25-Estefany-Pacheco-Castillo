@@ -31,7 +31,7 @@ $endpoint=$uri[3];
 try {
     $controlador=Controller::getController($endpoint);
 } catch (\Throwable $th) {
-    Controller::notFoundMessage("Se ha producido un error obteniendo el endpoint: " . $th->getMessage());
+    Controller::errorMessage("Se ha producido un error obteniendo el endpoint: " . $th->getMessage(),500);
     die();
 }
  /**
@@ -44,19 +44,19 @@ if (count($uri)>=5) {
             $id = $id[0];
         }
     } catch (Throwable $th) {
-        Controller::notFoundMessage("Error al obtener los ids");
+        Controller::errorMessage("Error al obtener los ids",500);
         die();
     }
 }
 
 switch ($method) {
     case 'GET':
-        if(isset($id)){
+        if(isset($id) && is_numeric($id)){
             if ($endpoint=="reserva" || $endpoint=="favorito") {
                 if (in_array("usuario", $uri)) {
                     $controlador->getAllByUser($id);
                 } else {
-                    $controlador->getAllByClient($id);
+                    $controlador->getAllByEmpresa($id);
 
                 }
             }else{
@@ -64,8 +64,10 @@ switch ($method) {
             }
         }else{
             if ($endpoint=="reserva" || $endpoint=="favorito") {
-                Controller::notFoundMessage("Se debe indicar el id del usuario");
-            }else{
+                Controller::errorMessage("Se debe indicar el id del usuario",400);
+            }else if($endpoint=="servicio" && in_array("categorias",$uri)){
+                $controlador->getCategories();
+            } else{
                 $controlador->getAll();
             }
         }
@@ -76,14 +78,14 @@ switch ($method) {
                 if (strlen($id)==2) {
                     $controlador->deleteByUser($id[0],$id[1]);
                 }else{
-                    Controller::notFoundMessage("Se ha de indicar dos ids correctos");
+                    Controller::errorMessage("Se ha de indicar dos ids correctos",400);
                     die();
                 }
             }else{
                 $controlador->delete($id[0]);
             }
         }else{
-            Controller::notFoundMessage("Se ha de indicar un id correcto");
+            Controller::errorMessage("Se ha de indicar un id correcto",400);
         }
         break;
     case 'PUT':
@@ -93,17 +95,17 @@ switch ($method) {
                 if (strlen($id) == 2) {
                     $controlador->update($id[0], $id[1], $json);
                 } else {
-                    Controller::notFoundMessage("Se ha de indicar dos ids correctos");
+                    Controller::errorMessage("Se ha de indicar dos ids correctos",400);
                     die();
                 }
             }elseif ($endpoint == "favorito") {
-                Controller::notFoundMessage("No se puede hacer cambios en los favoritos");
+                Controller::errorMessage("No se puede hacer cambios en los favoritos",500);
                 die();
             }else {
                 $controlador->update($id, $json);
             }
         } else {
-            Controller::notFoundMessage("Se ha de indicar un id correcto");
+            Controller::errorMessage("Se ha de indicar un id correcto",400);
         }
         break;
     case 'POST':
@@ -111,7 +113,7 @@ switch ($method) {
         $controlador->insert($json);
         break;    
     default:
-        Controller::notFoundMessage("Método HTTP no encontrado");
+        Controller::errorMessage("Método HTTP no encontrado",404);
         break;
 }
 

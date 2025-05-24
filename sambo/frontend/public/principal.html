@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
+    <metaac
       name="description"
       content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos."
     />
     <script type="module" src="js/general.js"></script>
-    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/principal.css" />
+
     <title>Sambo-Principal</title>
-</head>
-<body>
+  </head>
+  <body>
     <header-component></header-component>
     <main>
+      <form action="#" method="post" id="researchForm">
+        <label for="research" class="hidden">Buscador </label>
+        <input
+          type="text"
+          name="research"
+          id="research"
+          placeholder="Buscador"
+        />
+        <input type="submit" value="Buscar" />
+      </form>
+
+      <section class="btn-categories"></section>
+      <section class="card_services">
         
+      </section>
     </main>
     <footer-component></footer-component>
-</body>
+  </body>
 </html>

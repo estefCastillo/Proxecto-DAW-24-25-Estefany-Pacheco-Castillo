@@ -7,12 +7,12 @@ public function get($id)
 {
  $model=new EmpresaModel();
  if(!is_numeric($id)){
-    Controller::notFoundMessage("Las empresas se identifican con un solo número o id");
+    Controller::errorMessage("Las empresas se identifican con un solo número o id",400);
     die();
  } 
  $empresa=$model->get($id[0]);
  if ($empresa==null) {
-    Controller::notFoundMessage("No existe ninguna empresa con ese id");
+    Controller::errorMessage("No existe ninguna empresa con ese id",404);
     die();
 }  
     echo json_encode($empresa,JSON_PRETTY_PRINT);
@@ -29,7 +29,7 @@ public function delete($id)
 {
     $model=new EmpresaModel();
     if(!is_numeric($id)){
-        Controller::notFoundMessage("Las empresas se identifican con un solo id");
+        Controller::errorMessage("Las empresas se identifican con un solo id",400);
         die();
     }
 
@@ -37,7 +37,7 @@ public function delete($id)
         echo json_encode(["message" => "Empresa eliminada con éxito!"], JSON_PRETTY_PRINT);
 
     }else{
-        Controller::notFoundMessage("No se ha podido eliminar la empresa");
+        Controller::errorMessage("No se ha podido eliminar la empresa",500);
     }
 }
 
@@ -45,7 +45,7 @@ public function update($id, $object)
 {
     $model=new EmpresaModel();
     if(!is_numeric($id)){
-        Controller::notFoundMessage("Las empresas se identifican con un solo id");
+        Controller::errorMessage("Las empresas se identifican con un solo id",400);
         die();
     }
 
@@ -53,7 +53,7 @@ public function update($id, $object)
     if ($model->update($empresa,$id)) {
         echo json_encode(["message" => "Empresa modificado con éxito!"], JSON_PRETTY_PRINT);
     }else{
-        Controller::notFoundMessage("No se ha podido modificar la empresa");
+        Controller::errorMessage("No se ha podido modificar la empresa",500);
     }
 
 }
@@ -65,7 +65,7 @@ public function insert($object)
     if ($model->insert($empresa)) {
         echo json_encode(["message" => "Empresa añadida con éxito!"], JSON_PRETTY_PRINT);
     }else{
-        Controller::notFoundMessage("No se ha podido añadir la empresa");
+        Controller::errorMessage("No se ha podido añadir la empresa",500);
     }
 }
 }
