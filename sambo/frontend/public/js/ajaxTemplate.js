@@ -6,9 +6,20 @@ export default function ajax(options) {
         headers:{
             "Content-type":"application/json; charset=utf-8"
         },
+        credentials: "include",
         body:JSON.stringify(data)
     })
-    .then(resp=>resp.ok?resp.json():Promise.reject(resp))
+    .then(resp=>{
+        if(resp.ok){
+            return resp.json()
+        }else{
+            if (resp.status==401) {
+                localStorage.removeItem("usuario");
+                window.location.href = "login.html";
+            }
+            return Promise.reject(resp)
+        }
+    })
     .then(json=>fExito(json))
     .catch(error=>fError(error))
 }

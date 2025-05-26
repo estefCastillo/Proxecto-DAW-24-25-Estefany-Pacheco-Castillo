@@ -1,44 +1,49 @@
-// Importar los componentes
-import "./header.js";
 import "./footer.js";
 import ajax from "./ajaxTemplate.js";
 
-// Definición de las constantes
 const $d = document,
   $btnCategories = $d.querySelector(".btn-categories"),
   $servicios = $d.querySelector(".card_services"),
-  $researchForm=$d.querySelector("#researchForm"),
-  $research=$d.querySelector("#research")
+  $researchForm = $d.querySelector("#researchForm"),
+  $research = $d.querySelector("#research");
 
-let allServices=[]
+let allServices = [];
+let id_usuario = localStorage.getItem("usuario")
+  ? JSON.parse(localStorage.getItem("usuario")).id
+  : null;
 
 $d.addEventListener("DOMContentLoaded", (ev) => {
-  customElements.whenDefined("header-component").then(() => {
-    setTimeout(() => {
-      const $btnUser = $d.querySelector(".btn-login"),
-        $vLogin = $d.querySelector("#login"),
-        $logout = $d.querySelector("#logout");
+  const $btnUser = $d.querySelector(".btn-login"),
+    $vLogin = $d.querySelector("#login"),
+    $logout = $d.querySelector("#logout");
 
-      // Se añade un evento para mostrar/ocultar la ventana de acceso, a través de la clase hidden
-      $btnUser.addEventListener("click", (ev) => {
-        if ($btnUser && $vLogin) {
-          $vLogin.classList.contains("hidden")
-            ? $vLogin.classList.remove("hidden")
-            : $vLogin.classList.add("hidden");
-        }
-      });
-      // Se cerrará la sesión del usuario
-      if ($logout) {
-        $logout.addEventListener("click", (ev) => {
-          ev.preventDefault();
-          localStorage.removeItem("usuario");
-          window.location.href = "index.html";
-        });
-      }
-    }, 100);
+  $btnUser.addEventListener("click", (ev) => {
+    if ($btnUser && $vLogin) {
+      $vLogin.classList.contains("hidden")
+        ? $vLogin.classList.remove("hidden")
+        : $vLogin.classList.add("hidden");
+    }
   });
+
+  if ($logout) {
+    $logout.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      ajax({
+        url: "http://localhost/api/logout.php",
+        method: "POST",
+        fExito: (json) => {
+          localStorage.removeItem("usuario");
+          window.location.href = "index.php";
+        },
+        fError: (error) => {
+          console.log(error);
+        },
+      });
+    });
+  }
+
   renderCategories();
-  renderServicios("todos")
+  renderServicios("todos");
 });
 
 // Se mostrarán los botones de filtrado por categoría
@@ -65,7 +70,7 @@ function renderCategories() {
 
 $btnCategories.addEventListener("click", (ev) => {
   ev.preventDefault();
-  if ((ev.target.tagName == "BUTTON")) {
+  if (ev.target.tagName == "BUTTON") {
     let categoria = ev.target.dataset.name.toLowerCase();
     renderServicios(categoria);
   }
@@ -76,20 +81,26 @@ function renderServicios(categoria) {
     url: "http://localhost/api/index.php/servicio",
     method: "GET",
     fExito: (json) => {
-      allServices=json
+      allServices = json;
       let servicios = [];
       categoria == "todos"
         ? (servicios = json)
-        : servicios=json.filter((el) => el.categoria.toLowerCase() == categoria);
-    
-      $servicios.innerHTML=servicios.map(el=>`
+        : (servicios = json.filter(
+            (el) => el.categoria.toLowerCase() == categoria
+          ));
+
+      $servicios.innerHTML = servicios
+        .map(
+          (el) => `
       <article class="service">
-          <figure class="service_img">
+      <a href="service.php?id=${el.id_servicio}">
+      <figure class="service_img">
             <img
               src="${el.imagen}"
               alt="${el.descripcion}"
             />
-          </figure>
+        </figure>
+        </a>
           <section class="info">
             <ul>
               <li><strong>${el.nombre}</strong></li>
@@ -111,8 +122,10 @@ function renderServicios(categoria) {
             </button>
           </section>
         </article>
-        `).join("")
-      },
+        `
+        )
+        .join("");
+    },
     fError: (error) => {
       console.log(error);
     },
@@ -143,9 +156,11 @@ function showServicios(servicios) {
     .join("");
 }
 
-$research.addEventListener("input", ev => {
+$research.addEventListener("input", (ev) => {
   let buscado = $research.value.toLowerCase().trim();
-  let filtrado = allServices.filter(el => el.nombre.toLowerCase().includes(buscado));
+  let filtrado = allServices.filter((el) =>
+    el.nombre.toLowerCase().includes(buscado)
+  );
 
   if (!buscado) {
     showServicios(allServices);
@@ -158,10 +173,12 @@ $research.addEventListener("input", ev => {
   }
 });
 
-$researchForm.addEventListener("submit", ev => {
-  ev.preventDefault()
+$researchForm.addEventListener("submit", (ev) => {
+  ev.preventDefault();
   let buscado = $research.value.toLowerCase().trim();
-  let filtrado = allServices.filter(el => el.nombre.toLowerCase().includes(buscado));
+  let filtrado = allServices.filter((el) =>
+    el.nombre.toLowerCase().includes(buscado)
+  );
 
   if (!buscado) {
     showServicios(allServices);
@@ -171,5 +188,27 @@ $researchForm.addEventListener("submit", ev => {
     } else {
       showServicios(filtrado);
     }
+  }
+});
+
+$servicios.addEventListener("click", (ev) => {
+  if (ev.target.closest(".btn-favorite").dataset.id) {
+    let id_servicio = ev.target.closest(".btn-favorite").dataset.id;
+    if (!id_usuario) {
+      window.location.href = "login.php";
+      return;
+    }
+
+    ajax({
+      url: "http://localhost/api/index.php/favorito",
+      method: "POST",
+      fExito: (json) => {
+        alert(json.message);
+      },
+      fError: (error) => {
+        console.log(error);
+      },
+      data: { id_usuario, id_servicio },
+    });
   }
 });

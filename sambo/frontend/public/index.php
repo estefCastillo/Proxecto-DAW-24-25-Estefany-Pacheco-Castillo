@@ -12,7 +12,7 @@
     <title>Sambo-Servicios para eventos</title>
   </head>
   <body>
-   <header-component></header-component>
+   <?php include './header.php'; ?>
     <main>
       <section class="portada">
         <h2>Organiza tu evento perfecto</h2>
@@ -54,7 +54,7 @@
 
       <article id="comenzar">
         <h4>Crea recuerdos con Sambo:</h4>
-        <a href="./principal.html">Comenzar</a>
+        <a href="./principal.php">Comenzar</a>
         <section class="scroll_services">
           <section class="card_service">
             <p>Catering</p>

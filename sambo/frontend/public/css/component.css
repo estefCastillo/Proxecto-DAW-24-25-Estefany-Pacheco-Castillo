@@ -1,7 +1,7 @@
 /*=============================================
 =            Estilos del header            =
 =============================================*/
-header-component>header {
+header.header {
     display: flex;
     position: fixed;
     top: 0;

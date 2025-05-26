@@ -1,6 +1,5 @@
 <?php
-ini_set("session.gc_maxlifetime", 3600);
-session_set_cookie_params(3600);
+session_set_cookie_params(60);
 session_start();
 include_once("modelo/EmpresaModel.php");
 include_once("modelo/UsuarioModel.php");
@@ -33,6 +32,8 @@ if ($usuario!=null) {
         $_SESSION["tipo"]=$rol;
         $_SESSION["id_usuario"]=$usuario->getId_usuario();
         $_SESSION["nombre"]=$usuario->getNombre();
+        $_SESSION["correo"]=$usuario->getCorreo();
+
         echo json_encode([
             "tipo" => $rol,
             "id" => $usuario->getId_usuario(),
@@ -42,7 +43,7 @@ if ($usuario!=null) {
         exit();
     }else{
         header("HTTP/1.1 401 Unauthorized");
-        echo json_encode(["error" => "Contraseña incorrcta"],JSON_PRETTY_PRINT);
+        echo json_encode(["error" => "Contraseña incorrecta"],JSON_PRETTY_PRINT);
         exit();
     }
 

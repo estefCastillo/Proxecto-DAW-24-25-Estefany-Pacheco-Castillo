@@ -21,11 +21,11 @@ $loginForm.addEventListener("submit",ev=>{
         fExito:json=>{
             localStorage.setItem("usuario", JSON.stringify(json));
               if (json.tipo=="usuario") {
-                window.location.href = "principal.html";
+                window.location.href = "principal.php";
               } else if(json.tipo=="empresa") {
-                window.location.href = "empresa.html";
+                window.location.href = "empresa.php";
               } else if(json.tipo == "admin"){
-                window.location.href = "administration.html";
+                window.location.href = "administration.php";
 
               }
         },

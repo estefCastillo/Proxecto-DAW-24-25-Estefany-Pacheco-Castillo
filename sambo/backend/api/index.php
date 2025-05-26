@@ -75,7 +75,7 @@ switch ($method) {
     case 'DELETE':
         if (isset($id)) {
             if ($endpoint=="reserva" || $endpoint=="favorito") {
-                if (strlen($id)==2) {
+                if (count($id)==2) {
                     $controlador->deleteByUser($id[0],$id[1]);
                 }else{
                     Controller::errorMessage("Se ha de indicar dos ids correctos",400);

@@ -11,10 +11,6 @@ class FavoritoController
             die();
         }
         $favorito = $model->getAllByUser($id[0]);
-        if ($favorito == null) {
-            Controller::errorMessage("No existe ningún usuario con favoritos con ese id",404);
-            die();
-        }
         echo json_encode($favorito, JSON_PRETTY_PRINT);
     }
     public function deleteByUser($id_usuario, $id_favorito)

@@ -13,7 +13,7 @@
     <title>Sambo-Principal</title>
   </head>
   <body>
-    <header-component></header-component>
+    <?php include './header.php'; ?>
     <main>
       <form action="#" method="post" id="researchForm">
         <label for="research" class="hidden">Buscador </label>

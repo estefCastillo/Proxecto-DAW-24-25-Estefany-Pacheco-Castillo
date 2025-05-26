@@ -17,11 +17,11 @@ $correo.addEventListener("input",ev=>{
     if (!regex_email.test($correo.value.trim())) {
         $e_correo.classList.remove("valido");
         $e_correo.classList.add("error");
-        $e_correo.textContent="Correo no válido!";
+        $e_correo.textContent="Formato no válido!";
     }else{
         $e_correo.classList.remove("error")
         $e_correo.classList.add("valido")
-        $e_correo.textContent="Correo válido!"
+        $e_correo.textContent="Formato válido!"
     }
 })
 
@@ -90,7 +90,7 @@ $registrerForm.addEventListener("submit",ev=>{
                 el.classList.remove("error", "valido");
                 el.textContent = "";
             });
-            window.location.href = "login.html";
+            window.location.href = "login.php";
         },
         
         fError: error => {
