@@ -1,4 +1,3 @@
-import "./footer.js";
 import ajax from "./ajaxTemplate.js";
 
 const $d = document,
@@ -19,9 +18,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 
   $btnUser.addEventListener("click", (ev) => {
     if ($btnUser && $vLogin) {
-      $vLogin.classList.contains("hidden")
-        ? $vLogin.classList.remove("hidden")
-        : $vLogin.classList.add("hidden");
+      $vLogin.classList.toggle("hidden")
     }
   });
 
@@ -43,7 +40,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   }
 
   renderCategories();
-  renderServicios("todos");
+  fetchServicios();
 });
 
 // Se mostrarán los botones de filtrado por categoría
@@ -76,69 +73,43 @@ $btnCategories.addEventListener("click", (ev) => {
   }
 });
 
-function renderServicios(categoria) {
+function fetchServicios() {
   ajax({
     url: "http://localhost/api/index.php/servicio",
     method: "GET",
     fExito: (json) => {
       allServices = json;
-      let servicios = [];
-      categoria == "todos"
-        ? (servicios = json)
-        : (servicios = json.filter(
-            (el) => el.categoria.toLowerCase() == categoria
-          ));
-
-      $servicios.innerHTML = servicios
-        .map(
-          (el) => `
-      <article class="service">
-      <a href="service.php?id=${el.id_servicio}">
-      <figure class="service_img">
-            <img
-              src="${el.imagen}"
-              alt="${el.descripcion}"
-            />
-        </figure>
-        </a>
-          <section class="info">
-            <ul>
-              <li><strong>${el.nombre}</strong></li>
-              <li>${el.precio}€/ ${el.tipo_precio}</li>
-              <li>${el.ubicacion}</li>
-            </ul>
-            <button class="btn-favorite" aria-label="Añadir a favoritos" data-id="${el.id_servicio}">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#3E7255"
-              >
-                <path
-                  d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"
-                />
-              </svg>
-            </button>
-          </section>
-        </article>
-        `
-        )
-        .join("");
+      filtrarServicios("todos");
     },
-    fError: (error) => {
-      console.log(error);
-    },
+    fError: console.log,
   });
 }
+
+function filtrarServicios(categoria) {
+  const servicios =
+    categoria === "todos"
+      ? allServices
+      : allServices.filter((el) => el.categoria.toLowerCase() === categoria);
+  showServicios(servicios);
+}
+
+
 function showServicios(servicios) {
+  if (!servicios.length) {
+     return  $servicios.innerHTML =
+      "<p>No se ha encontrado ningún servicio con ese nombre</p>";
+   
+  }
+
   $servicios.innerHTML = servicios
     .map(
       (el) => `
     <article class="service">
-      <figure class="service_img">
-        <img src="${el.imagen}" alt="${el.descripcion}" />
-      </figure>
+      <a href="service.php?id=${el.id_servicio}">
+        <figure class="service_img">
+          <img src="${el.imagen}" alt="${el.descripcion}" />
+        </figure>
+      </a>
       <section class="info">
         <ul>
           <li><strong>${el.nombre}</strong></li>
@@ -156,39 +127,18 @@ function showServicios(servicios) {
     .join("");
 }
 
-$research.addEventListener("input", (ev) => {
-  let buscado = $research.value.toLowerCase().trim();
-  let filtrado = allServices.filter((el) =>
+function handleSearch() {
+  const buscado = $research.value.toLowerCase().trim();
+  const filtrado = allServices.filter((el) =>
     el.nombre.toLowerCase().includes(buscado)
   );
+  showServicios(buscado ? filtrado : allServices);
+}
 
-  if (!buscado) {
-    showServicios(allServices);
-  } else {
-    if (filtrado.length === 0) {
-      $servicios.innerHTML = `<p>No se ha encontrado ningún servicio con ese nombre</p>`;
-    } else {
-      showServicios(filtrado);
-    }
-  }
-});
-
+$research.addEventListener("input", handleSearch);
 $researchForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
-  let buscado = $research.value.toLowerCase().trim();
-  let filtrado = allServices.filter((el) =>
-    el.nombre.toLowerCase().includes(buscado)
-  );
-
-  if (!buscado) {
-    showServicios(allServices);
-  } else {
-    if (filtrado.length === 0) {
-      $servicios.innerHTML = `<p>No se ha encontrado ningún servicio con ese nombre</p>`;
-    } else {
-      showServicios(filtrado);
-    }
-  }
+  handleSearch();
 });
 
 $servicios.addEventListener("click", (ev) => {

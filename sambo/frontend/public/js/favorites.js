@@ -1,4 +1,3 @@
-import "./footer.js";
 import ajax from "./ajaxTemplate.js";
 
 const $d = document,
@@ -15,12 +14,10 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 
   $btnUser.addEventListener("click", (ev) => {
     if ($btnUser && $vLogin) {
-      $vLogin.classList.contains("hidden")
-        ? $vLogin.classList.remove("hidden")
-        : $vLogin.classList.add("hidden");
+      $vLogin.classList.toggle("hidden")
     }
   });
-
+  
   if ($logout) {
     $logout.addEventListener("click", (ev) => {
       ev.preventDefault();

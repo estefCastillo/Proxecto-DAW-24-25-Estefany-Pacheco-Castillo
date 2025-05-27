@@ -1,0 +1,36 @@
+@import "./general.css";
+h2{
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 10px;
+  padding: 1.5rem;
+}
+
+section#reservas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap:1rem;
+}
+ #tablaReservas{
+    border-collapse: collapse;
+    
+ }
+ #tablaReservas th, #tablaReservas td{
+    border: 1px solid;
+    padding: .75rem;
+    margin: .75rem;
+    text-align: center;
+ }
+
+ @media screen and (max-width:500px) {
+     #tablaReservas th, #tablaReservas td{
+    border: 1px solid;
+    padding: .1rem;
+    margin: .1rem;
+ }
+
+ }

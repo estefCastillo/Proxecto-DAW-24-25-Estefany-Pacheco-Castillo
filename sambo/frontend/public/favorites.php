@@ -14,6 +14,7 @@ if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"])!="usuario") {
       name="description"
       content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos."
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="js/favorites.js"></script>
     <link rel="stylesheet" href="./css/principal.css" />
 
@@ -27,6 +28,6 @@ if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"])!="usuario") {
         
       </section>
     </main>
-    <footer-component></footer-component>
+    <?php include './footer.php'; ?>
   </body>
 </html>

@@ -11,19 +11,20 @@ header a img{
 width: 250px;
 }
 
-main{
+main#register{
     display: flex;
     flex-direction: column;
-    align-content: center;
     font-family: var(--princiapl-font);
     text-align: center;
+    margin: 0px;
+    justify-content: center;
 }
 h2{
     font-size: 2rem;
     font-weight: 100;
     color: var(--clr-principal);
     text-align: center;
-    padding: 1rem;
+    padding: .5rem;
 }
 
 main p>a:hover{
@@ -37,4 +38,11 @@ main p>a:hover{
 .valido{
     color: green;
     font-size: 0.75rem;
+}
+
+footer{
+    background-color: var(--clr-principal);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
 }

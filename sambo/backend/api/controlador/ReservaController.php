@@ -10,11 +10,7 @@ public function getAllByUser($id)
     Controller::errorMessage("Los usuarios se identifican con un solo número o id",400);
     die();
  } 
- $reserva=$model->getAllByUser($id[0]);
- if ($reserva==null) {
-    Controller::errorMessage("No existe ninguna reserva con ese id",404);
-    die();
-}  
+ $reserva=$model->getAllByUser($id);
     echo json_encode($reserva,JSON_PRETTY_PRINT);
 }
 
@@ -34,7 +30,7 @@ public function getAllByEmpresa($id_empresa)
 
     echo json_encode($reservas, JSON_PRETTY_PRINT);
 }
-public function delete($id_usuario,$id_reserva)
+public function deletebyUser($id_usuario,$id_reserva)
 {
     $model=new ReservaModel();
     if(!is_numeric($id_usuario) || !is_numeric($id_reserva)){
@@ -42,7 +38,7 @@ public function delete($id_usuario,$id_reserva)
         die();
     }
 
-    if($model->deleteByUser($id_usuario, $id_reserva)){
+    if($model->deletebyUser($id_usuario, $id_reserva)){
         echo json_encode(["message" => "Reserva eliminada con éxito!"], JSON_PRETTY_PRINT);
 
     }else{

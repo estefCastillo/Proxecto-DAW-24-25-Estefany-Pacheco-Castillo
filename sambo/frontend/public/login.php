@@ -17,7 +17,7 @@
       <h1>Sambo</h1>
       <a href="index.php"><img src="./img/v1.png" alt="Logo de sambo" /></a>
     </header>
-    <main>
+    <main id="register">
       <p> ¿No tienes cuenta? <a href="./register.html">Regístrate</a></p>
       <h2>Iniciar sesión</h2>
       

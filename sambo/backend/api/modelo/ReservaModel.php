@@ -175,10 +175,11 @@ class ReservaModel extends Model{
         return $reservas;
     }
     public function getAllByEmpresa($id_empresa){
-        $sql = "SELECT r.id_reserva,r.id_usuario,r.id_servicio,r.fecha,r.estado
-                FROM reservas r
-                JOIN servicios s ON r.id_servicio = s.id_servicio
-                WHERE s.id_empresa = :id_empresa";
+        $sql = "SELECT r.id_reserva, r.id_usuario, r.id_servicio, r.fecha, r.cantidad, r.estado
+        FROM reservas r
+        JOIN servicios s ON r.id_servicio = s.id_servicio
+        WHERE s.id_empresa = :id_empresa";
+
         
         $pdo = self::getConnection();
         $stmt = $pdo->prepare($sql);
@@ -251,7 +252,7 @@ class ReservaModel extends Model{
         return $resultado;
     }
     public function deletebyUser($id_usuario,$id_reserva){
-        $sql="DELETE FROM  reserva WHERE id_usuario = :id_usuario AND id_reserva=:id_reserva";
+        $sql="DELETE FROM  reservas WHERE id_usuario = :id_usuario AND id_reserva=:id_reserva";
         $pdo=self::getConnection();
         $stmt=$pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
@@ -261,7 +262,7 @@ class ReservaModel extends Model{
         try {
             $resultado=$stmt->execute();
         } catch (PDOException $e) {
-            error_log("Error en ReservaModel->deleteByUser($id_usuario,$id_reserva): " . $e->getMessage());
+            error_log("Error en ReservaModel->deletebyUser($id_usuario,$id_reserva): " . $e->getMessage());
         } finally{
             $stmt=null;
             $pdo=null;

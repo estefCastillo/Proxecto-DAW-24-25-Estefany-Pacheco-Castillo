@@ -115,7 +115,8 @@
       </article>
 
     </main>
-    <footer-component></footer-component>
+    <?php include "./footer.php"; ?>
+
 </body>
 </html>
 

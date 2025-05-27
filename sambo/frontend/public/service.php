@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <metaac
+    <meta
         name="description"
         content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
-    <script type="module" src="js/reservas.js"></script>
-    <link rel="stylesheet" href="./css/principal.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/service-r.js"></script>
+    <link rel="stylesheet" href="./css/service.css" />
 
     <title>Sambo-Servicio</title>
 </head>
 
 <body>
     <?php include './header.php'; ?>
-    <main id="info-servicio">
-    
+    <main id="s-reserva">
+
     </main>
-    <footer-component></footer-component>
+    <?php include "./footer.php"; ?>
 </body>
 
 </html>

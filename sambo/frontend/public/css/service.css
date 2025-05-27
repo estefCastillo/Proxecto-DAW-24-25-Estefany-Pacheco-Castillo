@@ -1,0 +1,36 @@
+@import "./general.css";
+
+main#s-reserva {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 4rem;
+}
+.info-service{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0px 0px 5px;
+    padding:2rem;
+    border-radius: 10px;
+}
+h2{
+  font-size: 1.5rem;
+  text-align: left;
+}
+.info-service ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+#form-reserva{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
