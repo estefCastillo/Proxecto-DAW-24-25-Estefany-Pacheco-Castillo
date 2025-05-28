@@ -14,10 +14,10 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 
   $btnUser.addEventListener("click", (ev) => {
     if ($btnUser && $vLogin) {
-      $vLogin.classList.toggle("hidden")
+      $vLogin.classList.toggle("hidden");
     }
   });
-  
+
   if ($logout) {
     $logout.addEventListener("click", (ev) => {
       ev.preventDefault();
@@ -40,17 +40,32 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 $favoritos.addEventListener("click", (ev) => {
   if (ev.target.closest(".btn-favorite").dataset.id) {
     let id_favorito = ev.target.closest(".btn-favorite").dataset.id;
-
-    ajax({
-      url: `http://localhost/api/index.php/favorito/${id_usuario}/${id_favorito}`,
-      method: "DELETE",
-      fExito: (json) => {
-        alert(json.message);
-        renderFavoritos();
-      },
-      fError: (error) => {
-        console.log(error);
-      },
+    Swal.fire({
+      title: "¿Quieres eliminar este servicio de favoritos?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#681717",
+      confirmButtonColor: "#3E7255",
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ajax({
+          url: `http://localhost/api/index.php/favorito/${id_usuario}/${id_favorito}`,
+          method: "DELETE",
+          fExito: (json) => {
+            Swal.fire({
+              title: "¡Eliminado de favoritos!",
+              icon: "success",
+              timer: 1500,
+            });
+            renderFavoritos();
+          },
+          fError: (error) => {
+            console.log(error);
+          },
+        });
+      }
     });
   }
 });

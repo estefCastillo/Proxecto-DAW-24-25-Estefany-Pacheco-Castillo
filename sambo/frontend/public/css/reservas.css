@@ -14,6 +14,7 @@ section#reservas{
     text-align: center;
     flex-wrap: wrap;
     gap:1rem;
+   
 }
  #tablaReservas{
     border-collapse: collapse;

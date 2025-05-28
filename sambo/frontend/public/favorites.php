@@ -1,12 +1,13 @@
 <?php 
 session_start();
-if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"])!="usuario") {
+if (!isset($_SESSION["tipo"]) || $_SESSION["tipo"] != "usuario") {
     header("Location: index.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
-<html lang="es">`
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

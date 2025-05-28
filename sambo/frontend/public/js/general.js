@@ -18,7 +18,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 
   $btnUser.addEventListener("click", (ev) => {
     if ($btnUser && $vLogin) {
-      $vLogin.classList.toggle("hidden")
+      $vLogin.classList.toggle("hidden");
     }
   });
 
@@ -93,12 +93,10 @@ function filtrarServicios(categoria) {
   showServicios(servicios);
 }
 
-
 function showServicios(servicios) {
   if (!servicios.length) {
-     return  $servicios.innerHTML =
-      "<p>No se ha encontrado ningún servicio con ese nombre</p>";
-   
+    return ($servicios.innerHTML =
+      "<p>No se ha encontrado ningún servicio con ese nombre</p>");
   }
 
   $servicios.innerHTML = servicios
@@ -153,7 +151,11 @@ $servicios.addEventListener("click", (ev) => {
       url: "http://localhost/api/index.php/favorito",
       method: "POST",
       fExito: (json) => {
-        alert(json.message);
+        Swal.fire({
+          title: "¡Añadido a favoritos!",
+          icon: "success",
+          timer: 1300,
+        });
       },
       fError: (error) => {
         console.log(error);

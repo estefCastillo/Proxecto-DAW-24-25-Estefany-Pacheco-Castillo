@@ -1,4 +1,11 @@
 @import "./general.css";
+h2 {
+    /* si tuvieses margin-top aquí, rellena con padding en su contenedor */
+    margin-top: 0;
+    padding: 1.5rem 0;
+    font-size: 3rem;
+    text-align: center;
+}
 
 form#researchForm{
     display: flex;
@@ -79,3 +86,27 @@ input[type="text"]{
 }
 
 /*=====  End of Estilos de los servicios  ======*/
+
+
+/*=============================================
+=            Estilos de los paneles            =
+=============================================*/
+.card_administrar{
+  display: flex;
+  gap:1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.card_administrar svg{
+width: 150px;
+height: 150px;
+fill: var(--background-clr);
+}
+.card_administrar button:hover svg{
+fill: var(--clr-principal);
+}
+/*=====  End of Estilos de los paneles  ======*/
+

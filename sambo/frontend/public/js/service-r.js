@@ -101,9 +101,13 @@ function renderServicio(servicio) {
       url: "http://localhost/api/index.php/reserva",
       method: "POST",
       fExito: (json) => {
-        alert(
-          `Reserva realizada correctamente.\nTotal: ${totalPrice.toFixed(2)}€`
-        );
+         Swal.fire({
+          title: "¡Reserva realizada!",
+          html: `Total: <strong>${totalPrice.toFixed(2)}€</strong>`,
+          showConfirmButton: false,
+          icon: "success",
+          timer: 1500
+        });
         $form.reset();
       },
       fError: (error) => {

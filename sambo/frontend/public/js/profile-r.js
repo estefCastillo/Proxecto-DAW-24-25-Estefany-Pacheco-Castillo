@@ -63,7 +63,7 @@ function getReservas() {
                   <td>${s.nombre}</td>
                   <td>${el.fecha}</td>
                   <td>${el.estado}</td>
-                  <td>${s.precio * el.cantidad}</td>
+                  <td>${(s.precio * el.cantidad).toFixed(2)}</td>
                   <td>
                     <button class="btn-cancel" aria-label="Cancelar reserva" data-id="${
                       el.id_reserva

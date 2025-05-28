@@ -29,8 +29,10 @@ body {
     font-family: var(--princiapl-font);
     color: rgb(54, 53, 53);
 }
+
 main{
     margin-top: 90px;
+    padding-bottom:2rem ;
 }
 img {
     width: 100%;
