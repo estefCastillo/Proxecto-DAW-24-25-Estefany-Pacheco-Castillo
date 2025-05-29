@@ -1,0 +1,31 @@
+@import "./general.css";
+#empresas {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+h2{
+  font-size:2rem;
+  text-align: center;
+}
+#tablaEmpresas{
+    border-collapse: collapse;
+    
+ }
+ #tablaEmpresas th, #tablaEmpresas td{
+    border: 1px solid;
+    padding: .75rem;
+    margin: .75rem;
+    text-align: center;
+ }
+
+ @media screen and (max-width:500px) {
+     #tablaEmpresas th, #tablaEmpresas td{
+    border: 1px solid;
+    padding: .1rem;
+    margin: .1rem;
+ }}

@@ -18,7 +18,7 @@ $correo = $_SESSION["correo"];
     name="description"
     content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="module" src="js/profile-r.js"></script>
+  <script type="module" src="js/profile_r.js"></script>
   <link rel="stylesheet" href="./css/reservas.css" />
 
   <title>Sambo-Perfil</title>

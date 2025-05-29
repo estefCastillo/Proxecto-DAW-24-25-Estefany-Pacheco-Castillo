@@ -1,10 +1,10 @@
-<!-- <?php 
+<?php 
 session_start();
-if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"])!="admin") {
+if (!isset($_SESSION["tipo"]) || $_SESSION["tipo"] != "admin") {
     header("Location: index.php");
     exit();
 }
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +14,7 @@ if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"])!="admin") {
     <metaac
         name="description"
         content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
-    <script type="module" src="js/general.js"></script>
+    <script type="module" src="js/administration.js"></script>
     <link rel="stylesheet" href="./css/principal.css" />
 
     <title>Sambo-Admin</title>

@@ -8,7 +8,7 @@
         name="description"
         content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="js/service-r.js"></script>
+    <script type="module" src="js/service_r.js"></script>
     <link rel="stylesheet" href="./css/service.css" />
 
     <title>Sambo-Servicio</title>

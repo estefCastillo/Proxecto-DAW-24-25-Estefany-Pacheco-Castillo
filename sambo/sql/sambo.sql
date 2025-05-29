@@ -14,7 +14,7 @@ CREATE TABLE empresas (
     nombre_empresa VARCHAR(100) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
     contrasena VARCHAR(100) NOT NULL,
-    telefono VARCHAR(13),
+    telefono VARCHAR(9),
     direccion VARCHAR(150)
 );
 

@@ -271,7 +271,7 @@ form{
 }
 
 input[type="email"],
-input[type="password"],input[type="text"] {
+input[type="password"],input[type="text"],input[type="tel"]  {
   padding: 0.5rem 1rem;
   border: 2px solid #ccc;
   border-radius: 20px; 

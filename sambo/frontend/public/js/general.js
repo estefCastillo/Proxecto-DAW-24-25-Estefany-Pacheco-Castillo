@@ -12,7 +12,7 @@ let id_usuario = localStorage.getItem("usuario")
   : null;
 
 $d.addEventListener("DOMContentLoaded", (ev) => {
-  const $btnUser = $d.querySelector(".btn-login"),
+  let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
@@ -86,7 +86,7 @@ function fetchServicios() {
 }
 
 function filtrarServicios(categoria) {
-  const servicios =
+  let servicios =
     categoria === "todos"
       ? allServices
       : allServices.filter((el) => el.categoria.toLowerCase() === categoria);
@@ -126,8 +126,8 @@ function showServicios(servicios) {
 }
 
 function handleSearch() {
-  const buscado = $research.value.toLowerCase().trim();
-  const filtrado = allServices.filter((el) =>
+  let buscado = $research.value.toLowerCase().trim();
+  let filtrado = allServices.filter((el) =>
     el.nombre.toLowerCase().includes(buscado)
   );
   showServicios(buscado ? filtrado : allServices);
