@@ -29,7 +29,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
           window.location.href = "index.php";
         },
         fError: (error) => {
-          console.log(error);
+          Swal.fire({
+          title: "No se ha podido cerrar sesión",
+          icon: "error",
+          timer: 1500,
+        });
         },
       });
     });
@@ -62,7 +66,11 @@ $favoritos.addEventListener("click", (ev) => {
             renderFavoritos();
           },
           fError: (error) => {
-            console.log(error);
+            Swal.fire({
+          title: "No se ha podido eliminar",
+          icon: "error",
+          timer: 1500,
+        });
           },
         });
       }
@@ -108,9 +116,21 @@ function renderFavoritos() {
             })
             .join("");
         },
-        fError: (error) => console.error(error),
+        fError: (error) => {
+          Swal.fire({
+          title: "Error al obtener los servicios",
+          icon: "error",
+          timer: 1500,
+        });
+        },
       });
     },
-    fError: (error) => console.error(error),
+    fError: (error) => {
+      Swal.fire({
+          title: "Error al obtener los favoritos",
+          icon: "error",
+          timer: 1500,
+        });
+    },
   });
 }

@@ -29,7 +29,6 @@ CREATE TABLE servicios (
     ubicacion VARCHAR(150),
     id_empresa INT NOT NULL,
     FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa) ON UPDATE CASCADE ON DELETE CASCADE
-    UNIQUE KEY UQ_usuario_servicio (id_usuario, id_servicio)
 );
 
 

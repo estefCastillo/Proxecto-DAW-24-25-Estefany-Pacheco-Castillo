@@ -29,13 +29,13 @@ $empresa=$empresaModel->findbyEmail($correo);
 if ($usuario!=null) {
     if (password_verify($contrasena,$usuario->getContrasena())) {
         $rol=$usuario->getRol();
-        $_SESSION["tipo"]=$rol;
+        $_SESSION["rol"]=$rol;
         $_SESSION["id_usuario"]=$usuario->getId_usuario();
         $_SESSION["nombre"]=$usuario->getNombre();
         $_SESSION["correo"]=$usuario->getCorreo();
 
         echo json_encode([
-            "tipo" => $rol,
+            "rol" => $rol,
             "id" => $usuario->getId_usuario(),
             "nombre" => $usuario->getNombre(),
             "correo" => $usuario->getCorreo()
@@ -51,12 +51,12 @@ if ($usuario!=null) {
 
 if ($empresa!=null) {
     if (password_verify($contrasena,$empresa->getContrasena())) {
-        $_SESSION["tipo"] = "empresa";
+        $_SESSION["rol"] = "empresa";
         $_SESSION["id_empresa"] = $empresa->getId_empresa();
         $_SESSION["nombre"] = $empresa->getNombre_empresa();
 
         echo json_encode([
-            "tipo" => "empresa",
+            "rol" => "empresa",
             "id" => $empresa->getId_empresa(),
             "nombre" => $empresa->getNombre_empresa(),
             "correo" => $empresa->getCorreo()

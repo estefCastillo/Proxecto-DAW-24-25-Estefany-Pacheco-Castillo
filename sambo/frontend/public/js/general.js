@@ -33,7 +33,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
           window.location.href = "index.php";
         },
         fError: (error) => {
-          console.log(error);
+          Swal.fire({
+            title: "No se ha podido cerrar sesión",
+            icon: "error",
+            timer: 1500,
+          });
         },
       });
     });
@@ -43,7 +47,6 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   fetchServicios();
 });
 
-// Se mostrarán los botones de filtrado por categoría
 function renderCategories() {
   ajax({
     url: "http://localhost/api/index.php/servicio/categorias",
@@ -60,7 +63,11 @@ function renderCategories() {
 `;
     },
     fError: (error) => {
-      console.log(error);
+      Swal.fire({
+        title: "No se ha podido obtener las categorías",
+        icon: "error",
+        timer: 1500,
+      });
     },
   });
 }
@@ -81,7 +88,13 @@ function fetchServicios() {
       allServices = json;
       filtrarServicios("todos");
     },
-    fError: console.log,
+    fError: (error) => {
+      Swal.fire({
+        title: "No se ha podido obtener los servicios",
+        icon: "error",
+        timer: 1500,
+      });
+    },
   });
 }
 
@@ -158,7 +171,11 @@ $servicios.addEventListener("click", (ev) => {
         });
       },
       fError: (error) => {
-        console.log(error);
+        Swal.fire({
+          title: "Error al añadir a favoritos",
+          icon: "error",
+          timer: 1500,
+        });
       },
       data: { id_usuario, id_servicio },
     });

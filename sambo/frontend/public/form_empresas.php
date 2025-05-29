@@ -28,8 +28,11 @@
         <span class="error" id="e_correo"></span>
 
         <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="658733573" max="9" required/>
+        <input type="tel" id="telefono" name="telefono" placeholder="658733573" maxlength="9" required/>
         <span class="error" id="e_tel"></span>
+
+      <label for="direccion">Dirección:</label>
+        <input type="tel" id="direccion" name="direccion"  required/>
 
         <label for="contrasena">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena" required/>
@@ -38,6 +41,7 @@
         <label for="contrasena2">Repita la contraseña:</label>
         <input type="password" id="contrasena2" name="contrasena2" required/>
         <span class="error" id="e_contrasena2"></span>
+        
         <input type="submit" value="Registrarse"/>
       </form>
     </main>

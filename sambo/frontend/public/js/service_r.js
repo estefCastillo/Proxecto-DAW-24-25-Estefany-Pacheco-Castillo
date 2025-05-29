@@ -31,7 +31,11 @@ $d.addEventListener("DOMContentLoaded", () => {
           window.location.href = "index.php";
         },
         fError: (error) => {
-          console.log(error);
+           Swal.fire({
+            title: "No se ha podido cerrar sesión",
+            icon: "error",
+            timer: 1500,
+          });
         },
       });
     });
@@ -48,7 +52,11 @@ function getServicio() {
       renderServicio(servicio);
     },
     fError: (error) => {
-      console.error(error);
+       Swal.fire({
+            title: "Error al obtener el servicio",
+            icon: "error",
+            timer: 1500,
+          });
     },
   });
 }
@@ -111,7 +119,11 @@ function renderServicio(servicio) {
         $form.reset();
       },
       fError: (error) => {
-        console.log(error)
+        Swal.fire({
+            title: "No se ha podido reservar",
+            icon: "error",
+            timer: 1500,
+          });
       },
       data: {
         id_usuario: id_usuario,

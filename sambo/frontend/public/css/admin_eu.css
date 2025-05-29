@@ -1,5 +1,5 @@
 @import "./general.css";
-#empresas {
+#empresas,#usuarios {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -12,11 +12,11 @@ h2{
   font-size:2rem;
   text-align: center;
 }
-#tablaEmpresas{
+#tablaEmpresas,#tablaUsuarios{
     border-collapse: collapse;
     
  }
- #tablaEmpresas th, #tablaEmpresas td{
+ #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td{
     border: 1px solid;
     padding: .75rem;
     margin: .75rem;
@@ -24,7 +24,7 @@ h2{
  }
 
  @media screen and (max-width:500px) {
-     #tablaEmpresas th, #tablaEmpresas td{
+     #tablaEmpresas th, #tablaEmpresas td,#tablaUsuarios th, #tablaUsuarios td{
     border: 1px solid;
     padding: .1rem;
     margin: .1rem;

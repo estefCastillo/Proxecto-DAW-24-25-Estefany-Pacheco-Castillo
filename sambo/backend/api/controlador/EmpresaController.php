@@ -35,7 +35,6 @@ public function delete($id)
 
     if($model->delete($id)){
         echo json_encode(["message" => "Empresa eliminada con éxito!"], JSON_PRETTY_PRINT);
-
     }else{
         Controller::errorMessage("No se ha podido eliminar la empresa",500);
     }
@@ -60,12 +59,29 @@ public function update($id, $object)
 
 public function insert($object)
 {
-    $model=new EmpresaModel();
-    $empresa=Empresa::fromjson($object);
+    $model = new EmpresaModel();
+    $empresa = Empresa::fromjson($object);
+
+if (empty(trim($empresa->getNombre_empresa())) || empty(trim($empresa->getCorreo())) || empty(trim($empresa->getContrasena())) || empty(trim($empresa->getTelefono())) || empty(trim($empresa->getDireccion()))) {
+    Controller::errorMessage("Todos los campos son obligatorios", 400);
+    die();
+}
+
+
+    if ($model->findbyEmail($empresa->getCorreo()) != null) {
+        Controller::errorMessage("Ya existe una empresa con ese correo", 409);
+        die();
+    }
+
+    $contrasena = password_hash($empresa->getContrasena(), PASSWORD_DEFAULT);
+    $empresa->setContrasena($contrasena);
+
     if ($model->insert($empresa)) {
+        http_response_code(201);
         echo json_encode(["message" => "Empresa añadida con éxito!"], JSON_PRETTY_PRINT);
-    }else{
-        Controller::errorMessage("No se ha podido añadir la empresa",500);
+    } else {
+        Controller::errorMessage("No se ha podido añadir la empresa", 500);
     }
 }
+
 }

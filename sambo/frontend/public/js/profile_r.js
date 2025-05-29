@@ -8,11 +8,11 @@ let id_usuario = localStorage.getItem("usuario")
   : null;
 
 $d.addEventListener("DOMContentLoaded", (ev) => {
-  const $btnUser = $d.querySelector(".btn-login"),
+  let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", () => {
+  $btnUser.addEventListener("click", (ev) => {
     if ($vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -28,7 +28,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
         window.location.href = "index.php";
       },
       fError: (error) => {
-        console.log(error);
+        Swal.fire({
+          title: "No se ha podido cerrar sesión",
+          icon: "error",
+          timer: 1500,
+        });
       },
     });
   });
@@ -42,11 +46,10 @@ function getReservas() {
     method: "GET",
     fExito: (json) => {
       if (json.length == 0) {
-        return $tbody.innerHTML = `
+        return ($tbody.innerHTML = `
         <tr>
           <td colspan="6">No se han encontrado reservas a su nombre.</td>
-        </tr>`;
-        
+        </tr>`);
       }
 
       ajax({
@@ -76,52 +79,62 @@ function getReservas() {
                 </tr>`;
             })
             .join("");
-
-          // Cancelar reserva
-          setTimeout(() => {
-            $d.querySelectorAll(".btn-cancel").forEach((btn) => {
-              btn.addEventListener("click", () => {
-                const id = btn.dataset.id;
-
-                Swal.fire({
-                  title: "¿Está seguro de cancelar su reserva?",
-                  icon: "warning",
-                  showCancelButton: true,
-                  cancelButtonColor: "#681717",
-                  confirmButtonColor: "#3E7255",
-                  confirmButtonText: "Cancelar reserva",
-                  cancelButtonText: "No",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    ajax({
-                      url: `http://localhost/api/index.php/reserva/${id_usuario}/${id}`,
-                      method: "DELETE",
-                      fExito: () => {
-                        Swal.fire({
-                          title: "¡Cancelada!",
-                          text: "Su reserva ha sido cancelada.",
-                          icon: "success",
-                          timer: 1500
-                        }).then(()=>{getReservas()})
-                        
-                      },
-                      fError: (error) => {
-                        console.error(error);
-                      },
-                    });
-                  }
-                });
-              });
-            });
-          }, 100);
         },
         fError: (error) => {
-          console.log(error);
+          Swal.fire({
+            title: "Error obteniendo los servicios",
+            icon: "error",
+            timer: 1500,
+          });
         },
       });
     },
     fError: (error) => {
-      console.log(error);
+      Swal.fire({
+        title: "Error obteniendo las reservas",
+        icon: "error",
+        timer: 1500,
+      });
     },
   });
 }
+
+$tbody.addEventListener("click", ev => {
+  ev.preventDefault();
+  if (ev.target.closest(".btn-cancel")) {
+    let id_reserva = ev.target.closest(".btn-cancel").dataset.id;
+    Swal.fire({
+      title: "¿Está seguro de cancelar su reserva?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#681717",
+      confirmButtonColor: "#3E7255",
+      confirmButtonText: "Cancelar reserva",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ajax({
+          url: `http://localhost/api/index.php/reserva/${id_usuario}/${id_reserva}`,
+          method: "DELETE",
+          fExito: () => {
+            Swal.fire({
+              title: "¡Cancelada!",
+              text: "Su reserva ha sido cancelada.",
+              icon: "success",
+              timer: 1500,
+            }).then(() => {
+              getReservas();
+            });
+          },
+          fError: (error) => {
+            Swal.fire({
+                title: "No se ha podido cancelar",
+                icon: "error",
+                timer: 1500,
+              })
+          }
+        });
+      }
+    }); 
+  }
+});
