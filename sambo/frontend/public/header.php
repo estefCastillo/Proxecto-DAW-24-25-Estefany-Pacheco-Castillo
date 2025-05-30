@@ -1,10 +1,9 @@
 <?php
 session_start();
-
 $usuario = null;
-if (isset($_SESSION['tipo'])) {
+if (isset($_SESSION['rol'])) {
     $usuario = [
-        'tipo' => $_SESSION['tipo'],
+        'rol' => $_SESSION['rol'],
         'nombre' => $_SESSION['nombre'] ?? '',
         'id' => $_SESSION['id_usuario'] ?? $_SESSION['id_empresa'] ?? null
     ];
@@ -20,7 +19,7 @@ if ($usuario) {
       </svg>
     </button>';
 
-    if ($usuario['tipo'] == "usuario") {
+    if ($usuario['rol'] == "usuario") {
         $desplegable = '
         <div id="login" class="hidden">
           <ul>
@@ -51,7 +50,7 @@ if ($usuario) {
 ?>
 
 <header class="header">
-  <a href="index.php" class="logo_header" aria-label="Página inicial">
+  <a href="principal.php" class="logo_header" aria-label="Página inicial">
     <img src="./img/v1.png" alt="Logo Sambo" />
   </a>
   <h1>Sambo</h1>

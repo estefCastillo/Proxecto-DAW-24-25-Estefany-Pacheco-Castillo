@@ -1,9 +1,10 @@
 <?php 
 session_start();
-if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
+if (!isset($_SESSION["rol"]) || ($_SESSION["rol"] != "admin" && $_SESSION["rol"] != "empresa")) {
     header("Location: index.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,7 +17,7 @@ if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
     />
     <link rel="stylesheet" href="./css/login.css" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script  type="module" src="./js/form_empresas.js"></script>
+    <script  type="module" src="./js/edit_empresa.js"></script>
     <title>Sambo-Registro</title>
   </head>
   <body>
@@ -49,7 +50,7 @@ if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
         <input type="password" id="contrasena2" name="contrasena2" required/>
         <span class="error" id="e_contrasena2"></span>
         
-        <input type="submit" value="Registrarse"/>
+        <input type="submit" value="Cambiar"/>
       </form>
     </main>
     <footer>

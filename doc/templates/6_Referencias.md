@@ -10,16 +10,17 @@
 ## 1- Sitios web de documentación técnica
 - [PHP](https://www.php.net/docs.php)  
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [SweetAlert](https://stackoverflow.com/questions/2906582/how-do-i-create-an-html-button-that-acts-like-a-link)
 
-## 2- Fontes de interes
-- [Componentes sin frameworks](https://www.youtube.com/watch?v=sWQt3t7QCnc)	  
-- [Componentes](https://lenguajejs.com/webcomponents/funcionalidad/registro-de-custom-elements/)	  
+## 2- Fontes de interes  
 - [Uso de “details”](https://lenguajehtml.com/html/interactivas/etiqueta-html-details/#:~:text=La%20etiqueta%20nos%20proporciona,etiqueta%20no%20se%20muestra%20inicialmente)	  
 - [Devolver JSON desde PHP](https://stackoverflow.com/questions/4064444/returning-json-from-a-php-script)	  
 - [Cabeceras, métodos solicitados y sus permisos](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Methods)	  
 - [Verificación de contraseña en PHP](https://www.php.net/manual/en/function.password-verify.php)	  
 - [Establecer tiempo a una sesión](https://es.stackoverflow.com/questions/412807/extender-duraci%C3%B3n-de-sesi%C3%B3n-en-php)	 	 
 - [Redirigir en JS](https://es.stackoverflow.com/questions/18119/como-redireccionar-a-una-p%C3%A1gina-seg%C3%BAn-la-respuesta-recibida-de-php-en-ajax)
+- [Respuestas HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+- [GET[id] desde JS](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams)
 
 ## 3- Sitios oficiais do software utilizado
 - [PHP](https://www.php.net/docs.php)  

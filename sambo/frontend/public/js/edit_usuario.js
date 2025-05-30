@@ -2,22 +2,23 @@ import ajax from "./ajaxTemplate.js";
 
 const $d = document,
   $registrerForm = $d.querySelector("#registrerForm"),
-  $nombre = $d.querySelector("#nombre_empresa"),
+  $nombre = $d.querySelector("#nombre"),
   $correo = $d.querySelector("#correo"),
-  $direccion = $d.querySelector("#direccion"),
-  $telefono = $d.querySelector("#telefono"),
   $contrasena = $d.querySelector("#contrasena"),
   $contrasena2 = $d.querySelector("#contrasena2"),
   $e_correo = $d.querySelector("#e_correo"),
   $e_contrasena = $d.querySelector("#e_contrasena"),
   $e_contrasena2 = $d.querySelector("#e_contrasena2"),
-  $e_tel = $d.querySelector("#e_tel");
+  url = new URLSearchParams(window.location.search),
+  id_usuario = url.get("id");
 
-let regex_tel = /^[0-9]{9}$/;
+let admin = localStorage.getItem("usuario")
+  ? JSON.parse(localStorage.getItem("usuario")).rol == "admin"
+  : false;
 let regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 let regex_contrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-$correo.addEventListener("input", () => {
+$correo.addEventListener("input", (ev) => {
   if (!regex_email.test($correo.value.trim())) {
     $e_correo.classList.remove("valido");
     $e_correo.classList.add("error");
@@ -29,19 +30,7 @@ $correo.addEventListener("input", () => {
   }
 });
 
-$telefono.addEventListener("input", () => {
-  if (!regex_tel.test($telefono.value.trim())) {
-    $e_tel.classList.remove("valido");
-    $e_tel.classList.add("error");
-    $e_tel.textContent = "Número no válido, tiene que tener nueve dígitos";
-  } else {
-    $e_tel.classList.remove("error");
-    $e_tel.classList.add("valido");
-    $e_tel.textContent = "Número válido!";
-  }
-});
-
-$contrasena.addEventListener("input", () => {
+$contrasena.addEventListener("input", (ev) => {
   if (!regex_contrasena.test($contrasena.value.trim())) {
     $e_contrasena.classList.remove("valido");
     $e_contrasena.classList.add("error");
@@ -54,7 +43,7 @@ $contrasena.addEventListener("input", () => {
   }
 });
 
-$contrasena2.addEventListener("input", () => {
+$contrasena2.addEventListener("input", (ev) => {
   if ($contrasena.value.trim() != $contrasena2.value.trim()) {
     $e_contrasena2.classList.remove("valido");
     $e_contrasena2.classList.add("error");
@@ -74,10 +63,8 @@ $registrerForm.addEventListener("submit", (ev) => {
   let correo = $correo.value.trim();
   let contrasena = $contrasena.value.trim();
   let contrasena2 = $contrasena2.value.trim();
-  let telefono = $telefono.value.trim();
-  let direccion=$direccion.value.trim();
 
-  if (!nombre || !correo || !contrasena || !telefono || !direccion || !contrasena2) {
+  if (!nombre || !correo || !contrasena || !contrasena2) {
     Swal.fire({
       title: "¡Error!",
       text: "Deben cubrirse todos los campos.",
@@ -109,62 +96,61 @@ $registrerForm.addEventListener("submit", (ev) => {
     });
     return;
   }
-
   if (contrasena != contrasena2) {
     Swal.fire({
       title: "Las contraseñas no coinciden",
       icon: "error",
       timer: 1500,
-      showConfirmButton: false,
     });
     return;
   }
 
   ajax({
-    url: "http://localhost/api/index.php/empresa",
-    method: "POST",
+    url: `http://localhost/api/index.php/usuario/${id_usuario}`,
+    method: "PUT",
     fExito: (json) => {
       if ($registrerForm) {
         $registrerForm.reset();
       }
       Swal.fire({
-        title: "Empresa añadida con éxito!",
+        title: "Usuario actualizado!",
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
-      }).then(() => {
-        window.location.href = "ad_empresas.php";
       });
 
       [$e_correo, $e_contrasena, $e_contrasena2].forEach((el) => {
         el.classList.remove("error", "valido");
         el.textContent = "";
       });
+      if (admin) {
+        window.location.href = "ad_usuarios.php";
+      } else {
+        window.location.href = "login.php";
+      }
     },
+
     fError: (error) => {
       Swal.fire({
-        title: "Error",
-        text: "Error al insertar la empresa",
+        title: "Error al registrar",
+        text:"Ya existe un usuario con ese correo.",
         icon: "error",
         timer: 1500,
-        showConfirmButton: false,
       });
 
       if ($registrerForm) {
         $registrerForm.reset();
       }
-
-      [$e_correo, $e_tel, $e_contrasena, $e_contrasena2].forEach((el) => {
+      [$e_correo, $e_contrasena, $e_contrasena2].forEach((el) => {
         el.classList.remove("error", "valido");
         el.textContent = "";
       });
     },
     data: {
-      nombre_empresa: nombre,
+      nombre: nombre,
       correo: correo,
-      direccion:direccion,
-      telefono: telefono,
       contrasena: contrasena,
+      rol:"usuario"
     },
   });
 });

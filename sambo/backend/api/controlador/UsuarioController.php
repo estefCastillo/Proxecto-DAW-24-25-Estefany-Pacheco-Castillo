@@ -51,6 +51,12 @@ class UsuarioController extends Controller
         }
 
         $usuario = Usuario::fromjson($object);
+        if (empty($usuario->getNombre()) || empty($usuario->getCorreo()) || empty($usuario->getContrasena())) {
+            Controller::errorMessage("Todos los campos son obligatorios", 400);
+            die();
+        }
+        $contrasena = password_hash($usuario->getContrasena(), PASSWORD_DEFAULT);
+        $usuario->setContrasena($contrasena);
         if ($model->update($usuario, $id)) {
             echo json_encode(["message" => "Usuario modificado con éxito!"], JSON_PRETTY_PRINT);
         } else {

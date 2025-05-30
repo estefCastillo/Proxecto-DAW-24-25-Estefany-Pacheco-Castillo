@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["tipo"]) || isset($_SESSION["tipo"]) != "usuario") {
+if (!isset($_SESSION["rol"]) || isset($_SESSION["rol"]) != "usuario") {
   header("Location: index.php");
   exit();
 }
@@ -27,9 +27,7 @@ $correo = $_SESSION["correo"];
 <body>
   <?php include './header.php'; ?>
   <main>
-    <section id="datos">
       <h2>¡Hola, <?= $nombre; ?> !</h2>
-    </section>
 
     <section id="reservas">
       <h3>Mis reservas: </h3>

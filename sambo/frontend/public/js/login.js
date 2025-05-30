@@ -23,12 +23,14 @@ $loginForm.addEventListener("submit", (ev) => {
     url: "http://localhost/api/login.php",
     method: "POST",
     fExito: (json) => {
-      localStorage.setItem("usuario", JSON.stringify(json));
       if (json.rol == "usuario") {
+        localStorage.setItem("usuario", JSON.stringify(json));
         window.location.href = "principal.php";
       } else if (json.rol == "empresa") {
+        localStorage.setItem("empresa", JSON.stringify(json));
         window.location.href = "empresa.php";
       } else if (json.rol == "admin") {
+        localStorage.setItem("usuario", JSON.stringify(json));
         window.location.href = "administration.php";
       }
     },

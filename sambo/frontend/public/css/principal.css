@@ -1,6 +1,5 @@
 @import "./general.css";
 h2 {
-    /* si tuvieses margin-top aquí, rellena con padding en su contenedor */
     margin-top: 0;
     padding: 1.5rem 0;
     font-size: 3rem;
@@ -98,8 +97,6 @@ input[type="text"]{
   align-items: center;
   justify-content: center;
 }
-
-
 .card_administrar svg{
 width: 150px;
 height: 150px;
@@ -110,3 +107,18 @@ fill: var(--clr-principal);
 }
 /*=====  End of Estilos de los paneles  ======*/
 
+
+/*=============================================
+=            Estilos de las acciones      =
+=============================================*/
+
+section#actions ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+/*=====  End of Estilos de las acction  ======*/

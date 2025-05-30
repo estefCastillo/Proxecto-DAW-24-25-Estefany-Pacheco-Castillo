@@ -1,5 +1,5 @@
 <?php
-session_set_cookie_params(60);
+session_set_cookie_params(300);
 session_start();
 include_once("modelo/EmpresaModel.php");
 include_once("modelo/UsuarioModel.php");

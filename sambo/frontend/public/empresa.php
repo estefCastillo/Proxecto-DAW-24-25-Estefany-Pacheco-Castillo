@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "empresa") {
+    header("Location: index.php");
+    exit();
+}
+$nombre = $_SESSION["nombre"];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,8 +24,18 @@
 <body>
     <?php include './header.php'; ?>
     <main>
-        
+        <h2>Bienvenido, <?= $nombre; ?>!</h2>
+        <section id="actions">
+            <ul>
+                <li><a href="./edit_empresa.php">Editar mi información</a></li>
+                <li><a href="">Añadir servicio</a></li>
+            </ul>
+        </section>
+        <section id="mis_servicios">
+            <h3>Mis servicios</h3>
+        </section>
     </main>
+
     <?php include './footer.php'; ?>
 </body>
 

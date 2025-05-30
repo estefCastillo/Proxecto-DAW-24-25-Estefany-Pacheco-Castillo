@@ -15,7 +15,6 @@ function getIds(array $uri):array{
 }
 
 
-
 /**
  * Obtenemos la uri, el método y el endpoint
  */
@@ -92,7 +91,7 @@ switch ($method) {
         if (isset($id)) {
             $json = file_get_contents("php://input");
             if ($endpoint == "reserva") {
-                if (strlen($id) == 2) {
+                if (count($id) == 2) {
                     $controlador->update($id[0], $id[1], $json);
                 } else {
                     Controller::errorMessage("Se ha de indicar dos ids correctos",400);

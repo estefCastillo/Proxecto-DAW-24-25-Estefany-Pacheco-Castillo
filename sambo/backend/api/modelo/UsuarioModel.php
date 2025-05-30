@@ -196,7 +196,8 @@ class UsuarioModel extends Model{
         $sql="UPDATE usuarios SET 
         nombre=:nombre,
         correo=:correo,
-        contrasena=:contrasena
+        contrasena=:contrasena,
+        rol=:rol
         WHERE id_usuario=:id_usuario";
 
         $pdo=self::getConnection();
@@ -204,6 +205,7 @@ class UsuarioModel extends Model{
         $stmt->bindValue(':nombre',$usuario->getNombre(),PDO::PARAM_STR);
         $stmt->bindValue(':correo',$usuario->getCorreo(),PDO::PARAM_STR);
         $stmt->bindValue(':contrasena',$usuario->getContrasena(),PDO::PARAM_STR);
+        $stmt->bindValue(":rol", $usuario->getRol(), PDO::PARAM_STR);
         $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);
         $resultado=false;
 
