@@ -1,5 +1,5 @@
 @import "./general.css";
-#empresas,#usuarios {
+#empresas,#usuarios,#mis_servicios,#mis_reservas {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -11,21 +11,60 @@
 h2{
   font-size:2rem;
   text-align: center;
+  padding: 1.5rem;
 }
-#tablaEmpresas,#tablaUsuarios{
+#tablaEmpresas,#tablaUsuarios,#tablaServicios,#tablaReservas{
     border-collapse: collapse;
     
  }
- #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td{
+ #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td,#tablaServicios th, #tablaServicios td, #tablaReservas th, #tablaReservas td{
     border: 1px solid;
     padding: .75rem;
     margin: .75rem;
     text-align: center;
  }
+ 
+
+/*=============================================
+=            Estilos de las acciones      =
+=============================================*/
+
+section#actions ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: .5rem;
+}
+
+/*=====  End of Estilos de las acction  ======*/
 
  @media screen and (max-width:500px) {
-     #tablaEmpresas th, #tablaEmpresas td,#tablaUsuarios th, #tablaUsuarios td{
+    #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td,#tablaServicios th, #tablaServicios td, #tablaReservas th, #tablaReservas td{
     border: 1px solid;
     padding: .1rem;
     margin: .1rem;
+    font-size: .75rem;
  }}
+
+
+/*=============================================
+=            Estilos de los estados            =
+=============================================*/
+.pendiente {
+  background-color: #fff8b5; 
+  color: #7a6000;
+  font-weight: bold;
+}
+
+.realizada {
+  background-color: #c4f7c4;
+  color: #135213;
+  font-weight: bold;
+}
+
+
+/*=====  End of Estilos de los estados  ======*/
+

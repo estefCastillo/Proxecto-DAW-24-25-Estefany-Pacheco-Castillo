@@ -10,7 +10,7 @@ let id_usuario = localStorage.getItem("usuario")
   : null;
 
 $d.addEventListener("DOMContentLoaded", () => {
-  const $btnUser = $d.querySelector(".btn-login"),
+  let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
@@ -31,7 +31,7 @@ $d.addEventListener("DOMContentLoaded", () => {
           window.location.href = "index.php";
         },
         fError: (error) => {
-           Swal.fire({
+          Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
             timer: 1500,
@@ -52,11 +52,11 @@ function getServicio() {
       renderServicio(servicio);
     },
     fError: (error) => {
-       Swal.fire({
-            title: "Error al obtener el servicio",
-            icon: "error",
-            timer: 1500,
-          });
+      Swal.fire({
+        title: "Error al obtener el servicio",
+        icon: "error",
+        timer: 1500,
+      });
     },
   });
 }
@@ -80,12 +80,20 @@ function renderServicio(servicio) {
     <h3>Reservar este servicio</h3>
     <form id="reservaForm">
       <label>Fecha:</label>
-      <input type="date" name="fecha" required />
+      <input type="date" name="fecha" id="fecha" required />
       <label>Cantidad:</label>
       <input type="number" name="cantidad" min="1" required />
       <button type="submit">Reservar</button>
     </form>
   </section>`;
+  let fecha = $d.querySelector("#fecha");
+  let fecha_actual = new Date();
+  let anho = fecha_actual.getFullYear();
+  let mes = (fecha_actual.getMonth() + 1).toString().padStart(2, "0");
+  let dia = fecha_actual.getDate().toString().padStart(2, "0");
+
+  let hoy = `${anho}-${mes}-${dia}`;
+  fecha.min = hoy;
 
   let $form = $d.querySelector("#reservaForm");
   $form.addEventListener("submit", (ev) => {
@@ -99,31 +107,39 @@ function renderServicio(servicio) {
       }).then(() => {
         window.location.href = "login.php";
       });
-      return
+      return;
     }
     let fecha = $form.fecha.value;
     let cantidad = $form.cantidad.value;
     let totalPrice = servicio.precio * cantidad;
-
+    if (fecha < hoy) {
+      Swal.fire({
+        title: "Fecha inválida",
+        text: "No se pueden hacer reservas en fechas pasadas.",
+        icon: "warning",
+        timer: 1500,
+      });
+      return
+    }
     ajax({
       url: "http://localhost/api/index.php/reserva",
       method: "POST",
       fExito: (json) => {
-         Swal.fire({
+        Swal.fire({
           title: "¡Reserva realizada!",
           html: `Total: <strong>${totalPrice.toFixed(2)}€</strong>`,
           showConfirmButton: false,
           icon: "success",
-          timer: 1500
+          timer: 1500,
         });
         $form.reset();
       },
       fError: (error) => {
         Swal.fire({
-            title: "No se ha podido reservar",
-            icon: "error",
-            timer: 1500,
-          });
+          title: "No se ha podido reservar",
+          icon: "error",
+          timer: 1500,
+        });
       },
       data: {
         id_usuario: id_usuario,

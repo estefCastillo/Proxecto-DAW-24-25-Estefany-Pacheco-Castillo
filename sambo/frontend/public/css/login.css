@@ -11,12 +11,13 @@ header a img{
 width: 250px;
 }
 
-main#register{
+#register{
     display: flex;
     flex-direction: column;
     font-family: var(--princiapl-font);
     text-align: center;
     margin: 0px;
+    padding: 0px;
     justify-content: center;
 }
 h2{

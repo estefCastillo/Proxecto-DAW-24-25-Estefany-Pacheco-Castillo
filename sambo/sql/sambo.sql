@@ -14,8 +14,8 @@ CREATE TABLE empresas (
     nombre_empresa VARCHAR(100) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
     contrasena VARCHAR(100) NOT NULL,
-    telefono VARCHAR(9),
-    direccion VARCHAR(150)
+    telefono VARCHAR(9) NOT NULL,
+    direccion VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE servicios (
@@ -46,7 +46,8 @@ CREATE TABLE reservas (
     id_usuario INT NOT NULL,
     id_servicio INT NOT NULL,
     fecha DATE NOT NULL,
-    cantidad DECIMAL, 
+    cantidad INT NOT NULL, 
+    precio_total DECIMAL NOT NULL,
     estado VARCHAR(100) DEFAULT 'pendiente',
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (id_servicio) REFERENCES servicios(id_servicio) ON UPDATE CASCADE ON DELETE CASCADE

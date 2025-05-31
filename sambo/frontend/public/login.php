@@ -10,7 +10,7 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="./css/login.css" />
-    <script type="module" src="js/login.js" defer></script>
+    <script type="module" src="js/login.js"></script>
     <title>Sambo-Iniciar sesión</title>
   </head>
   <body>

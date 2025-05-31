@@ -90,15 +90,8 @@ switch ($method) {
     case 'PUT':
         if (isset($id)) {
             $json = file_get_contents("php://input");
-            if ($endpoint == "reserva") {
-                if (count($id) == 2) {
-                    $controlador->update($id[0], $id[1], $json);
-                } else {
-                    Controller::errorMessage("Se ha de indicar dos ids correctos",400);
-                    die();
-                }
-            }elseif ($endpoint == "favorito") {
-                Controller::errorMessage("No se puede hacer cambios en los favoritos",500);
+            if ($endpoint == "reserva" || $endpoint == "favorito") {
+                Controller::errorMessage("No se pueden hacer cambios",500);
                 die();
             }else {
                 $controlador->update($id, $json);

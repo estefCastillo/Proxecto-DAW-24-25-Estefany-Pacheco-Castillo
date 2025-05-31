@@ -46,23 +46,6 @@ public function deletebyUser($id_usuario,$id_reserva)
     }
 }
 
-public function update($id_usuario,$id_reserva, $object)
-{
-    $model=new ReservaModel();
-    if(!is_numeric($id_usuario) || !is_numeric($id_reserva)){
-        Controller::errorMessage("IDs incorrectos",400);
-        die();
-    }
-
-    $reserva=Reserva::fromjson($object);
-    if ($model->update($reserva,$id_usuario,$id_reserva)) {
-        echo json_encode(["message" => "Reserva modificada con éxito!"], JSON_PRETTY_PRINT);
-    }else{
-        Controller::errorMessage("No se ha podido modificar al reserva",500);
-    }
-
-}
-
 public function insert($object)
 {
     $model=new ReservaModel();

@@ -107,18 +107,3 @@ fill: var(--clr-principal);
 }
 /*=====  End of Estilos de los paneles  ======*/
 
-
-/*=============================================
-=            Estilos de las acciones      =
-=============================================*/
-
-section#actions ul{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  list-style: none;
-}
-
-/*=====  End of Estilos de las acction  ======*/

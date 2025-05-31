@@ -14,7 +14,8 @@
     <title>Sambo-Principal</title>
   </head>
   <body>
-    <?php include './header.php'; ?>
+    <div id="root">
+      <?php include './header.php'; ?>
     <main>
       <form action="#" method="post" id="researchForm">
         <label for="research" class="hidden">Buscador </label>
@@ -32,6 +33,7 @@
         
       </section>
     </main>
+    </div>
     <?php include "./footer.php"; ?>
   </body>
 </html>

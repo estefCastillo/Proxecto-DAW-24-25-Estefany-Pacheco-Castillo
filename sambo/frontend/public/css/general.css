@@ -19,7 +19,14 @@
     --princiapl-font: 'Work Sans', sans-serif;
     --sec-font: 'Instrument Serif', serif;
 }
-
+header{
+    grid-row: 1;
+    width: 100vw;
+}
+footer{
+    grid-row: 3;
+    width: 100vw;
+}
 body {
     width: 100vw;
     min-height: 100vh;
@@ -32,7 +39,9 @@ body {
 
 main{
     margin-top: 90px;
+    grid-row: 2;
     padding-bottom:2rem ;
+    min-height: calc(100vh - 340px); 
 }
 img {
     width: 100%;

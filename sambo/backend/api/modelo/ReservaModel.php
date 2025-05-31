@@ -1,7 +1,8 @@
 <?php
 include_once("Model.php");
 
-class Reserva extends ModelObject{
+class Reserva extends ModelObject
+{
     public ?int $id_reserva;
     public int $id_usuario;
     public int $id_servicio;
@@ -10,31 +11,32 @@ class Reserva extends ModelObject{
     public string $estado;
 
 
-    public function __construct($id_usuario,$id_servicio,$fecha,$cantidad,$estado,$id_reserva=null) {
+    public function __construct($id_usuario, $id_servicio, $fecha, $cantidad, $estado, $id_reserva = null)
+    {
         $this->id_reserva = $id_reserva;
-        $this->id_usuario=$id_usuario;
-        $this->id_servicio=$id_servicio;
-        $this->fecha=$fecha;
-        $this->cantidad=$cantidad;
-        $this->estado=$estado;
+        $this->id_usuario = $id_usuario;
+        $this->id_servicio = $id_servicio;
+        $this->fecha = $fecha;
+        $this->cantidad = $cantidad;
+        $this->estado = $estado;
     }
 
     public static function fromjson($json)
     {
-        $data=json_decode($json);
-        return new Reserva($data->id_usuario,$data->id_servicio,$data->fecha,$data->cantidad,$data->estado,$data->id_reserva??null);
+        $data = json_decode($json);
+        return new Reserva($data->id_usuario, $data->id_servicio, $data->fecha, $data->cantidad, $data->estado, $data->id_reserva ?? null);
     }
 
     public function toJson()
     {
-        return json_encode($this,JSON_PRETTY_PRINT);
+        return json_encode($this, JSON_PRETTY_PRINT);
     }
 
 
 
     /**
      * Get the value of id_reserva
-     */ 
+     */
     public function getId_reserva()
     {
         return $this->id_reserva;
@@ -44,7 +46,7 @@ class Reserva extends ModelObject{
      * Set the value of id_reserva
      *
      * @return  self
-     */ 
+     */
     public function setId_reserva($id_reserva)
     {
         $this->id_reserva = $id_reserva;
@@ -54,7 +56,7 @@ class Reserva extends ModelObject{
 
     /**
      * Get the value of id_usuario
-     */ 
+     */
     public function getId_usuario()
     {
         return $this->id_usuario;
@@ -64,7 +66,7 @@ class Reserva extends ModelObject{
      * Set the value of id_usuario
      *
      * @return  self
-     */ 
+     */
     public function setId_usuario($id_usuario)
     {
         $this->id_usuario = $id_usuario;
@@ -74,7 +76,7 @@ class Reserva extends ModelObject{
 
     /**
      * Get the value of id_servicio
-     */ 
+     */
     public function getId_servicio()
     {
         return $this->id_servicio;
@@ -84,7 +86,7 @@ class Reserva extends ModelObject{
      * Set the value of id_servicio
      *
      * @return  self
-     */ 
+     */
     public function setId_servicio($id_servicio)
     {
         $this->id_servicio = $id_servicio;
@@ -94,7 +96,7 @@ class Reserva extends ModelObject{
 
     /**
      * Get the value of fecha
-     */ 
+     */
     public function getFecha()
     {
         return $this->fecha;
@@ -104,7 +106,7 @@ class Reserva extends ModelObject{
      * Set the value of fecha
      *
      * @return  self
-     */ 
+     */
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
@@ -114,7 +116,7 @@ class Reserva extends ModelObject{
 
     /**
      * Get the value of cantidad
-     */ 
+     */
     public function getCantidad()
     {
         return $this->cantidad;
@@ -124,7 +126,7 @@ class Reserva extends ModelObject{
      * Set the value of cantidad
      *
      * @return  self
-     */ 
+     */
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
@@ -133,7 +135,7 @@ class Reserva extends ModelObject{
     }
     /**
      * Get the value of estado
-     */ 
+     */
     public function getEstado()
     {
         return $this->estado;
@@ -143,7 +145,7 @@ class Reserva extends ModelObject{
      * Set the value of estado
      *
      * @return  self
-     */ 
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
@@ -151,46 +153,59 @@ class Reserva extends ModelObject{
         return $this;
     }
 }
-class ReservaModel extends Model{
-    public function getAllbyUser($id_usuario){
+class ReservaModel extends Model
+{
+    public function getAllbyUser($id_usuario)
+    {
         $sql = "SELECT * FROM reservas WHERE id_usuario = :id_usuario";
-        $pdo=self::getConnection();
-        $stmt=$pdo->prepare($sql);
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $reservas = [];
 
         try {
             $stmt->execute();
-            $resultado=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultado as $s) {
-                $reserva=new Reserva($s["id_usuario"],$s["id_servicio"],$s["fecha"],$s["cantidad"],$s["estado"],$s["id_reserva"]);
-                $reservas[]=$reserva;
+                $reserva = new Reserva($s["id_usuario"], $s["id_servicio"], $s["fecha"], $s["cantidad"], $s["estado"], $s["id_reserva"]);
+                $reservas[] = $reserva;
             }
         } catch (PDOException $e) {
             error_log("Error en ReservaModel->getAllByUser($id_usuario): " . $e->getMessage());
         } finally {
-            $stmt=null;
-            $pdo=null;
+            $stmt = null;
+            $pdo = null;
         }
         return $reservas;
     }
-    public function getAllByEmpresa($id_empresa){
+    public function getAllByEmpresa($id_empresa)
+    {
+        $pdo = self::getConnection();
+        $sqlUpdate = "UPDATE reservas r
+                  JOIN servicios s ON r.id_servicio = s.id_servicio
+                  SET r.estado = 'realizada'
+                  WHERE s.id_empresa = :id_empresa
+                    AND r.fecha < CURDATE()
+                    AND r.estado = 'pendiente'";
+        $stmtUpdate = $pdo->prepare($sqlUpdate);
+        $stmtUpdate->bindValue(':id_empresa', $id_empresa, PDO::PARAM_INT);
+        $stmtUpdate->execute();
+
         $sql = "SELECT r.id_reserva, r.id_usuario, r.id_servicio, r.fecha, r.cantidad, r.estado
         FROM reservas r
         JOIN servicios s ON r.id_servicio = s.id_servicio
         WHERE s.id_empresa = :id_empresa";
 
-        
-        $pdo = self::getConnection();
+
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':id_empresa', $id_empresa, PDO::PARAM_INT);
         $reservas = [];
         try {
             $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+
             foreach ($resultado as $r) {
-                $reserva = new Reserva($r["id_usuario"], $r["id_servicio"], $r["fecha"],$r["cantidad"], $r["estado"], $r["id_reserva"]);
+                $reserva = new Reserva($r["id_usuario"], $r["id_servicio"], $r["fecha"], $r["cantidad"], $r["estado"], $r["id_reserva"]);
                 $reservas[] = $reserva;
             }
         } catch (PDOException $e) {
@@ -201,74 +216,46 @@ class ReservaModel extends Model{
         }
         return $reservas;
     }
-    public function insert($reserva){
-        $sql="INSERT INTO reservas (id_usuario,id_servicio,fecha,cantidad,estado) VALUES (:id_usuario,:id_servicio,:fecha,:cantidad,:estado)";
-        $pdo=self::getConnection();
-        $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':id_usuario',$reserva->getId_usuario(),PDO::PARAM_INT);
-        $stmt->bindValue(':id_servicio',$reserva->getId_servicio(),PDO::PARAM_INT);
-        $stmt->bindValue(':fecha',$reserva->getFecha(),PDO::PARAM_STR);
-        $stmt->bindValue(':cantidad',$reserva->getCantidad(),PDO::PARAM_STR);
-        $stmt->bindValue(':estado',$reserva->getEstado(),PDO::PARAM_STR);
-        $resultado=false;
+    public function insert($reserva)
+    {
+        $sql = "INSERT INTO reservas (id_usuario,id_servicio,fecha,cantidad,estado) VALUES (:id_usuario,:id_servicio,:fecha,:cantidad,:estado)";
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id_usuario', $reserva->getId_usuario(), PDO::PARAM_INT);
+        $stmt->bindValue(':id_servicio', $reserva->getId_servicio(), PDO::PARAM_INT);
+        $stmt->bindValue(':fecha', $reserva->getFecha(), PDO::PARAM_STR);
+        $stmt->bindValue(':cantidad', $reserva->getCantidad(), PDO::PARAM_STR);
+        $stmt->bindValue(':estado', $reserva->getEstado(), PDO::PARAM_STR);
+        $resultado = false;
 
         try {
-            $resultado=$stmt->execute();
+            $resultado = $stmt->execute();
         } catch (PDOException $e) {
             error_log("Error en ReservaModel->insert($reserva): " . $e->getMessage());
-        } finally{
-            $stmt=null;
-            $pdo=null;
+        } finally {
+            $stmt = null;
+            $pdo = null;
         }
         return $resultado;
     }
-    public function update($reserva,$id_usuario,$id_reserva){
-        $sql="UPDATE reservas SET 
-        id_servicio=:id_servicio,
-        fecha=:fecha,
-        cantidad=:cantidad,
-        estado=:estado
-        WHERE id_usuario=:id_usuario AND id_reserva=:id_reserva";
 
-        $pdo=self::getConnection();
-        $stmt=$pdo->prepare($sql);
-        $stmt->bindValue(':id_servicio',$reserva->getId_servicio(),PDO::PARAM_INT);
-        $stmt->bindValue(':fecha',$reserva->getFecha(),PDO::PARAM_STR);
-        $stmt->bindValue(':cantidad',$reserva->getCantidad(),PDO::PARAM_STR);
-        $stmt->bindValue(':estado',$reserva->getEstado(),PDO::PARAM_STR);
-        $stmt->bindValue(':id_usuario',$id_usuario,PDO::PARAM_INT);
-        $stmt->bindValue(':id_reserva',$id_reserva,PDO::PARAM_INT);
-        $resultado=false;
-
-        try {
-            $stmt->execute();
-            $resultado=$stmt->rowCount() == 1;
-        } catch (PDOException $e) {
-            error_log("Error en ReservaModel->update($reserva,$id_reserva): " . $e->getMessage());
-        } finally{
-            $stmt=null;
-            $pdo=null;
-        }
-        return $resultado;
-    }
-    public function deletebyUser($id_usuario,$id_reserva){
-        $sql="DELETE FROM  reservas WHERE id_usuario = :id_usuario AND id_reserva=:id_reserva";
-        $pdo=self::getConnection();
-        $stmt=$pdo->prepare($sql);
+    public function deletebyUser($id_usuario, $id_reserva)
+    {
+        $sql = "DELETE FROM  reservas WHERE id_usuario = :id_usuario AND id_reserva=:id_reserva";
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
-        $stmt->bindValue(':id_reserva',$id_reserva,PDO::PARAM_INT);
-        $resultado=false;
+        $stmt->bindValue(':id_reserva', $id_reserva, PDO::PARAM_INT);
+        $resultado = false;
 
         try {
-            $resultado=$stmt->execute();
+            $resultado = $stmt->execute();
         } catch (PDOException $e) {
             error_log("Error en ReservaModel->deletebyUser($id_usuario,$id_reserva): " . $e->getMessage());
-        } finally{
-            $stmt=null;
-            $pdo=null;
+        } finally {
+            $stmt = null;
+            $pdo = null;
         }
         return $resultado;
     }
-
-
 }

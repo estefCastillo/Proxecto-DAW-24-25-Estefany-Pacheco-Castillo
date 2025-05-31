@@ -16,7 +16,7 @@ $nombre = $_SESSION["nombre"];
         name="description"
         content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="js/empresa.js"></script>
+    <script type="module" src="js/reservas.js"></script>
     <link rel="stylesheet" href="./css/admin_eu.css" />
 
     <title>Sambo-Admin</title>
@@ -25,21 +25,16 @@ $nombre = $_SESSION["nombre"];
 <body>
     <?php include './header.php'; ?>
     <main>
-        <h2>Bienvenido, <?= $nombre; ?>!</h2>
-        <section id="actions">
-            <ul>
-                <li><a href="./edit_empresa.php">Editar mi información</a></li>
-                <li><a href="./form_servicio.php">Añadir servicio</a></li>
-                <li><a href="./reservas.php">Mis reservas</a></li>
-            </ul>
-        </section>
-        <section id="mis_servicios">
+        <h2>Reservas de <?= $nombre; ?>!</h2>
+        <section id="mis_reservas">
             <h3>Mis servicios</h3>
-            <table id="tablaServicios">
+            <table id="tablaReservas">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Acciones</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                        <th>Contacto</th>
                     </tr>
 
                 </thead>
