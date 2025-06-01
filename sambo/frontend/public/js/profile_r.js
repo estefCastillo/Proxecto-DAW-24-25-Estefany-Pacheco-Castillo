@@ -27,7 +27,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
         localStorage.removeItem("usuario");
         window.location.href = "index.php";
       },
-      fError: (error) => {
+      fError: () => {
         Swal.fire({
           title: "No se ha podido cerrar sesión",
           icon: "error",
@@ -39,7 +39,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
 
   getReservas();
 });
-
+//Obtiene las reservas del usuario
 function getReservas() {
   ajax({
     url: `http://localhost/api/index.php/reserva/usuario/${id_usuario}`,
@@ -61,11 +61,17 @@ function getReservas() {
               let s = servicios.find(
                 (servicio) => servicio.id_servicio == el.id_servicio
               );
+              let estado = "";
+              if (el.estado.toLowerCase() == "pendiente") {
+                estado = "pendiente";
+              } else if (el.estado.toLowerCase() == "realizada") {
+                estado = "realizada";
+              }
               return `
                 <tr>
                   <td>${s.nombre}</td>
                   <td>${el.fecha}</td>
-                  <td>${el.estado}</td>
+                  <td class="${estado}">${estado.toUpperCase()}</td>
                   <td>${(s.precio * el.cantidad).toFixed(2)}</td>
                   <td>
                     <button class="btn-cancel" aria-label="Cancelar reserva" data-id="${
@@ -80,7 +86,7 @@ function getReservas() {
             })
             .join("");
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "Error obteniendo los servicios",
             icon: "error",
@@ -89,7 +95,7 @@ function getReservas() {
         },
       });
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error obteniendo las reservas",
         icon: "error",
@@ -98,8 +104,8 @@ function getReservas() {
     },
   });
 }
-
-$tbody.addEventListener("click", ev => {
+//Elimina las reservas indicadas
+$tbody.addEventListener("click", (ev) => {
   ev.preventDefault();
   if (ev.target.closest(".btn-cancel")) {
     let id_reserva = ev.target.closest(".btn-cancel").dataset.id;
@@ -126,15 +132,15 @@ $tbody.addEventListener("click", ev => {
               getReservas();
             });
           },
-          fError: (error) => {
+          fError: () => {
             Swal.fire({
-                title: "No se ha podido cancelar",
-                icon: "error",
-                timer: 1500,
-              })
-          }
+              title: "No se ha podido cancelar",
+              icon: "error",
+              timer: 1500,
+            });
+          },
         });
       }
-    }); 
+    });
   }
 });

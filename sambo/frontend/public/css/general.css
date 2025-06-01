@@ -7,286 +7,276 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --background-clr: #ffff;
-    --clr-principal: #3E7255;
-    --gold: #787408;
-    --princiapl-font: 'Work Sans', sans-serif;
-    --sec-font: 'Instrument Serif', serif;
+  --background-clr: #ffff;
+  --clr-principal: #3e7255;
+  --gold: #787408;
+  --princiapl-font: "Work Sans", sans-serif;
+  --sec-font: "Instrument Serif", serif;
 }
-header{
-    grid-row: 1;
-    width: 100vw;
+header {
+  grid-row: 1;
+  width: 100vw;
 }
-footer{
-    grid-row: 3;
-    width: 100vw;
+footer {
+  grid-row: 3;
+  width: 100vw;
 }
 body {
-    width: 100vw;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    background-color: var(--background-clr);
-    font-family: var(--princiapl-font);
-    color: rgb(54, 53, 53);
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--background-clr);
+  font-family: var(--princiapl-font);
+  color: rgb(54, 53, 53);
 }
 
-main{
-    margin-top: 90px;
-    grid-row: 2;
-    padding-bottom:2rem ;
-    min-height: calc(100vh - 340px); 
+main {
+  margin-top: 90px;
+  grid-row: 2;
+  padding-bottom: 2rem;
+  min-height: calc(100vh - 340px);
 }
 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 a:not(#login a) {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-a,a:visited {
-    color: black;
+a,
+a:visited {
+  color: black;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .portada h2 {
-    font-style: italic;
+  font-style: italic;
 }
 header h1 {
-    display: none;
+  display: none;
 }
 
-
 /*=====  End of Estilos generales  ======*/
-
-
 
 /*=============================================
 =            Estilos de la portada            =
 =============================================*/
 .portada {
-    width: 100vw;
-    height: 50vh;
-    background-color: black;
-    /*Wave identifica la imagen como background, por lo que se genera un error de contraste*/
-    background-image: url(../img/principal_1.png);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    color: rgb(255, 255, 255);
-    font-style: italic;
-    font-weight: lighter;
-    font-family: var(--sec-font);
-    padding-left: 5%;
-    padding-top: 4rem;
+  width: 100vw;
+  height: 50vh;
+  background-color: black;
+  /*Wave identifica la imagen como background, por lo que se genera un error de contraste*/
+  background-image: url(../img/principal_1.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-weight: lighter;
+  font-family: var(--sec-font);
+  padding-left: 5%;
+  padding-top: 4rem;
 }
 
 .portada h2:first-of-type {
-    padding: 0 1.5rem;
-    font-size: 1.5rem;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
 }
 
 .portada h2 {
-    letter-spacing: 0.06rem;
-    font-size: 2.5rem;
-    font-weight: 400;
-    padding: 0 1.5rem;
+  letter-spacing: 0.06rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  padding: 0 1.5rem;
 }
 
 /*=====  End of Estilos de la portada  ======*/
-
 
 /*=============================================
 =            Estilos de "Nosotros"            =
 =============================================*/
 .sambo {
-    color: var(--clr-principal);
-    font-weight: bold;
-    font-style: italic;
+  color: var(--clr-principal);
+  font-weight: bold;
+  font-style: italic;
 }
 
 #nosotros {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 #nosotros h3 {
-    color: var(--clr-principal);
-    font-family: var(--sec-font);
-    font-size: 3rem;
-    font-weight: 100;
-
+  color: var(--clr-principal);
+  font-family: var(--sec-font);
+  font-size: 3rem;
+  font-weight: 100;
 }
 
-#nosotros>span {
-    display: block;
-    width: 8px;
-    background-color: var(--clr-principal);
-    margin: 1.5rem;
-    height: auto;
+#nosotros > span {
+  display: block;
+  width: 8px;
+  background-color: var(--clr-principal);
+  margin: 1.5rem;
+  height: auto;
 }
 
 #nosotros section {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-    margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 1rem;
 }
 
 #more_info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 0rem;
 }
 
 #more_info figure {
-    width: 200px;
-    margin: 0 auto;
+  width: 200px;
+  margin: 0 auto;
 }
 
 /*=====  End of Estilos de "Nosotros"  ======*/
-
 
 /*=============================================
 =            Estilos de "beneficios"            =
 =============================================*/
 #beneficios {
-    background-color: var(--clr-principal);
-    color: var(--background-clr);
-    padding: 1.5rem;
+  background-color: var(--clr-principal);
+  color: var(--background-clr);
+  padding: 1.5rem;
 }
 
 #beneficios ul {
-    list-style: none;
-    font-family: var(--sec-font);
-    font-size: 2rem;
-    font-weight: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
+  list-style: none;
+  font-family: var(--sec-font);
+  font-size: 2rem;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
 }
 
 /*=====  End of Estilos de "beneficios"  ======*/
-
 
 /*=============================================
 =            Estilos de "comenzar"            =
 =============================================*/
 #comenzar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 1.5rem;
-    gap: 1rem;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  gap: 1rem;
 }
 
 #comenzar h4 {
-    color: var(--gold);
-    font-size: 1.5rem;
-    font-weight: 100;
-
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: 100;
 }
 
 #comenzar a {
-    background-color: var(--clr-principal);
-    border-radius: 20px;
-    padding: .75rem 2rem;
-    font-family: var(--princiapl-font);
-    letter-spacing: 1.2pxs;
-    font-size: 1.5rem;
-    color: var(--background-clr);
-    box-shadow: 1px 1px 4px var(--clr-principal);
-    align-self: center;
-    transition: all 0.4s ease-in-out;
+  background-color: var(--clr-principal);
+  border-radius: 20px;
+  padding: 0.75rem 2rem;
+  font-family: var(--princiapl-font);
+  letter-spacing: 1.2pxs;
+  font-size: 1.5rem;
+  color: var(--background-clr);
+  box-shadow: 1px 1px 4px var(--clr-principal);
+  align-self: center;
+  transition: all 0.4s ease-in-out;
 }
-#comenzar a:hover{
-    color: var(--clr-principal);
-    background-color: var(--background-clr);
+#comenzar a:hover {
+  color: var(--clr-principal);
+  background-color: var(--background-clr);
 }
 
 .scroll_services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-    gap: 1rem;
-    justify-content: center;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  gap: 1rem;
+  justify-content: center;
+}
 
 .card_service {
-    
-    box-shadow: 0px 0px 4px;
-    border-radius: 50px;
-    overflow: hidden;
-    width: 200px;
-    height: 250px;
-    font-family: var(--sec-font);
-    color: var(--background-clr);
-    position: relative;
-
+  box-shadow: 0px 0px 4px;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 200px;
+  height: 250px;
+  font-family: var(--sec-font);
+  color: var(--background-clr);
+  position: relative;
 }
-.card_service_img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.2s ease-in-out;
+.card_service_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
 }
 .card_service_img:hover img {
-    transform: scale(1.25);
+  transform: scale(1.25);
 }
 .card_service p {
-    position: absolute;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    text-align: center;
-    font-family: var(--sec-font);
-    /* font-weight: bold; */
-    font-size: 1.5rem;
+  position: absolute;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  text-align: center;
+  font-family: var(--sec-font);
+  /* font-weight: bold; */
+  font-size: 1.5rem;
 }
 
 /*=====  End of Estilos de "comenzar"  ======*/
 
-
 /*=============================================
 =            Estilos de los formularios            =
 =============================================*/
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
 }
 
 input[type="email"],
-input[type="password"],input[type="text"],input[type="tel"]  {
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
   padding: 0.5rem 1rem;
   border: 2px solid #ccc;
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 
-input[type="submit"]{
+input[type="submit"] {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--clr-principal);
@@ -305,7 +295,7 @@ input[type="submit"]:hover {
   outline: 1px solid var(--clr-principal);
 }
 
-button{
+button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--clr-principal);
@@ -317,11 +307,9 @@ button{
   margin: 1.2rem;
   transition: all 0.4s ease-in-out;
 }
-button:not(.btn-login,.btn-favorite):hover {
+button:not(.btn-login, .btn-favorite):hover {
   background-color: var(--background-clr);
   color: var(--clr-principal);
   outline: 1px solid var(--clr-principal);
 }
 /*=====  End of Estilos de los formularios  ======*/
-
-

@@ -116,7 +116,7 @@ $tbody.addEventListener("click", (ev) => {
               icon: "success",
               timer: 1500,
             })
-              getEmpresas();
+              getServicios();
             
           },
           fError: (error) => {

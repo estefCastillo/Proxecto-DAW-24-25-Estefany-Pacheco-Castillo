@@ -35,3 +35,15 @@ section#reservas{
  }
 
  }
+
+ .pendiente {
+  background-color: #fff8b5;
+  color: #7a6000;
+  font-weight: bold;
+}
+
+.realizada {
+  background-color: #c4f7c4;
+  color: #135213;
+  font-weight: bold;
+}

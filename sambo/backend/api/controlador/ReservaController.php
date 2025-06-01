@@ -23,10 +23,6 @@ public function getAllByEmpresa($id_empresa)
     }
 
     $reservas = $model->getAllByEmpresa($id_empresa);
-    if (empty($reservas)) {
-        Controller::errorMessage("No se encontraron reservas para la empresa",404);
-        die();
-    }
 
     echo json_encode($reservas, JSON_PRETTY_PRINT);
 }

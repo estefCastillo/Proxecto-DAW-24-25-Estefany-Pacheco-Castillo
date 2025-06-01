@@ -1,5 +1,5 @@
 <?php
-session_set_cookie_params(300);
+session_set_cookie_params(3600);
 session_start();
 include_once("modelo/EmpresaModel.php");
 include_once("modelo/UsuarioModel.php");
@@ -28,14 +28,15 @@ $empresa=$empresaModel->findbyEmail($correo);
 
 if ($usuario!=null) {
     if (password_verify($contrasena,$usuario->getContrasena())) {
-        $rol=$usuario->getRol();
-        $_SESSION["rol"]=$rol;
+        $_SESSION["rol"]=$usuario->getRol();
         $_SESSION["id_usuario"]=$usuario->getId_usuario();
         $_SESSION["nombre"]=$usuario->getNombre();
         $_SESSION["correo"]=$usuario->getCorreo();
 
+        setcookie('t_reset', 'on', time() + 3600, "", "", true, true);
+
         echo json_encode([
-            "rol" => $rol,
+            "rol" => $usuario->getRol(),
             "id" => $usuario->getId_usuario(),
             "nombre" => $usuario->getNombre(),
             "correo" => $usuario->getCorreo()
@@ -54,6 +55,9 @@ if ($empresa!=null) {
         $_SESSION["rol"] = "empresa";
         $_SESSION["id_empresa"] = $empresa->getId_empresa();
         $_SESSION["nombre"] = $empresa->getNombre_empresa();
+
+        setcookie('t_reset', 'on', time() + 3600
+        , "", "", true, true);
 
         echo json_encode([
             "rol" => "empresa",

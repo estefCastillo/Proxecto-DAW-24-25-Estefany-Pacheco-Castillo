@@ -11,10 +11,12 @@ main#s-reserva {
 .info-service{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.75rem;
     box-shadow: 0px 0px 5px;
     padding:2rem;
     border-radius: 10px;
+    width: 400px;
 }
 h2{
   font-size: 1.5rem;
@@ -33,4 +35,8 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.info-service img{
+  width: 250px;
+  height: 300px;
 }

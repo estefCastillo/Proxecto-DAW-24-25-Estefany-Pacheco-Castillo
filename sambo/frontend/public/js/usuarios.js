@@ -3,12 +3,12 @@ import ajax from "./ajaxTemplate.js";
 const $d = document,
   $tbody = $d.querySelector("tbody");
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -20,11 +20,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("usuario");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
@@ -37,6 +37,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   getUsuarios();
 });
 
+//Renderizado de los usuarios
 function getUsuarios() {
   ajax({
     url: "http://localhost/api/index.php/usuario",
@@ -63,7 +64,7 @@ function getUsuarios() {
         )
         .join("");
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al obtener los usuarios",
         icon: "error",
@@ -73,6 +74,7 @@ function getUsuarios() {
   });
 }
 
+//Eliminar usuarios
 $tbody.addEventListener("click", (ev) => {
   if (ev.target.closest(".btn-delete")) {
     let id_usuario = ev.target.closest(".btn-delete").dataset.id;
@@ -89,7 +91,7 @@ $tbody.addEventListener("click", (ev) => {
         ajax({
           url: `http://localhost/api/index.php/usuario/${id_usuario}`,
           method: "DELETE",
-          fExito: (json) => {
+          fExito: () => {
             Swal.fire({
               title: "Usuario eliminado con éxito!",
               icon: "success",
@@ -98,7 +100,7 @@ $tbody.addEventListener("click", (ev) => {
               getUsuarios();
             });
           },
-          fError: (error) => {
+          fError: () => {
             Swal.fire({
               title: "No se ha podido eliminar",
               icon: "error",

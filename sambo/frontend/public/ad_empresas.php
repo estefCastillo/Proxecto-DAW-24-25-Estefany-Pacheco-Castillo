@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
     header("Location: index.php");
@@ -14,8 +14,9 @@ if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
     <metaac
         name="description"
         content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
+    <script src="js/session.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script type="module" src="js/empresas.js"></script>
+    <script type="module" src="js/empresas.js"></script>
     <link rel="stylesheet" href="./css/admin_eu.css" />
 
     <title>Sambo-Admin</title>

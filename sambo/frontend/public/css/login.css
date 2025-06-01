@@ -1,49 +1,49 @@
 @import "./general.css";
 
-header{
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    height: 200px;
+/*=============================================
+=            Estilos del login y registrp            =
+=============================================*/
+header {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  height: 200px;
+}
+header a img {
+  width: 250px;
+}
+#register {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--princiapl-font);
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  justify-content: center;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 100;
+  color: var(--clr-principal);
+  text-align: center;
+  padding: 0.5rem;
+}
+main p > a:hover {
+  color: var(--clr-principal);
+}
+.error {
+  color: red;
+  font-size: 0.75rem;
+}
+.valido {
+  color: green;
+  font-size: 0.75rem;
+}
+footer {
+  background-color: var(--clr-principal);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
 }
 
-header a img{
-width: 250px;
-}
-
-#register{
-    display: flex;
-    flex-direction: column;
-    font-family: var(--princiapl-font);
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    justify-content: center;
-}
-h2{
-    font-size: 2rem;
-    font-weight: 100;
-    color: var(--clr-principal);
-    text-align: center;
-    padding: .5rem;
-}
-
-main p>a:hover{
-    color:var(--clr-principal);
-}
-
-.error{
-    color: red;
-    font-size: 0.75rem;
-}
-.valido{
-    color: green;
-    font-size: 0.75rem;
-}
-
-footer{
-    background-color: var(--clr-principal);
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-}
+/*=====  End of Estilos del login y registrp  ======*/

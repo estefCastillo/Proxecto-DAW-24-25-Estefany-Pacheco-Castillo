@@ -10,13 +10,13 @@ $correo = $_SESSION["correo"];
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <metaac
     name="description"
     content="Sambo: la plataforma donde puedes encontrar distintos servicios para tus eventos." />
+  <script src="js/session.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="js/profile_r.js"></script>
   <link rel="stylesheet" href="./css/reservas.css" />
@@ -27,7 +27,7 @@ $correo = $_SESSION["correo"];
 <body>
   <?php include './header.php'; ?>
   <main>
-      <h2>¡Hola, <?= $nombre; ?> !</h2>
+    <h2>¡Hola, <?= $nombre; ?> !</h2>
 
     <section id="reservas">
       <h3>Mis reservas: </h3>

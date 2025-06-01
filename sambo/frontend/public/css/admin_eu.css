@@ -1,60 +1,84 @@
 @import "./general.css";
-#empresas,#usuarios,#mis_servicios,#mis_reservas {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    gap: 1rem;
+
+/*=============================================
+=            Estilos de las tablas            =
+=============================================*/
+#empresas,
+#usuarios,
+#mis_servicios,
+#mis_reservas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 1rem;
 }
-h2{
-  font-size:2rem;
+h2 {
+  font-size: 2rem;
   text-align: center;
   padding: 1.5rem;
 }
-#tablaEmpresas,#tablaUsuarios,#tablaServicios,#tablaReservas{
-    border-collapse: collapse;
-    
- }
- #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td,#tablaServicios th, #tablaServicios td, #tablaReservas th, #tablaReservas td{
-    border: 1px solid;
-    padding: .75rem;
-    margin: .75rem;
-    text-align: center;
- }
- 
+#tablaEmpresas,
+#tablaUsuarios,
+#tablaServicios,
+#tablaReservas {
+  border-collapse: collapse;
+}
+#tablaEmpresas th,
+#tablaEmpresas td,
+#tablaUsuarios th,
+#tablaUsuarios td,
+#tablaServicios th,
+#tablaServicios td,
+#tablaReservas th,
+#tablaReservas td {
+  border: 1px solid;
+  padding: 0.75rem;
+  margin: 0.75rem;
+  text-align: center;
+}
+
+/*=====  End of Estilos de las tablas  ======*/
 
 /*=============================================
 =            Estilos de las acciones      =
 =============================================*/
 
-section#actions ul{
+section#actions ul {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 /*=====  End of Estilos de las acction  ======*/
 
- @media screen and (max-width:500px) {
-    #tablaEmpresas th, #tablaEmpresas td, #tablaUsuarios th, #tablaUsuarios td,#tablaServicios th, #tablaServicios td, #tablaReservas th, #tablaReservas td{
+@media screen and (max-width: 500px) {
+  #tablaEmpresas th,
+  #tablaEmpresas td,
+  #tablaUsuarios th,
+  #tablaUsuarios td,
+  #tablaServicios th,
+  #tablaServicios td,
+  #tablaReservas th,
+  #tablaReservas td {
     border: 1px solid;
-    padding: .1rem;
-    margin: .1rem;
-    font-size: .75rem;
- }}
-
+    padding: 0.1rem;
+    margin: 0.1rem;
+    font-size: 0.75rem;
+  }
+}
 
 /*=============================================
 =            Estilos de los estados            =
 =============================================*/
 .pendiente {
-  background-color: #fff8b5; 
+  background-color: #fff8b5;
   color: #7a6000;
   font-weight: bold;
 }
@@ -65,6 +89,4 @@ section#actions ul{
   font-weight: bold;
 }
 
-
 /*=====  End of Estilos de los estados  ======*/
-

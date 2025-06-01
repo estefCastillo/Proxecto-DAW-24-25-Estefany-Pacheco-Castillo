@@ -8,7 +8,9 @@ const $d = document,
   $tipo_precio = $d.querySelector("#tipo_precio"),
   $imagen = $d.querySelector("#imagen"),
   $categoria = $d.querySelector("#categoria"),
-  $ubicacion = $d.querySelector("#ubicacion");
+  $ubicacion = $d.querySelector("#ubicacion"),
+  url = new URLSearchParams(window.location.search),
+  id_servicio = url.get("id");
 
 let id_empresa = localStorage.getItem("empresa")
   ? JSON.parse(localStorage.getItem("empresa")).id
@@ -18,7 +20,7 @@ $servicioForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
   let descripcion = $descripcion.value.trim();
-  let precio = $precio.value.trim();
+  let precio = parseFloat($precio.value.trim());
   let tipo_precio = $tipo_precio.value.trim();
   let imagen = $imagen.value.trim();
   let categoria = $categoria.value.trim();
@@ -44,11 +46,11 @@ $servicioForm.addEventListener("submit", (ev) => {
   }
 
   ajax({
-    url: "http://localhost/api/index.php/servicio",
-    method: "POST",
+    url: `http://localhost/api/index.php/servicio/${id_servicio}`,
+    method: "PUT",
     fExito: (json) => {
         Swal.fire({
-        title: "Servicio añadido!",
+        title: "Servicio modificado!",
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
@@ -58,7 +60,7 @@ $servicioForm.addEventListener("submit", (ev) => {
     },
     fError: (error) => {
       Swal.fire({
-        title: "Error al añadir el servicio",
+        title: "Error al editar el servicio",
         icon: "error",
         timer: 1500,
         showConfirmButton: false,

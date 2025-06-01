@@ -24,11 +24,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("empresa");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
@@ -40,16 +40,16 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   }
   getReservas();
 });
-
+//Renderiza las reservas de una empresa en concreto
 function getReservas() {
   ajax({
     url: `http://localhost/api/index.php/reserva/${id_empresa}`,
     method: "GET",
     fExito: (reservas) => {
-      if (reservas.length === 0) {
+      if (reservas.length == 0) {
         $tbody.innerHTML = `
           <tr>
-            <td colspan="4">Aún no tiene reservas</td>
+            <td colspan="5">Aún no tiene reservas</td>
           </tr>`;
         return;
       }
@@ -60,14 +60,20 @@ function getReservas() {
         fExito: (usuarios) => {
           $tbody.innerHTML = reservas
             .map((el) => {
-              let correo = usuarios.find((u) => u.id_usuario == el.id_usuario).correo;
+              let correo = usuarios.find(
+                (u) => u.id_usuario == el.id_usuario
+              ).correo;
               let estado = "";
-  if (el.estado.toLowerCase() === "pendiente") estado = "pendiente";
-  else if (el.estado.toLowerCase() === "realizada") estado = "realizada";
+              if (el.estado.toLowerCase() == "pendiente") {
+                estado = "pendiente";
+              } else if (el.estado.toLowerCase() == "realizada") {
+                estado = "realizada";
+              }
               return `
                 <tr>
                   <td>${el.fecha}</td>
                   <td>${el.cantidad}</td>
+                  <td>${el.precio_total}</td>
                   <td class="${estado}">${el.estado.toUpperCase()}</td>
                   <td><a href="mailto:${correo}">${correo}</a></td>
                 </tr>`;
@@ -80,7 +86,7 @@ function getReservas() {
             icon: "error",
             timer: 1500,
           });
-        }
+        },
       });
     },
     fError: () => {

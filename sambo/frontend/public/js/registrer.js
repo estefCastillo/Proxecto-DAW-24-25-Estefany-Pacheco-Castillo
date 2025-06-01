@@ -10,11 +10,16 @@ const $d = document,
   $e_contrasena = $d.querySelector("#e_contrasena"),
   $e_contrasena2 = $d.querySelector("#e_contrasena2");
 
-let admin = localStorage.getItem("usuario") ? JSON.parse(localStorage.getItem("usuario")).rol=="admin" : false
+let admin = localStorage.getItem("usuario")
+  ? JSON.parse(localStorage.getItem("usuario")).rol == "admin"
+  : false;
+
+//Expresiones reguolares para validar el correo y la contraseña  
 let regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 let regex_contrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-$correo.addEventListener("input", (ev) => {
+//Indica si el correo es válido
+$correo.addEventListener("input", () => {
   if (!regex_email.test($correo.value.trim())) {
     $e_correo.classList.remove("valido");
     $e_correo.classList.add("error");
@@ -25,8 +30,8 @@ $correo.addEventListener("input", (ev) => {
     $e_correo.textContent = "Formato válido!";
   }
 });
-
-$contrasena.addEventListener("input", (ev) => {
+//Indica si la contraseña es válida
+$contrasena.addEventListener("input", () => {
   if (!regex_contrasena.test($contrasena.value.trim())) {
     $e_contrasena.classList.remove("valido");
     $e_contrasena.classList.add("error");
@@ -38,8 +43,8 @@ $contrasena.addEventListener("input", (ev) => {
     $e_contrasena.textContent = "Contraseña válida!";
   }
 });
-
-$contrasena2.addEventListener("input", (ev) => {
+//Indica si la segunda contraseña es igual a la primera
+$contrasena2.addEventListener("input", () => {
   if ($contrasena.value.trim() != $contrasena2.value.trim()) {
     $e_contrasena2.classList.remove("valido");
     $e_contrasena2.classList.add("error");
@@ -52,8 +57,8 @@ $contrasena2.addEventListener("input", (ev) => {
     }
   }
 });
-
-$registrerForm.addEventListener("submit", (ev) => {
+//Registra y redirige según el usuario.
+$registrerForm.addEventListener("submit", () => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
   let correo = $correo.value.trim();
@@ -104,29 +109,29 @@ $registrerForm.addEventListener("submit", (ev) => {
   ajax({
     url: "http://localhost/api/index.php/usuario",
     method: "POST",
-    fExito: (json) => {
+    fExito: () => {
       if ($registrerForm) {
         $registrerForm.reset();
       }
       Swal.fire({
-  title: "Usuario registrado!",
-  icon: "success",
-  timer: 1500,
-  showConfirmButton: false,
-});
+        title: "Usuario registrado!",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
 
       [$e_correo, $e_contrasena, $e_contrasena2].forEach((el) => {
         el.classList.remove("error", "valido");
         el.textContent = "";
       });
-      if(admin){
+      if (admin) {
         window.location.href = "administration.php";
-      }else{
+      } else {
         window.location.href = "login.php";
       }
     },
 
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al registrar",
         icon: "error",
@@ -142,9 +147,9 @@ $registrerForm.addEventListener("submit", (ev) => {
       });
     },
     data: {
-      nombre: nombre,
-      correo: correo,
-      contrasena: contrasena,
+      nombre,
+      correo,
+      contrasena,
     },
   });
 });

@@ -9,9 +9,9 @@ class Reserva extends ModelObject
     public string $fecha;
     public float $cantidad;
     public string $estado;
+    public float $precio_total;
 
-
-    public function __construct($id_usuario, $id_servicio, $fecha, $cantidad, $estado, $id_reserva = null)
+    public function __construct($id_usuario, $id_servicio, $fecha, $cantidad, $estado,$precio_total, $id_reserva = null)
     {
         $this->id_reserva = $id_reserva;
         $this->id_usuario = $id_usuario;
@@ -19,12 +19,13 @@ class Reserva extends ModelObject
         $this->fecha = $fecha;
         $this->cantidad = $cantidad;
         $this->estado = $estado;
+        $this->precio_total=$precio_total;
     }
 
     public static function fromjson($json)
     {
         $data = json_decode($json);
-        return new Reserva($data->id_usuario, $data->id_servicio, $data->fecha, $data->cantidad, $data->estado, $data->id_reserva ?? null);
+        return new Reserva($data->id_usuario, $data->id_servicio, $data->fecha, $data->cantidad, $data->estado,$data->precio_total, $data->id_reserva ?? null);
     }
 
     public function toJson()
@@ -152,6 +153,25 @@ class Reserva extends ModelObject
 
         return $this;
     }
+        /**
+     * Get the value of precio_total
+     */
+    public function getPrecio_total()
+    {
+        return $this->precio_total;
+    }
+
+    /**
+     * Set the value of precio_total
+     *
+     * @return  self
+     */
+    public function setPrecio_total($precio_total)
+    {
+        $this->precio_total = $precio_total;
+
+        return $this;
+    }
 }
 class ReservaModel extends Model
 {
@@ -218,7 +238,7 @@ class ReservaModel extends Model
     }
     public function insert($reserva)
     {
-        $sql = "INSERT INTO reservas (id_usuario,id_servicio,fecha,cantidad,estado) VALUES (:id_usuario,:id_servicio,:fecha,:cantidad,:estado)";
+        $sql = "INSERT INTO reservas (id_usuario,id_servicio,fecha,cantidad,estado,precio_total) VALUES (:id_usuario,:id_servicio,:fecha,:cantidad,:estado,:precio_total)";
         $pdo = self::getConnection();
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $reserva->getId_usuario(), PDO::PARAM_INT);
@@ -226,6 +246,8 @@ class ReservaModel extends Model
         $stmt->bindValue(':fecha', $reserva->getFecha(), PDO::PARAM_STR);
         $stmt->bindValue(':cantidad', $reserva->getCantidad(), PDO::PARAM_STR);
         $stmt->bindValue(':estado', $reserva->getEstado(), PDO::PARAM_STR);
+        $stmt->bindValue(':precio_total', $reserva->getPrecio_total(), PDO::PARAM_STR);
+
         $resultado = false;
 
         try {

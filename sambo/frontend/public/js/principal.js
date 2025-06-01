@@ -11,28 +11,29 @@ let id_usuario = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).id
   : null;
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
   });
 
   if ($logout) {
-    $logout.addEventListener("click", (ev) => {
+    $logout.addEventListener("click", () => {
       ev.preventDefault();
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("usuario");
+          localStorage.removeItem("admin");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
@@ -46,7 +47,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   renderCategories();
   fetchServicios();
 });
-
+//Renderiza las categorías disponibles
 function renderCategories() {
   ajax({
     url: "http://localhost/api/index.php/servicio/categorias",
@@ -97,7 +98,7 @@ function fetchServicios() {
     },
   });
 }
-
+//Filtra los servicios para mostrarlos a continuación
 function filtrarServicios(categoria) {
   let servicios =
     categoria === "todos"
@@ -105,7 +106,7 @@ function filtrarServicios(categoria) {
       : allServices.filter((el) => el.categoria.toLowerCase() === categoria);
   showServicios(servicios);
 }
-
+//Muestra los servicios
 function showServicios(servicios) {
   if (!servicios.length) {
     return ($servicios.innerHTML =

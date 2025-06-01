@@ -5,6 +5,7 @@ const $d = document,
   url = new URLSearchParams(window.location.search),
   id_servicio = url.get("id");
 
+//Obtiene el id del usuario
 let id_usuario = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).id
   : null;
@@ -30,7 +31,7 @@ $d.addEventListener("DOMContentLoaded", () => {
           localStorage.removeItem("usuario");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
@@ -43,7 +44,7 @@ $d.addEventListener("DOMContentLoaded", () => {
 
   getServicio();
 });
-
+//Obtiene la información del servicio
 function getServicio() {
   ajax({
     url: `http://localhost/api/index.php/servicio/${id_servicio}`,
@@ -51,7 +52,7 @@ function getServicio() {
     fExito: (servicio) => {
       renderServicio(servicio);
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al obtener el servicio",
         icon: "error",
@@ -60,7 +61,7 @@ function getServicio() {
     },
   });
 }
-
+//Renderiza el servicio
 function renderServicio(servicio) {
   $main.innerHTML = `
   <section class="info-service">
@@ -86,6 +87,7 @@ function renderServicio(servicio) {
       <button type="submit">Reservar</button>
     </form>
   </section>`;
+  //Limita la opción de realizar las reservas al día
   let fecha = $d.querySelector("#fecha");
   let fecha_actual = new Date();
   let anho = fecha_actual.getFullYear();
@@ -95,7 +97,9 @@ function renderServicio(servicio) {
   let hoy = `${anho}-${mes}-${dia}`;
   fecha.min = hoy;
 
+  //Realiza la reserva si ya ha iniciado la sesión
   let $form = $d.querySelector("#reservaForm");
+
   $form.addEventListener("submit", (ev) => {
     ev.preventDefault();
     if (!id_usuario) {
@@ -119,7 +123,7 @@ function renderServicio(servicio) {
         icon: "warning",
         timer: 1500,
       });
-      return
+      return;
     }
     ajax({
       url: "http://localhost/api/index.php/reserva",
@@ -134,7 +138,7 @@ function renderServicio(servicio) {
         });
         $form.reset();
       },
-      fError: (error) => {
+      fError: () => {
         Swal.fire({
           title: "No se ha podido reservar",
           icon: "error",
@@ -142,10 +146,11 @@ function renderServicio(servicio) {
         });
       },
       data: {
-        id_usuario: id_usuario,
+        id_usuario,
         id_servicio: servicio.id_servicio,
         fecha,
         cantidad,
+        precio_total: totalPrice,
         estado: "pendiente",
       },
     });
