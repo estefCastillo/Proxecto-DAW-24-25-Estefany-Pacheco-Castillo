@@ -22,6 +22,14 @@ En mi caso, solo conocía el 404 (Not Found), así que tuve que buscar más info
 
 Con respecto a los modelos no tuve ningún problema grande, sí que tuve errores pero la mayoría eran ortográficos, pero sí que quiero destacar que un error que se repitió fue hacer que el id (de cualquier modelo) sea null, al insertar o crear una instancia. Este error no lo había tenido nunca ya que con "id_ejemplo=null" bastaba. Lo conseguí mediante el uso de "**?**" en la declaración de la variables, permitiendo así que pueda ser null (ya que el id, es incremental).
 
+Para no reescribir continuamente el "header" y el "footer" en todas las páginas html, decidí crear componentes, sin utilizar ningun framework. En un inicio, hice componentes web mediante JavaScript. Aprendí a crearlos y su uso, sin embargo, yo quería que la cabcera funcionase según la sesión, por lo que tuve que mudar mis componentes a archivos php.
+
+Un error que me costó encontrar el motivo fue el posicionamiento del footer. Mi "body", tenía la misma estructura que siempre realicé en clase, nunca tuve problemas con el uso de "grid-template-rows: auto 1fr auto", sin embargo al no tener mucho contenido, el "footer" no permanecía en el fondo de la página. Descubrí que "grid" no identificaba la cabecera al ser fija. Lo solucioné asignando a "header", "main" y "footer" sus filas correspondientes con "grid-row".
+
+Otro error destacable es que nunca se destruía la sesión, ya que en un inicio no tenía ningun archivo para ello y tampoco destruía la sesión manualmente. Esto lo solucione con los archivos session.php y session.js
+
+También tuve problemas al validar que los usuarios no pudieran realizar reservas en fechas pasadas, por ello añadí una validación en JavaScript.
+
 ## 2- Prototipos
 
 [Prototipo](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
@@ -32,7 +40,7 @@ No se han utilizado nuevas tecnologías.
 
 ## 4- Probas
 
-- **Carga de la página inicial**: Al principio, al no haber mucho contenido, el pie de página no se mantenía en su lugar. Descubrí que "grid" no identificaba la cabecera al ser fija. Lo solucioné asignando a "header", "main" y "footer" sus filas correspondientes con "grid-row".
+- **Carga de la página inicial**: Al principio, al no haber mucho contenido, el pie de página no se mantenía en su lugar. 
 
 - **Iniciar sesión**: Funciona correctamente.
 

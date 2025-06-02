@@ -61,7 +61,7 @@ $contrasena2.addEventListener("input", () => {
 });
 
 //Modifica los datos de un usuario
-$registrerForm.addEventListener("submit", () => {
+$registrerForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
   let correo = $correo.value.trim();
@@ -128,7 +128,7 @@ $registrerForm.addEventListener("submit", () => {
         el.textContent = "";
       });
       if (admin) {
-        window.location.href = "ad_usuarios.php";
+        window.location.href = "administration.php";
       } else {
         window.location.href = "login.php";
       }

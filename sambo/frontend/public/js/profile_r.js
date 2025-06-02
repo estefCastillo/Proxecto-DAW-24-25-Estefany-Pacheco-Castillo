@@ -58,6 +58,8 @@ function getReservas() {
         fExito: (servicios) => {
           $tbody.innerHTML = json
             .map((el) => {
+              console.log(el.id_reserva);
+              console.log("Elemento de reserva:", el);
               let s = servicios.find(
                 (servicio) => servicio.id_servicio == el.id_servicio
               );
@@ -74,9 +76,7 @@ function getReservas() {
                   <td class="${estado}">${estado.toUpperCase()}</td>
                   <td>${(s.precio * el.cantidad).toFixed(2)}</td>
                   <td>
-                    <button class="btn-cancel" aria-label="Cancelar reserva" data-id="${
-                      el.id_reserva
-                    }">
+                    <button class="btn-cancel" aria-label="Cancelar reserva" data-id="${el.id_reserva}">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
                         <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
                       </svg>
@@ -106,9 +106,10 @@ function getReservas() {
 }
 //Elimina las reservas indicadas
 $tbody.addEventListener("click", (ev) => {
-  ev.preventDefault();
   if (ev.target.closest(".btn-cancel")) {
     let id_reserva = ev.target.closest(".btn-cancel").dataset.id;
+    console.log(id_reserva);
+    
     Swal.fire({
       title: "¿Está seguro de cancelar su reserva?",
       icon: "warning",

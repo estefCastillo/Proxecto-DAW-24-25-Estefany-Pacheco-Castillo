@@ -190,7 +190,7 @@ class ReservaModel extends Model
             $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultado as $s) {
-                $reserva = new Reserva($s["id_usuario"], $s["id_servicio"], $s["fecha"], $s["cantidad"], $s["estado"], $s["id_reserva"]);
+                $reserva = new Reserva($s["id_usuario"], $s["id_servicio"], $s["fecha"], $s["cantidad"], $s["estado"],$s["precio_total"], $s["id_reserva"]);
                 $reservas[] = $reserva;
             }
         } catch (PDOException $e) {
@@ -230,7 +230,7 @@ class ReservaModel extends Model
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($resultado as $r) {
-                $reserva = new Reserva($r["id_usuario"], $r["id_servicio"], $r["fecha"], $r["cantidad"], $r["estado"], $r["id_reserva"]);
+                $reserva = new Reserva($r["id_usuario"], $r["id_servicio"], $r["fecha"], $r["cantidad"], $r["estado"],$r["precio_total"], $r["id_reserva"]);
                 $reservas[] = $reserva;
             }
         } catch (PDOException $e) {

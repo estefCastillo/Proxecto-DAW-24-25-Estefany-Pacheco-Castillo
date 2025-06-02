@@ -93,7 +93,7 @@ function getServicios() {
 }
 
 //Elimina un servicio de una empresa
-$tbody.addEventListener("click", () => {
+$tbody.addEventListener("click", (ev) => {
   ev.preventDefault();
   if (ev.target.closest(".btn-delete")) {
     let id_servicio = ev.target.closest(".btn-delete").dataset.id;
