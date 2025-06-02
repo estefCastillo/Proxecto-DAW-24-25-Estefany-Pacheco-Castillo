@@ -11,7 +11,7 @@ class Reserva extends ModelObject
     public string $estado;
     public float $precio_total;
 
-    public function __construct($id_usuario, $id_servicio, $fecha, $cantidad, $estado,$precio_total, $id_reserva = null)
+    public function __construct($id_usuario, $id_servicio, $fecha, $cantidad, $estado, $precio_total, $id_reserva = null)
     {
         $this->id_reserva = $id_reserva;
         $this->id_usuario = $id_usuario;
@@ -19,15 +19,17 @@ class Reserva extends ModelObject
         $this->fecha = $fecha;
         $this->cantidad = $cantidad;
         $this->estado = $estado;
-        $this->precio_total=$precio_total;
+        $this->precio_total = $precio_total;
     }
 
+    //Crea un objeto Reserva a partir de un json
     public static function fromjson($json)
     {
         $data = json_decode($json);
-        return new Reserva($data->id_usuario, $data->id_servicio, $data->fecha, $data->cantidad, $data->estado,$data->precio_total, $data->id_reserva ?? null);
+        return new Reserva($data->id_usuario, $data->id_servicio, $data->fecha, $data->cantidad, $data->estado, $data->precio_total, $data->id_reserva ?? null);
     }
 
+    //Convierte a json un objeto Reserva
     public function toJson()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
@@ -153,7 +155,7 @@ class Reserva extends ModelObject
 
         return $this;
     }
-        /**
+    /**
      * Get the value of precio_total
      */
     public function getPrecio_total()
@@ -175,6 +177,7 @@ class Reserva extends ModelObject
 }
 class ReservaModel extends Model
 {
+    //Obtiene las reservas de un usuario
     public function getAllbyUser($id_usuario)
     {
         $sql = "SELECT * FROM reservas WHERE id_usuario = :id_usuario";
@@ -198,6 +201,8 @@ class ReservaModel extends Model
         }
         return $reservas;
     }
+
+    //Obtiene todas las reservas que tiene una empresa 
     public function getAllByEmpresa($id_empresa)
     {
         $pdo = self::getConnection();
@@ -236,6 +241,8 @@ class ReservaModel extends Model
         }
         return $reservas;
     }
+
+    //Añade una nueva reserva
     public function insert($reserva)
     {
         $sql = "INSERT INTO reservas (id_usuario,id_servicio,fecha,cantidad,estado,precio_total) VALUES (:id_usuario,:id_servicio,:fecha,:cantidad,:estado,:precio_total)";
@@ -261,6 +268,7 @@ class ReservaModel extends Model
         return $resultado;
     }
 
+    //Elimina una reserva según su id y el id de usuario
     public function deletebyUser($id_usuario, $id_reserva)
     {
         $sql = "DELETE FROM  reservas WHERE id_usuario = :id_usuario AND id_reserva=:id_reserva";

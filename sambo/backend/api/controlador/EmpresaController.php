@@ -3,7 +3,7 @@ include_once(__DIR__ . "/../modelo/EmpresaModel.php");
 include_once("Controller.php");
 class EmpresaController extends Controller
 {
-
+    //Obtiene la empresa según su id
     public function get($id)
     {
         $model = new EmpresaModel();
@@ -19,6 +19,7 @@ class EmpresaController extends Controller
         echo json_encode($empresa, JSON_PRETTY_PRINT);
     }
 
+    //Obtiene todas las empresas
     public function getAll()
     {
         $model = new EmpresaModel();
@@ -26,6 +27,7 @@ class EmpresaController extends Controller
         echo json_encode($empresas, JSON_PRETTY_PRINT);
     }
 
+    //Elimina la empresa según su id
     public function delete($id)
     {
         $model = new EmpresaModel();
@@ -41,6 +43,7 @@ class EmpresaController extends Controller
         }
     }
 
+    //Modifica la empresa con los datos del objeto dado y según su id 
     public function update($id, $object)
     {
         $model = new EmpresaModel();
@@ -64,6 +67,7 @@ class EmpresaController extends Controller
         }
     }
 
+    //Añade una empresa
     public function insert($object)
     {
         $model = new EmpresaModel();

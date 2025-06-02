@@ -12,6 +12,16 @@
 
 [Sambo](../../sambo/)
 
+**Problemas obtenidos:**
+Al comenzar con la codificación, decidí empezar por la API, ya que una vez terminada, podría utilizarla en el frontend sin tener que modificar nada.  
+Para ello, decidí basarme en la API realizada en clase. Los métodos de los modelos y controladores, inicialmente, eran los mismos, sin embargo, más adelante me di cuenta de que algunos tenían funcionalidades innecesarias.
+
+Al probar la API mediante una [extensión de Google](https://chromewebstore.google.com/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm), siempre que había un error, se devolvía un código 404. Esto se debía a que me basé exactamente en la versión realizada en clase, ya que el método que utilizaba ("sendNotFound") devolvía siempre ese código.  
+Para solucionarlo, creé el método "errorMessage", de esta forma puedo personalizar el código HTTP y el mensaje de error.
+En mi caso, solo conocía el 404 (Not Found), así que tuve que buscar más información sobre el significado de otros códigos de estado HTTP (toda la información está adjunta en el apartado de [Referencias](./6_Referencias.md)).
+
+Con respecto a los modelos no tuve ningún problema grande, sí que tuve errores pero la mayoría eran ortográficos, pero sí que quiero destacar que un error que se repitió fue hacer que el id (de cualquier modelo) sea null, al insertar o crear una instancia. Este error no lo había tenido nunca ya que con "id_ejemplo=null" bastaba. Lo conseguí mediante el uso de "**?**" en la declaración de la variables, permitiendo así que pueda ser null (ya que el id, es incremental).
+
 ## 2- Prototipos
 
 [Prototipo](https://www.figma.com/design/33aaDwk6hJCFWibN3ECjLV/Sambo?node-id=0-1&t=9BBikmzGAufljyMd-1)
@@ -22,6 +32,47 @@ No se han utilizado nuevas tecnologías.
 
 ## 4- Probas
 
-Deben describirse as probas realizadas e conclusión obtidas. Describir os problemas atopados e como foron solucionados.
+- **Carga de la página inicial**: Al principio, al no haber mucho contenido, el pie de página no se mantenía en su lugar. Descubrí que "grid" no identificaba la cabecera al ser fija. Lo solucioné asignando a "header", "main" y "footer" sus filas correspondientes con "grid-row".
+
+- **Iniciar sesión**: Funciona correctamente.
+
+- **Registrarse**: Se validan los inputs del formulario. Si algún valor es incorrecto, se muestra un mensaje al usuario mediante "alerts". Si todos los valores son correctos, el registro se realiza sin problemas.
+
+- **Buscar**: Permite buscar por nombre correctamente. Si no hay coincidencias, se muestra un mensaje informativo. El pie de página se mantiene en su lugar aunque haya poco contenido.
+
+- **Filtrar por categoría**: Se muestran los servicios filtrados según la categoría seleccionada.
+
+- **Cerrar sesión**: Al pulsar en “Cerrar sesión”, se elimina el usuario del "localStorage" y se destruye la sesión en el servidor.
+
+- **Ver favoritos**: Si no hay favoritos guardados, se muestra un mensaje. Si los hay, se muestran correctamente. No se puede acceder a esta página sin sesión iniciada.
+
+- **Ver mi perfil de usuario**: Se muestra el nombre del usuario y las reservas realizadas. También permite eliminar la cuenta con confirmación.
+
+- **Iniciar sesión como empresa**: Funciona correctamente. Redirige al perfil de empresa.
+
+- **Modificar servicios**: Permite editar los servicios añadidos por la empresa.
+
+- **Añadir servicios**: Se pueden añadir nuevos servicios desde el perfil de empresa.
+
+- **Ver reservas**: Se muestran todas las reservas de los servicios creados por la empresa y su estado.
+
+- **Iniciar sesión como administrador**: Redirige correctamente al panel de administración.
+
+- **Visualizar usuarios**: Muestra una lista de usuarios.
+
+- **Eliminar usuarios**: Se pueden eliminar usuarios correctamente.
+
+- **Añadir usuarios**: Permite añadir nuevos usuarios.
+
+- **Editar usuarios**: Permite modificar la información de usuarios.
+
+- **Visualizar empresas**: Se muestra un listado de empresas.
+
+- **Eliminar empresa**: Se pueden eliminar empresas.
+
+- **Añadir empresa**: Funciona correctamente.
+
+- **Editar empresa**: Permite editar la información de las empresas.
+
 
 [**<-Anterior**](../../README.md)

@@ -4,6 +4,7 @@ include_once("Controller.php");
 
 class UsuarioController extends Controller
 {
+    //Obtiene un usuario según su id
     public function get($id)
     {
         $model = new UsuarioModel();
@@ -20,6 +21,7 @@ class UsuarioController extends Controller
         echo json_encode($usuario, JSON_PRETTY_PRINT);
     }
 
+    //Obtiene todos los usuarios
     public function getAll()
     {
         $model = new UsuarioModel();
@@ -27,6 +29,7 @@ class UsuarioController extends Controller
         echo json_encode($usuarios, JSON_PRETTY_PRINT);
     }
 
+    //Elimina un usuario según su id
     public function delete($id)
     {
         $model = new UsuarioModel();
@@ -42,6 +45,7 @@ class UsuarioController extends Controller
         }
     }
 
+    //Modifica los datos un usuario según su id
     public function update($id, $object)
     {
         $model = new UsuarioModel();
@@ -64,6 +68,7 @@ class UsuarioController extends Controller
         }
     }
 
+    //Añade un nuevo usuario
     public function insert($object)
     {
         $model = new UsuarioModel();

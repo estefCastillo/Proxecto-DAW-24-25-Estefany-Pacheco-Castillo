@@ -5,7 +5,7 @@ include("ServicioController.php");
 include("FavoritoController.php");
 include("ReservaController.php");
 
-
+//Clase abstracta de la cual extienden todos los controladores
 abstract class Controller
 {
     public abstract function get($id);
@@ -14,14 +14,15 @@ abstract class Controller
     public abstract function update($id, $object);
     public abstract function insert($object);
 
+    //Muestra el error y devuelve una petición http    
     public static function errorMessage($message, $code = 400)
-{
-    error_log($message);
-    http_response_code($code);
-    echo json_encode($message, JSON_PRETTY_PRINT);
-}
+    {
+        error_log($message);
+        http_response_code($code);
+        echo json_encode($message, JSON_PRETTY_PRINT);
+    }
 
-
+    //Obtiene el controlador 
     public static function getController($controllerName)
     {
         $controller = null;

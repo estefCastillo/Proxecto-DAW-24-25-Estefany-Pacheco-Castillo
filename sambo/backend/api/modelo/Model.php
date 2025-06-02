@@ -1,7 +1,7 @@
 <?php
 class Model{
         public static $pdo;
-    
+        //Método para connectarse a la base de datos
         public static function getConnection(){
             if(!isset(self::$pdo)){
                 try {
