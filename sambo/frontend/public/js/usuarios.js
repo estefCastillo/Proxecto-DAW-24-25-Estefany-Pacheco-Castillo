@@ -3,12 +3,12 @@ import ajax from "./ajaxTemplate.js";
 const $d = document,
   $tbody = $d.querySelector("tbody");
 
-$d.addEventListener("DOMContentLoaded", () => {
+$d.addEventListener("DOMContentLoaded", (ev) => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", () => {
+  $btnUser.addEventListener("click", (ev) => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }

@@ -9,7 +9,9 @@ const $d = document,
   $e_correo = $d.querySelector("#e_correo"),
   $e_contrasena = $d.querySelector("#e_contrasena"),
   $e_contrasena2 = $d.querySelector("#e_contrasena2"),
+  //obtiene la url
   url = new URLSearchParams(window.location.search),
+  //obtiene el Id del usuario mediante la url
   id_usuario = url.get("id");
 
 let admin = localStorage.getItem("usuario")
@@ -18,7 +20,8 @@ let admin = localStorage.getItem("usuario")
 let regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 let regex_contrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-$correo.addEventListener("input", (ev) => {
+//Indica si el correo es válido
+$correo.addEventListener("input", () => {
   if (!regex_email.test($correo.value.trim())) {
     $e_correo.classList.remove("valido");
     $e_correo.classList.add("error");
@@ -29,8 +32,8 @@ $correo.addEventListener("input", (ev) => {
     $e_correo.textContent = "Formato válido!";
   }
 });
-
-$contrasena.addEventListener("input", (ev) => {
+//Indica si la contraseña es válida
+$contrasena.addEventListener("input", () => {
   if (!regex_contrasena.test($contrasena.value.trim())) {
     $e_contrasena.classList.remove("valido");
     $e_contrasena.classList.add("error");
@@ -42,8 +45,8 @@ $contrasena.addEventListener("input", (ev) => {
     $e_contrasena.textContent = "Contraseña válida!";
   }
 });
-
-$contrasena2.addEventListener("input", (ev) => {
+//Indica si la contraseña coincide con la primera contraseña
+$contrasena2.addEventListener("input", () => {
   if ($contrasena.value.trim() != $contrasena2.value.trim()) {
     $e_contrasena2.classList.remove("valido");
     $e_contrasena2.classList.add("error");
@@ -57,7 +60,8 @@ $contrasena2.addEventListener("input", (ev) => {
   }
 });
 
-$registrerForm.addEventListener("submit", (ev) => {
+//Modifica los datos de un usuario
+$registrerForm.addEventListener("submit", () => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
   let correo = $correo.value.trim();
@@ -108,7 +112,7 @@ $registrerForm.addEventListener("submit", (ev) => {
   ajax({
     url: `http://localhost/api/index.php/usuario/${id_usuario}`,
     method: "PUT",
-    fExito: (json) => {
+    fExito: () => {
       if ($registrerForm) {
         $registrerForm.reset();
       }
@@ -130,10 +134,10 @@ $registrerForm.addEventListener("submit", (ev) => {
       }
     },
 
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al registrar",
-        text:"Ya existe un usuario con ese correo.",
+        text: "Ya existe un usuario con ese correo.",
         icon: "error",
         timer: 1500,
       });
@@ -147,10 +151,10 @@ $registrerForm.addEventListener("submit", (ev) => {
       });
     },
     data: {
-      nombre: nombre,
-      correo: correo,
-      contrasena: contrasena,
-      rol:"usuario"
+      nombre,
+      correo,
+      contrasena,
+      rol: "usuario",
     },
   });
 });

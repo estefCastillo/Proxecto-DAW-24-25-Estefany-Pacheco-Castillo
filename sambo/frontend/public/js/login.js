@@ -5,6 +5,7 @@ const $d = document,
   $correo = $d.querySelector("#correo"),
   $contrasena = $d.querySelector("#contrasena");
 
+//Inicia sesión y redirige al usuario
 $loginForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let correo = $correo.value;
@@ -34,7 +35,7 @@ $loginForm.addEventListener("submit", (ev) => {
         window.location.href = "administration.php";
       }
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "No se ha podido iniciar sesión",
         icon: "error",
@@ -43,8 +44,8 @@ $loginForm.addEventListener("submit", (ev) => {
       $loginForm.reset();
     },
     data: {
-      correo: correo,
-      contrasena: contrasena,
+      correo,
+      contrasena,
     },
   });
 });

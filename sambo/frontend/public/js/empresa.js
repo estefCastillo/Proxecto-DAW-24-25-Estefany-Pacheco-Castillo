@@ -7,12 +7,12 @@ let id_empresa = localStorage.getItem("empresa")
   ? JSON.parse(localStorage.getItem("empresa")).id
   : null;
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -24,11 +24,11 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("empresa");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
             title: "No se ha podido cerrar sesión",
             icon: "error",
@@ -40,7 +40,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   }
   getServicios();
 });
-
+//Renderiza los servicios de una empresa
 function getServicios() {
   ajax({
     url: "http://localhost/api/index.php/servicio",
@@ -82,7 +82,7 @@ function getServicios() {
         )
         .join("");
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al obtener los servicios",
         icon: "error",
@@ -92,8 +92,8 @@ function getServicios() {
   });
 }
 
-
-$tbody.addEventListener("click", (ev) => {
+//Elimina un servicio de una empresa
+$tbody.addEventListener("click", () => {
   ev.preventDefault();
   if (ev.target.closest(".btn-delete")) {
     let id_servicio = ev.target.closest(".btn-delete").dataset.id;
@@ -110,16 +110,15 @@ $tbody.addEventListener("click", (ev) => {
         ajax({
           url: `http://localhost/api/index.php/servicio/${id_servicio}`,
           method: "DELETE",
-          fExito: (json) => {
+          fExito: () => {
             Swal.fire({
               title: "Servicio eliminado con éxito!",
               icon: "success",
               timer: 1500,
-            })
-              getServicios();
-            
+            });
+            getServicios();
           },
-          fError: (error) => {
+          fError: () => {
             Swal.fire({
               title: "No se ha podido eliminar",
               icon: "error",

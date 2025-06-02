@@ -8,7 +8,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -20,7 +20,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("usuario");
           window.location.href = "index.php";
         },
@@ -35,7 +35,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
     });
   }
 });
-
+//Redirige al usuario administrador
 $cards.addEventListener("click", (ev) => {
   ev.preventDefault();
   if (ev.target.closest("button").classList.contains("admin-empresas")) {

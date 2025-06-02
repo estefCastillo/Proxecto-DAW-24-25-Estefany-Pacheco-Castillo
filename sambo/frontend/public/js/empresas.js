@@ -3,12 +3,12 @@ import ajax from "./ajaxTemplate.js";
 const $d = document,
   $tbody = $d.querySelector("tbody");
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -36,7 +36,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   }
   getEmpresas();
 });
-
+//Renderiza las empresas
 function getEmpresas() {
   ajax({
     url: "http://localhost/api/index.php/empresa",
@@ -73,7 +73,7 @@ function getEmpresas() {
     },
   });
 }
-
+//Elimina a una empresa
 $tbody.addEventListener("click", (ev) => {
   ev.preventDefault();
   if (ev.target.closest(".btn-delete")) {
@@ -91,7 +91,7 @@ $tbody.addEventListener("click", (ev) => {
         ajax({
           url: `http://localhost/api/index.php/empresa/${id_empresa}`,
           method: "DELETE",
-          fExito: (json) => {
+          fExito: () => {
             Swal.fire({
               title: "Empresa eliminada con éxito!",
               icon: "success",
@@ -100,7 +100,7 @@ $tbody.addEventListener("click", (ev) => {
               getEmpresas();
             });
           },
-          fError: (error) => {
+          fError: () => {
             Swal.fire({
               title: "No se ha podido eliminar",
               icon: "error",

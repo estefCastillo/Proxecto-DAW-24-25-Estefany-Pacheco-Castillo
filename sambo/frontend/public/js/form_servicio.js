@@ -14,6 +14,7 @@ let id_empresa = localStorage.getItem("empresa")
   ? JSON.parse(localStorage.getItem("empresa")).id
   : null;
 
+//Añade un servicio
 $servicioForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
@@ -46,8 +47,8 @@ $servicioForm.addEventListener("submit", (ev) => {
   ajax({
     url: "http://localhost/api/index.php/servicio",
     method: "POST",
-    fExito: (json) => {
-        Swal.fire({
+    fExito: () => {
+      Swal.fire({
         title: "Servicio añadido!",
         icon: "success",
         timer: 1500,
@@ -56,7 +57,7 @@ $servicioForm.addEventListener("submit", (ev) => {
       $servicioForm.reset();
       window.location.href = "empresa.php";
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al añadir el servicio",
         icon: "error",

@@ -7,12 +7,12 @@ let id_usuario = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).id
   : null;
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($vLogin) {
       $vLogin.classList.toggle("hidden");
     }

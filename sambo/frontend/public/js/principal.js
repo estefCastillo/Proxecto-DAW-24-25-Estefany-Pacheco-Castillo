@@ -7,6 +7,7 @@ const $d = document,
   $research = $d.querySelector("#research");
 
 let allServices = [];
+//Obtiene el id del usuario
 let id_usuario = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).id
   : null;
@@ -23,7 +24,7 @@ $d.addEventListener("DOMContentLoaded", () => {
   });
 
   if ($logout) {
-    $logout.addEventListener("click", () => {
+    $logout.addEventListener("click", (ev) => {
       ev.preventDefault();
       ajax({
         url: "http://localhost/api/logout.php",
@@ -80,7 +81,7 @@ $btnCategories.addEventListener("click", (ev) => {
     filtrarServicios(categoria);
   }
 });
-
+//Obtiene los servicios
 function fetchServicios() {
   ajax({
     url: "http://localhost/api/index.php/servicio",
@@ -89,7 +90,7 @@ function fetchServicios() {
       allServices = json;
       filtrarServicios("todos");
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "No se ha podido obtener los servicios",
         icon: "error",
@@ -138,7 +139,7 @@ function showServicios(servicios) {
     )
     .join("");
 }
-
+//Si el buscador tiene contenido, filtra según el valor de ese input, sino muestra todos los servicios
 function handleSearch() {
   let buscado = $research.value.toLowerCase().trim();
   let filtrado = allServices.filter((el) =>
@@ -146,13 +147,14 @@ function handleSearch() {
   );
   showServicios(buscado ? filtrado : allServices);
 }
-
+//Busca y filtra según lo escrito en el input
 $research.addEventListener("input", handleSearch);
 $researchForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   handleSearch();
 });
 
+//Añade un servicio
 $servicios.addEventListener("click", (ev) => {
   if (ev.target.closest(".btn-favorite").dataset.id) {
     let id_servicio = ev.target.closest(".btn-favorite").dataset.id;
@@ -164,21 +166,24 @@ $servicios.addEventListener("click", (ev) => {
     ajax({
       url: "http://localhost/api/index.php/favorito",
       method: "POST",
-      fExito: (json) => {
+      fExito: () => {
         Swal.fire({
           title: "¡Añadido a favoritos!",
           icon: "success",
           timer: 1300,
         });
       },
-      fError: (error) => {
+      fError: () => {
         Swal.fire({
           title: "Error al añadir a favoritos",
           icon: "error",
           timer: 1500,
         });
       },
-      data: { id_usuario, id_servicio },
+      data: {
+        id_usuario,
+        id_servicio,
+      },
     });
   }
 });

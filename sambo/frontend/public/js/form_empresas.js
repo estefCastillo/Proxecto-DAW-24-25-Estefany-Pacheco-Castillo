@@ -67,7 +67,7 @@ $contrasena2.addEventListener("input", () => {
     }
   }
 });
-
+//Añade una empresa
 $registrerForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
@@ -75,9 +75,16 @@ $registrerForm.addEventListener("submit", (ev) => {
   let contrasena = $contrasena.value.trim();
   let contrasena2 = $contrasena2.value.trim();
   let telefono = $telefono.value.trim();
-  let direccion=$direccion.value.trim();
+  let direccion = $direccion.value.trim();
 
-  if (!nombre || !correo || !contrasena || !telefono || !direccion || !contrasena2) {
+  if (
+    !nombre ||
+    !correo ||
+    !contrasena ||
+    !telefono ||
+    !direccion ||
+    !contrasena2
+  ) {
     Swal.fire({
       title: "¡Error!",
       text: "Deben cubrirse todos los campos.",
@@ -90,7 +97,7 @@ $registrerForm.addEventListener("submit", (ev) => {
 
   if (!regex_email.test(correo)) {
     Swal.fire({
-      title: "Correo inválido",
+      title: "Correo inválido!",
       text: "El correo electrónico ha de ser válido.",
       icon: "error",
       timer: 1500,
@@ -123,7 +130,7 @@ $registrerForm.addEventListener("submit", (ev) => {
   ajax({
     url: "http://localhost/api/index.php/empresa",
     method: "POST",
-    fExito: (json) => {
+    fExito: () => {
       if ($registrerForm) {
         $registrerForm.reset();
       }
@@ -141,7 +148,7 @@ $registrerForm.addEventListener("submit", (ev) => {
         el.textContent = "";
       });
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error",
         text: "Error al insertar la empresa",
@@ -161,10 +168,10 @@ $registrerForm.addEventListener("submit", (ev) => {
     },
     data: {
       nombre_empresa: nombre,
-      correo: correo,
-      direccion:direccion,
-      telefono: telefono,
-      contrasena: contrasena,
+      correo,
+      direccion,
+      telefono,
+      contrasena,
     },
   });
 });

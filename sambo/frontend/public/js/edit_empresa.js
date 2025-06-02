@@ -12,17 +12,17 @@ const $d = document,
   $e_contrasena = $d.querySelector("#e_contrasena"),
   $e_contrasena2 = $d.querySelector("#e_contrasena2"),
   $e_tel = $d.querySelector("#e_tel"),
-  url = new URLSearchParams(window.location.search)
+  //obtenemos la url
+  url = new URLSearchParams(window.location.search);
 
 let id_empresa = "";
-
+//Si eres admin, el id_empresa viene dado a través de la url
 if (url.get("id")) {
   id_empresa = url.get("id");
 } else {
+  //Si eres una empresa, al inciar sesión se guarda los datos en local
   id_empresa = JSON.parse(localStorage.getItem("empresa")).id;
 }
-
-console.log(id_empresa);
 
 let admin = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).rol == "admin"
@@ -141,11 +141,11 @@ $registrerForm.addEventListener("submit", (ev) => {
     });
     return;
   }
-
+//Realiza los cambios en  la empresa
   ajax({
     url: `http://localhost/api/index.php/empresa/${id_empresa}`,
     method: "PUT",
-    fExito: (json) => {
+    fExito: () => {
       if ($registrerForm) {
         $registrerForm.reset();
       }
@@ -156,24 +156,24 @@ $registrerForm.addEventListener("submit", (ev) => {
         showConfirmButton: false,
       }).then(() => {
         if (admin) {
-        window.location.href = "ad_empresas.php";
-      } else {
-              ajax({
-                url: "http://localhost/api/logout.php",
-                method: "POST",
-                fExito: (json) => {
-                  localStorage.removeItem("empresa");
-                  window.location.href = "login.php";
-                },
-                fError: (error) => {
-                  Swal.fire({
-                    title: "No se ha podido cerrar sesión",
-                    icon: "error",
-                    timer: 1500,
-                  });
-                },
+          window.location.href = "ad_empresas.php";
+        } else {
+          ajax({
+            url: "http://localhost/api/logout.php",
+            method: "POST",
+            fExito: () => {
+              localStorage.removeItem("empresa");
+              window.location.href = "login.php";
+            },
+            fError: () => {
+              Swal.fire({
+                title: "No se ha podido cerrar sesión",
+                icon: "error",
+                timer: 1500,
               });
-      }
+            },
+          });
+        }
       });
 
       [$e_correo, $e_contrasena, $e_contrasena2].forEach((el) => {
@@ -181,7 +181,7 @@ $registrerForm.addEventListener("submit", (ev) => {
         el.textContent = "";
       });
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al modificar la empresa",
         text: "El correo electrónico ya existe",
@@ -201,10 +201,10 @@ $registrerForm.addEventListener("submit", (ev) => {
     },
     data: {
       nombre_empresa: nombre,
-      correo: correo,
-      direccion: direccion,
-      telefono: telefono,
-      contrasena: contrasena,
+      correo,
+      direccion,
+      telefono,
+      contrasena,
     },
   });
 });

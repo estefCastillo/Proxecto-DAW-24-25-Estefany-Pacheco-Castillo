@@ -7,12 +7,12 @@ let id_usuario = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).id
   : null;
 
-$d.addEventListener("DOMContentLoaded", (ev) => {
+$d.addEventListener("DOMContentLoaded", () => {
   let $btnUser = $d.querySelector(".btn-login"),
     $vLogin = $d.querySelector("#login"),
     $logout = $d.querySelector("#logout");
 
-  $btnUser.addEventListener("click", (ev) => {
+  $btnUser.addEventListener("click", () => {
     if ($btnUser && $vLogin) {
       $vLogin.classList.toggle("hidden");
     }
@@ -24,16 +24,16 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
       ajax({
         url: "http://localhost/api/logout.php",
         method: "POST",
-        fExito: (json) => {
+        fExito: () => {
           localStorage.removeItem("usuario");
           window.location.href = "index.php";
         },
-        fError: (error) => {
+        fError: () => {
           Swal.fire({
-          title: "No se ha podido cerrar sesión",
-          icon: "error",
-          timer: 1500,
-        });
+            title: "No se ha podido cerrar sesión",
+            icon: "error",
+            timer: 1500,
+          });
         },
       });
     });
@@ -41,43 +41,7 @@ $d.addEventListener("DOMContentLoaded", (ev) => {
   renderFavoritos();
 });
 
-$favoritos.addEventListener("click", (ev) => {
-  if (ev.target.closest(".btn-favorite").dataset.id) {
-    let id_favorito = ev.target.closest(".btn-favorite").dataset.id;
-    Swal.fire({
-      title: "¿Quieres eliminar este servicio de favoritos?",
-      icon: "warning",
-      showCancelButton: true,
-      cancelButtonColor: "#681717",
-      confirmButtonColor: "#3E7255",
-      confirmButtonText: "Si",
-      cancelButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        ajax({
-          url: `http://localhost/api/index.php/favorito/${id_usuario}/${id_favorito}`,
-          method: "DELETE",
-          fExito: (json) => {
-            Swal.fire({
-              title: "¡Eliminado de favoritos!",
-              icon: "success",
-              timer: 1500,
-            });
-            renderFavoritos();
-          },
-          fError: (error) => {
-            Swal.fire({
-          title: "No se ha podido eliminar",
-          icon: "error",
-          timer: 1500,
-        });
-          },
-        });
-      }
-    });
-  }
-});
-
+//Muestra la lista de favoritos de los usuarios
 function renderFavoritos() {
   ajax({
     url: `http://localhost/api/index.php/favorito/usuario/${id_usuario}`,
@@ -85,7 +49,7 @@ function renderFavoritos() {
     fExito: (favoritos) => {
       if (favoritos.length == 0) {
         return ($favoritos.innerHTML = `<p>Aún no tienes favoritos guardados.</p>`);
-      }else{
+      } else {
         ajax({
           url: "http://localhost/api/index.php/servicio",
           method: "GET",
@@ -93,7 +57,7 @@ function renderFavoritos() {
             $favoritos.innerHTML = favoritos
               .map((el) => {
                 let s = servicios.find((s) => s.id_servicio == el.id_servicio);
-  
+
                 return `
                 <article class="service">
                   <figure class="service_img">
@@ -116,22 +80,60 @@ function renderFavoritos() {
               })
               .join("");
           },
-          fError: (error) => {
+          fError: () => {
             Swal.fire({
-            title: "Error al obtener los servicios",
-            icon: "error",
-            timer: 1500,
-          });
+              title: "Error al obtener los servicios",
+              icon: "error",
+              timer: 1500,
+            });
           },
         });
       }
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
-          title: "Error al obtener los favoritos",
-          icon: "error",
-          timer: 1500,
-        });
+        title: "Error al obtener los favoritos",
+        icon: "error",
+        timer: 1500,
+      });
     },
   });
 }
+
+//Elimina de favoritos un servicio
+$favoritos.addEventListener("click", (ev) => {
+  if (ev.target.closest(".btn-favorite").dataset.id) {
+    let id_favorito = ev.target.closest(".btn-favorite").dataset.id;
+    Swal.fire({
+      title: "¿Quieres eliminar este servicio de favoritos?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#681717",
+      confirmButtonColor: "#3E7255",
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ajax({
+          url: `http://localhost/api/index.php/favorito/${id_usuario}/${id_favorito}`,
+          method: "DELETE",
+          fExito: () => {
+            Swal.fire({
+              title: "¡Eliminado de favoritos!",
+              icon: "success",
+              timer: 1500,
+            });
+            renderFavoritos();
+          },
+          fError: () => {
+            Swal.fire({
+              title: "No se ha podido eliminar",
+              icon: "error",
+              timer: 1500,
+            });
+          },
+        });
+      }
+    });
+  }
+});

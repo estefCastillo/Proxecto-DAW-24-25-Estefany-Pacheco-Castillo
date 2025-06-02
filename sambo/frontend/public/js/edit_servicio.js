@@ -9,13 +9,16 @@ const $d = document,
   $imagen = $d.querySelector("#imagen"),
   $categoria = $d.querySelector("#categoria"),
   $ubicacion = $d.querySelector("#ubicacion"),
+  //obtiene la url
   url = new URLSearchParams(window.location.search),
+  //obtiene el Id del servicio mediante la url
   id_servicio = url.get("id");
 
 let id_empresa = localStorage.getItem("empresa")
   ? JSON.parse(localStorage.getItem("empresa")).id
   : null;
 
+//Edita un servicio
 $servicioForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
@@ -48,8 +51,8 @@ $servicioForm.addEventListener("submit", (ev) => {
   ajax({
     url: `http://localhost/api/index.php/servicio/${id_servicio}`,
     method: "PUT",
-    fExito: (json) => {
-        Swal.fire({
+    fExito: () => {
+      Swal.fire({
         title: "Servicio modificado!",
         icon: "success",
         timer: 1500,
@@ -58,7 +61,7 @@ $servicioForm.addEventListener("submit", (ev) => {
       $servicioForm.reset();
       window.location.href = "empresa.php";
     },
-    fError: (error) => {
+    fError: () => {
       Swal.fire({
         title: "Error al editar el servicio",
         icon: "error",

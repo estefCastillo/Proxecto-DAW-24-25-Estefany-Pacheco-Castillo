@@ -58,7 +58,7 @@ $contrasena2.addEventListener("input", () => {
   }
 });
 //Registra y redirige según el usuario.
-$registrerForm.addEventListener("submit", () => {
+$registrerForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   let nombre = $nombre.value.trim();
   let correo = $correo.value.trim();
@@ -110,15 +110,16 @@ $registrerForm.addEventListener("submit", () => {
     url: "http://localhost/api/index.php/usuario",
     method: "POST",
     fExito: () => {
-      if ($registrerForm) {
-        $registrerForm.reset();
-      }
+   
       Swal.fire({
         title: "Usuario registrado!",
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
       });
+   if ($registrerForm) {
+        $registrerForm.reset();
+      }
 
       [$e_correo, $e_contrasena, $e_contrasena2].forEach((el) => {
         el.classList.remove("error", "valido");
