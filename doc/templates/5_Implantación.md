@@ -18,16 +18,17 @@ Para poder desplegar **Sambo** de manera local, se necesitará:
 - El sistema opertativo debe ser Linux
 
 **Instalación**
-1. Clonar el repostitorio: 
+1. **Clonar el repostitorio**: 
   1.1. git clone git@github.com:estefCastillo/Proxecto-DAW-24-25-EPC.git
+
   1.2. cd sambo
-2. Lanzar los contenedores:
+2. **Lanzar los contenedores**:
   2.1. docker-compose up
-3. Subir la base de datos a PhpMyAdmin
+3. **Subir la base de datos a PhpMyAdmin**
   3.1. Accediendo a través http://localhost:8000/ (usuario: root, contraseña: bitnami)
+
   3.2. Importando la base de datos [sambo.sql](../../sambo/sql/sambo.sql)
 4. Acceder a Sambo a través de http://localhost
-
 
 **Sin ninguna instalación:**
 Se podra acceder a sambo a través de este enlace: [Sambo](https://purple-reindeer-599669.hostingersite.com/)
