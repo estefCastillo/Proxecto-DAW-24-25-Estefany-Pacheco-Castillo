@@ -18,27 +18,26 @@ Sambo es una plataforma web que muestra múltiples negocios y recursos disponibl
 | Actor   | Acción                          | Descripción                                                                 |
 |---------|----------------------------------|-----------------------------------------------------------------------------|
 | Usuario | Alta de usuario                 | Dar de alta a un usuario en la base de datos.                              |
-| Usuario | Modificación de usuario         | Modificación de la información del usuario en la base de datos.            |
-| Usuario | Visualizar productos            | Se mostrarán todos los productos.                                          |
-| Usuario | Buscar un producto en una categoría | Se mostrarán los productos de una categoría específica.                |
+| Usuario | Visualizar servicios            | Se mostrarán todos los servicios.                                          |
+| Usuario | Buscar un servicio en una categoría | Se mostrarán los servicios de una categoría específica.                |
 | Usuario | Añadir a favoritos              | Guarda los servicios o negocios en una tabla asociada al usuario.          |
 | Usuario | Borrar favoritos                | Elimina un servicio o negocio de la tabla de favoritos del usuario.        |
 
 
-Los clientes no se dan de alta por sí solos de alta, son los administradores quienes les dan el alta.
+Las empresas no se dan de alta por sí solos de alta, son los administradores quienes les dan el alta.
 
 | Actor   | Acción              | Descripción                                                                |
 |---------|---------------------|----------------------------------------------------------------------------|
-| Cliente | Modificar cliente   | Modificación de la información de un cliente en la base de datos.         |
-| Cliente | Añadir un producto  | Dar de alta un producto.                                                  |
-| Cliente | Modificar producto  | Modifica la información de un producto en la base de datos.               |
-| Cliente | Eliminar producto   | Elimina un producto de la base de datos.                                  |
+| Empresa | Modificar empresa   | Modificación de la información de un empresa en la base de datos.         |
+| Empresa | Añadir un servicio  | Dar de alta un servicio.                                                  |
+| Empresa | Modificar servicio  | Modifica la información de un servcio en la base de datos.               |
+| Empresa | Eliminar servicio   | Elimina un servicio de la base de datos.                                  |
 
 | Actor        | Acción                            | Descripción                                                                    |
 |--------------|-----------------------------------|--------------------------------------------------------------------------------|
-| Administrador | Alta de cliente/usuario/producto | Dar de alta un cliente, usuario o producto en la base de datos.               |
-| Administrador | Modificar cliente/usuario/producto | Modificación de la información de un cliente, usuario o producto.             |
-| Administrador | Eliminar cliente/usuario/producto | Elimina un cliente, usuario o producto de la base de datos.                   |
+| Administrador | Alta de empresa/usuario | Dar de a una empresa, usuario o servicio en la base de datos.               |
+| Administrador | Modificar empresa/usuario | Modificación de la información de una empresa, usuario o servicio.             |
+| Administrador | Eliminar empresa/usuario | Elimina una empresa, usuario o servicio de la base de datos.                   |
 
 
 ## 3- Tipos de usuarios
@@ -46,11 +45,11 @@ Los clientes no se dan de alta por sí solos de alta, son los administradores qu
 Sambo tendrá cuatro tipos de usuario:
 | Tipo de usuario      | Descripción                                                                                      |
 |----------------------|--------------------------------------------------------------------------------------------------|
-| Usuario anónimo      | Puede acceder a la plataforma sin registrarse. Puede visualizar productos, pero no añadir ni modificar, ni guardar favoritos. |
+| Usuario anónimo      | Puede acceder a la plataforma sin registrarse. Puede visualizar servicios, pero no añadir ni modificar, ni guardar favoritos. |
 | Usuario registrado   | Se divide en dos categorías:                                                                     |
-| ├─ Usuario normal     | Puede crear una cuenta, iniciar sesión, visualizar productos y guardar productos o servicios como favoritos. |
-| └─ Usuario cliente    | Puede visualizar y modificar su perfil, y también añadir, modificar o eliminar productos.        |
-| Administrador        | Tiene control total del sistema. Puede dar de alta, modificar y eliminar usuarios o productos.   |
+| ├─ Usuario normal     | Puede crear una cuenta, iniciar sesión, visualizar servicios y guardarlos como favoritos. |
+| └─ Usuario cliente    | Puede visualizar y modificar su perfil, y también añadir, modificar o eliminar servicios.        |
+| Administrador        | Tiene control total del sistema. Puede dar de alta, modificar y eliminar usuarios o servicios.   |
 
 
 ## 4- Contorno operacional

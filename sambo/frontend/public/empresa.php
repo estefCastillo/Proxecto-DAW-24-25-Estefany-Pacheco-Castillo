@@ -25,7 +25,8 @@ $nombre = $_SESSION["nombre"];
 <body>
     <?php include './header.php'; ?>
     <main>
-        <h2>Bienvenido, <?= $nombre; ?>!</h2>
+        <h2>Bienvenido, <?= htmlspecialchars($nombre); ?>!</h2>
+
         <section id="actions">
             <ul>
                 <li><a href="./edit_empresa.php">Editar mi información</a></li>

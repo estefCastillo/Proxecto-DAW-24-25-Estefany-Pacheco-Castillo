@@ -27,7 +27,7 @@ $correo = $_SESSION["correo"];
 <body>
   <?php include './header.php'; ?>
   <main>
-    <h2>¡Hola, <?= $nombre; ?> !</h2>
+    <h2>Hola, <?= htmlspecialchars($nombre); ?>!</h2>
 
     <section id="reservas">
       <h3>Mis reservas: </h3>
