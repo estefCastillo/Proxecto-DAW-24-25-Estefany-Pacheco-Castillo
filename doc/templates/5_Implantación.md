@@ -21,7 +21,7 @@ Para poder desplegar **Sambo** de manera local, se necesitará:
 1. **Clonar el repostitorio**: 
     - git clone git@github.com:estefCastillo/Proxecto-DAW-24-25-EPC.git
 
-    - 1.2. cd sambo
+    - cd sambo
 
 2. **Lanzar los contenedores**:
     - docker-compose up

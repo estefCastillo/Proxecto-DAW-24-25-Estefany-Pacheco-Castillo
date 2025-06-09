@@ -27,8 +27,21 @@ Sambo, está desarrollado en **PHP** para el backend y **JavaScript**,**HTML5** 
 
 ## Instalación / Posta en marcha
 
-> *EXPLICACIÓN*: Neste apartado describe con toda precisión e a poder ser coa maior simplicidade/facilidade posible, como poñer en marcha a túa aplicación para probala (nun ambiente local). Valorarase moi positivamente que este proceso sexa o máis fácil posible, cunha simple instrución (p. e. un script de instalación, descarga e posta en marcha dun contedor,...).
->
+1. **Clonar el repostitorio**: 
+    - git clone git@github.com:estefCastillo/Proxecto-DAW-24-25-EPC.git
+
+    - cd sambo
+
+2. **Lanzar los contenedores**:
+    - docker-compose up
+
+3. **Subir la base de datos a PhpMyAdmin**
+
+    - Accediendo a través http://localhost:8000/ (usuario: root, contraseña: bitnami)
+
+    - Importando la base de datos [sambo.sql](../../sambo/sql/sambo.sql)
+
+4. Acceder a Sambo a través de http://localhost
 
 ## Uso
 
