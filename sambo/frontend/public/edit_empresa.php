@@ -34,7 +34,7 @@ if (!isset($_SESSION["rol"]) || ($_SESSION["rol"] != "admin" && $_SESSION["rol"]
       <input type="text" name="nombre_empresa" id="nombre_empresa" placeholder="Sambo" required>
 
       <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="correo" placeholder="sambo@info.com" required />
+      <input type="email" id="correo" name="correo" placeholder="sambo@info.com" readonly />
       <span class="error" id="e_correo"></span>
 
       <label for="telefono">Teléfono:</label>

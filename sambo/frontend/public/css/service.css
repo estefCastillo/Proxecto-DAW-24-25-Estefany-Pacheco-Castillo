@@ -17,6 +17,7 @@ main#s-reserva {
     padding:2rem;
     border-radius: 10px;
     width: 400px;
+    overflow: hidden;
 }
 h2{
   font-size: 1.5rem;
@@ -37,6 +38,6 @@ h2{
     align-items: center;
 }
 .info-service img{
-  width: 250px;
-  height: 300px;
+  width: 100%;
+  height: 400px;
 }

@@ -33,7 +33,7 @@ if (!isset($_SESSION["rol"]) || $_SESSION["rol"] != "admin") {
       <input type="text" name="nombre" id="nombre" placeholder="Sambo" required>
 
       <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="correo" placeholder="sambo@info.com" required />
+      <input type="email" id="correo" name="correo" placeholder="sambo@info.com" readonly />
       <span class="error" id="e_correo"></span>
 
       <label for="contrasena">Contraseña:</label>

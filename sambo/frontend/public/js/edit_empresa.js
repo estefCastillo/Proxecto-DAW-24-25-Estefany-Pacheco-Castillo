@@ -24,6 +24,29 @@ if (url.get("id")) {
   id_empresa = JSON.parse(localStorage.getItem("empresa")).id;
 }
 
+function getEmpresaInfo(){
+  ajax({
+    url:`http://localhost/api/index.php/empresa/${id_empresa}`, 
+    method: "GET",
+    fExito:json=>{
+      $nombre.value=json.nombre_empresa
+      $correo.value=json.correo
+      $direccion.value=json.direccion
+      $telefono.value=json.telefono
+      $contrasena.value=""
+    },
+    fError:error=>{
+      Swal.fire({
+        title: "No se ha podido obtener la empresa",
+        icon: "error",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
+  })
+}
+$d.addEventListener("DOMContentLoaded",getEmpresaInfo)
+
 let admin = localStorage.getItem("usuario")
   ? JSON.parse(localStorage.getItem("usuario")).rol == "admin"
   : false;

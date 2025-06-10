@@ -20,6 +20,25 @@ let admin = localStorage.getItem("usuario")
 let regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 let regex_contrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
+function getUsuarioInfo(){
+  ajax({
+    url:`http://localhost/api/index.php/usuario/${id_usuario}`, 
+    method: "GET",
+    fExito:json=>{
+      $nombre.value=json.nombre
+      $correo.value=json.correo
+    },
+    fError:error=>{
+      Swal.fire({
+        title: "No se ha podido obtener el usuario",
+        icon: "error",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
+  })
+}
+$d.addEventListener("DOMContentLoaded",getUsuarioInfo)
 //Indica si el correo es válido
 $correo.addEventListener("input", () => {
   if (!regex_email.test($correo.value.trim())) {
