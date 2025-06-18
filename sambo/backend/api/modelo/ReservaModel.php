@@ -216,7 +216,7 @@ class ReservaModel extends Model
         $stmtUpdate->bindValue(':id_empresa', $id_empresa, PDO::PARAM_INT);
         $stmtUpdate->execute();
 
-        $sql = "SELECT r.id_reserva, r.id_usuario, r.id_servicio, r.fecha, r.cantidad, r.estado
+        $sql = "SELECT r.id_reserva, r.id_usuario, r.id_servicio, r.fecha, r.cantidad, r.estado, r.precio_total
         FROM reservas r
         JOIN servicios s ON r.id_servicio = s.id_servicio
         WHERE s.id_empresa = :id_empresa";
